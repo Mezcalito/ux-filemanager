@@ -1,0 +1,30 @@
+{
+  "name": "@mezcalito/ux-filemanager",
+  "description": "File manager for Symfony application",
+  "main": "dist/controller.js",
+  "types": "dist/controller.d.ts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "symfony": {
+    "controllers": {
+      "autocomplete": {
+        "main": "dist/controller.js",
+        "webpackMode": "eager",
+        "fetch": "eager",
+        "enabled": true,
+        "autoimport": {
+          "@mezcalito/ux-filemanager/dist/style.min.css": true
+        }
+      }
+    },
+    "importmap": {
+      "@hotwired/stimulus": "^3.0.0"
+    }
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0"
+  },
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.0.0"
+  }
+}
