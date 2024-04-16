@@ -36,6 +36,7 @@
   "autoload-dev": {
     "psr-4": {
       "Mezcalito\\FileManagerBundle\\Tests\\": "tests"
-    }
+    },
+    "files": [ "tests/helper-functions.php" ]
   }
 }
