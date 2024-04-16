@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\Provider;
 
+use Mezcalito\FileManagerBundle\Exception\IOException;
 use Mezcalito\FileManagerBundle\Filesystem\Node;
 
 readonly class LocalFilesystemProvider implements ProviderInterface
@@ -31,7 +32,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $contents = @file_get_contents($location);
 
         if (false === $contents) {
-            throw new \LogicException(sprintf("Unable to read file '%s'", $location));
+            throw new IOException(sprintf("Unable to read file '%s'", $location), 0, null, $location);
         }
 
         return $contents;
@@ -43,7 +44,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $this->checkDirectoryExists(\dirname($location));
 
         if (false === @file_put_contents($location, $contents, $flags)) {
-            throw new \LogicException(sprintf("Unable to write file '%s': ", $location).error_get_last()['message']);
+            throw new IOException(sprintf("Unable to write file '%s': ", $location).error_get_last()['message'], 0, null, $location);
         }
     }
 
@@ -56,7 +57,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         }
 
         if (!@unlink($location)) {
-            throw new \LogicException(sprintf("Unable to delete file '%s'", $location));
+            throw new IOException(sprintf("Unable to delete file '%s'", $location), 0, null, $location);
         }
     }
 
@@ -68,7 +69,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $this->checkDirectoryExists(\dirname($destinationPath));
 
         if (!@rename($sourcePath, $destinationPath)) {
-            throw new \LogicException(sprintf("Unable to move file from '%s' to '%s'", $sourcePath, $destinationPath));
+            throw new IOException(sprintf("Unable to move file from '%s' to '%s'", $sourcePath, $destinationPath), 0, null, $sourcePath);
         }
     }
 
@@ -80,7 +81,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $this->checkDirectoryExists(\dirname($destinationPath));
 
         if (!@copy($sourcePath, $destinationPath)) {
-            throw new \LogicException(sprintf("Unable to copy file '%s' to '%s'", $sourcePath, $destinationPath));
+            throw new IOException(sprintf("Unable to copy file '%s' to '%s'", $sourcePath, $destinationPath), 0, null, $sourcePath);
         }
     }
 
@@ -122,7 +123,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         }
 
         if (!@mkdir($location, $permissions, true)) {
-            throw new \LogicException(sprintf("Unable to create directory '%s'", $location));
+            throw new IOException(sprintf("Unable to create directory '%s'", $location), 0, null, $location);
         }
     }
 
@@ -144,7 +145,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         unset($contents);
 
         if (!@rmdir($location)) {
-            throw new \LogicException(sprintf("Unable to delete directory '%s'", $location));
+            throw new IOException(sprintf("Unable to delete directory '%s'", $location), 0, null, $location);
         }
     }
 
