@@ -93,6 +93,17 @@ final class Kernel extends BaseKernel
             'default_path' => '%kernel.project_dir%/tests/TestApplication/templates',
         ]);
 
+        $container->extension('mezcalito_file_manager', [
+            'storages' => [
+                'local' => [
+                    'provider' => 'local',
+                    'options' => [
+                        'path' => '%kernel.project_dir%/tests/fixtures/storages/local',
+                    ],
+                ],
+            ],
+        ]);
+
         $container->services()
             ->defaults()
             ->autowire()
@@ -103,11 +114,11 @@ final class Kernel extends BaseKernel
 
     public function getCacheDir(): string
     {
-        return sys_get_temp_dir().'/mezcalito_ux_filemanager/tests/var/'.$this->environment.'/cache';
+        return sys_get_temp_dir().'/mezcalito_ux_file_manager/tests/var/'.$this->environment.'/cache';
     }
 
     public function getLogDir(): string
     {
-        return sys_get_temp_dir().'/mezcalito_ux_filemanager/tests/var/'.$this->environment.'/log';
+        return sys_get_temp_dir().'/mezcalito_ux_file_manager/tests/var/'.$this->environment.'/log';
     }
 }

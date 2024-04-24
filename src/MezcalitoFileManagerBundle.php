@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle;
 
-use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class MezcalitoFileManagerBundle extends AbstractBundle
+class MezcalitoFileManagerBundle extends Bundle
 {
 }
