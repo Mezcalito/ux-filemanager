@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+use Mezcalito\FileManagerBundle\Tests\TestApplication\Kernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+require dirname(__DIR__).'/../../vendor/autoload.php';
+
+$kernel = new Kernel('dev', true);
+$application = new Application($kernel);
+$application->run(new ArgvInput());

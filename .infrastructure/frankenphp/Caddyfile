@@ -4,7 +4,7 @@
 }
 
 {$SERVER_NAME} {
-    root * /srv/app/.infrastructure/frankenphp/root
+    root * /srv/app/tests/TestApplication/public
 	encode zstd gzip
 	php_server
 }

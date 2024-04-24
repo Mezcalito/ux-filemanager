@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Mezcalito\FileManagerBundle\Tests\Fixtures;
+namespace Mezcalito\FileManagerBundle\Tests\TestApplication;
 
 use Mezcalito\FileManagerBundle\MezcalitoFileManagerBundle;
 use Psr\Log\NullLogger;
@@ -90,14 +90,7 @@ final class Kernel extends BaseKernel
         $container->extension('framework', $frameworkConfig);
 
         $container->extension('twig', [
-            'default_path' => '%kernel.project_dir%/tests/Fixtures/templates',
-        ]);
-
-        $container->extension('twig_component', [
-            'defaults' => [
-                'Mezcalito\FileManagerBundle\Tests\Fixtures\Component\\' => 'components/',
-            ],
-            'anonymous_template_directory' => 'components/',
+            'default_path' => '%kernel.project_dir%/tests/TestApplication/templates',
         ]);
 
         $container->services()
