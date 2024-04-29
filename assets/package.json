@@ -7,8 +7,9 @@
   "license": "MIT",
   "symfony": {
     "controllers": {
-      "autocomplete": {
+      "filemanager": {
         "main": "dist/controller.js",
+        "name": "filemanager",
         "webpackMode": "eager",
         "fetch": "eager",
         "enabled": true,
@@ -18,7 +19,8 @@
       }
     },
     "importmap": {
-      "@hotwired/stimulus": "^3.0.0"
+      "@hotwired/stimulus": "^3.0.0",
+      "@mezcalito/ux-filemanager": "path:%PACKAGE%/dist/controller.js"
     }
   },
   "peerDependencies": {

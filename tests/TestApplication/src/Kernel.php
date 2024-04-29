@@ -23,6 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Symfony\UX\LiveComponent\LiveComponentBundle;
+use Symfony\UX\StimulusBundle\StimulusBundle;
 use Symfony\UX\TwigComponent\TwigComponentBundle;
 use Twig\Environment;
 
@@ -48,6 +49,7 @@ final class Kernel extends BaseKernel
         yield new TwigBundle();
         yield new TwigComponentBundle();
         yield new LiveComponentBundle();
+        yield new StimulusBundle();
         yield new MezcalitoFileManagerBundle();
     }
 
@@ -74,6 +76,7 @@ final class Kernel extends BaseKernel
             'http_method_override' => false,
             'property_info' => ['enabled' => true],
             'php_errors' => ['log' => true],
+            'asset_mapper' => ['paths' => ['assets/', '../../assets/']],
         ];
 
         if (self::VERSION_ID >= 60400) {
@@ -90,7 +93,7 @@ final class Kernel extends BaseKernel
         $container->extension('framework', $frameworkConfig);
 
         $container->extension('twig', [
-            'default_path' => '%kernel.project_dir%/tests/TestApplication/templates',
+            'default_path' => '%kernel.project_dir%/templates',
         ]);
 
         $container->extension('mezcalito_file_manager', [
@@ -98,7 +101,7 @@ final class Kernel extends BaseKernel
                 'local' => [
                     'provider' => 'local',
                     'options' => [
-                        'path' => '%kernel.project_dir%/tests/fixtures/storages/local',
+                        'path' => '%kernel.project_dir%/../fixtures/storages/local',
                     ],
                 ],
             ],
@@ -110,6 +113,11 @@ final class Kernel extends BaseKernel
             ->autoconfigure()
             // disable logging errors to the console
             ->set('logger', NullLogger::class);
+    }
+
+    public function getProjectDir(): string
+    {
+        return \dirname(__DIR__);
     }
 
     public function getCacheDir(): string

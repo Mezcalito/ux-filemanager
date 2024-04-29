@@ -4,13 +4,15 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="view-transition" content="same-origin" />
-        <title>{% block title %}Mezcalito FileManager{% endblock %}</title>
+        <title>{% block title %}Mezcalito File Manager{% endblock %}</title>
         <script src="https://cdn.tailwindcss.com"></script>
+
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
     </head>
 
     <body class="h-full p-4 sm:p-6 lg:p-8">
         <div class="h-full mx-auto max-w-7xl bg-white rounded-lg ring-1 ring-slate-900/10 p-2">
-            <twig:Mezcalito:FileManager></twig:Mezcalito:FileManager>
+            <twig:Mezcalito:FileManager storage="local"/>
         </div>
     </body>
 </html>

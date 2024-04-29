@@ -1,9 +1,7 @@
 const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const typescript = require('@rollup/plugin-typescript');
-const postcss = require('rollup-plugin-postcss');
-const autoprefixer = require('autoprefixer');
-const tailwindcss = require('tailwindcss');
+const scss = require('rollup-plugin-scss');
 
 module.exports = {
     input: 'assets/src/controller.ts',
@@ -26,10 +24,9 @@ module.exports = {
             }
         }),
         commonjs(),
-        postcss({
-            extract: true,
-            extensions: ['.css'],
-            plugins: [tailwindcss, autoprefixer],
+        scss({
+            fileName: 'styles.css',
+            watch: ['assets/src/scss', 'assets/src/scss/styles.scss'],
         }),
     ],
 };

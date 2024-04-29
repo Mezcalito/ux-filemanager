@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import './styles.css';
+import './styles.scss';
 
 export default class extends Controller {
     connect() {
