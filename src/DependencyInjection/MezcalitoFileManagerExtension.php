@@ -13,12 +13,15 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\DependencyInjection;
 
-use Mezcalito\FileManagerBundle\Filesystem\FilesystemInterface;
-use Mezcalito\FileManagerBundle\Filesystem\StorageInterface;
+use Mezcalito\FileManagerBundle\Collection\FilesystemCollection;
+use Mezcalito\FileManagerBundle\Filesystem\Filesystem;
+use Mezcalito\FileManagerBundle\Filesystem\Storage;
 use Mezcalito\FileManagerBundle\Provider\Factory\LocalFilesystemProviderFactory;
 use Mezcalito\FileManagerBundle\Twig\Components\FileManager;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -36,6 +39,9 @@ class MezcalitoFileManagerExtension extends Extension
 
     public function load(array $configs, ContainerBuilder $container): void
     {
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../../config'));
+        $loader->load('services.php');
+
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
 
@@ -56,12 +62,13 @@ class MezcalitoFileManagerExtension extends Extension
 
             $container->setDefinition('mezcalito_file_manager.provider.'.$storageName, $providerDefinition);
 
-            $container->register('mezcalito_file_manager.storage.'.$storageName, StorageInterface::class)
+            $container->register('mezcalito_file_manager.storage.'.$storageName, Storage::class)
                 ->setArguments([
                     new Reference('mezcalito_file_manager.provider.'.$storageName),
                 ]);
 
-            $container->register('mezcalito_file_manager.filesystem.'.$storageName, FilesystemInterface::class)
+            $container->register('mezcalito_file_manager.filesystem.'.$storageName, Filesystem::class)
+                ->addTag('mezcalito_file_manager.filesystem', ['name' => $storageName])
                 ->setArguments([
                     new Reference('mezcalito_file_manager.storage.'.$storageName),
                 ]);
