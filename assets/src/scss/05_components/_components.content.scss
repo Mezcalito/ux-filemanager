@@ -4,11 +4,25 @@
 }
 
 .c-content__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: $space-8;
+  @include min-width(md) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-12;
+  }
+
+  @include max-width(md) {
+    display: grid;
+    grid-template-columns: 1fr 4rem;
+    grid-gap: $space-16;
+  }
+}
+
+.c-content__toggle {
+  padding: $space-10;
+  background-color: var(--button-bg);
+  border-radius: var(--radius-md);
 }
 
 .c-content__buttons {
@@ -29,5 +43,41 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: $space-16;
+
+    @include max-width(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include max-width(md) {
+      .c-folder-card {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "name action"
+          "img img"
+          "info info";
+        grid-gap: $space-8;
+
+        &:has(.c-folder-card__input:checked) {
+          grid-template-columns: 2.8rem 1fr 2.4rem;
+          grid-template-areas:
+            "activeIcon name action"
+            "img img img"
+            "info info info";
+        }
+      }
+
+      .c-folder-card__icon {
+        display: flex;
+        justify-content: center;
+        padding-top: 2.4rem;
+        padding-bottom: 2.4rem;
+      }
+    }
   }
+}
+
+.c-content__sticky-button {
+  position: fixed;
+  bottom: $space-16;
+  right: $space-16;
 }

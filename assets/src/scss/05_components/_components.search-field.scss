@@ -2,6 +2,10 @@
   width: 27rem;
   position: relative;
 
+  @include max-width(md) {
+    width: 100%;
+  }
+
   & > svg {
     position: absolute;
     top: 50%;

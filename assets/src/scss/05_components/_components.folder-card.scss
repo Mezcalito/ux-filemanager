@@ -1,20 +1,30 @@
 .c-folder-card {
   padding: $space-8 $space-16 $space-8 $space-8;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-color: var(--card-bg);
   border-radius: var(--radius-sm);
   position: relative;
   transition: background-color var(--transition-in-out);
+  display: grid;
+  grid-template-areas:
+    "img name action"
+    "img info action";
+  grid-gap: 0 $space-16;
+  grid-template-columns: 5.6rem 1fr 2.4rem;
 
   &:hover,
   &:has(.c-folder-card__input:checked) {
     background-color: var(--card-active-bg);
   }
 
+  &:has(.c-folder-card__input:checked) {
+    grid-template-columns: 2.8rem 5.6rem 1fr 2.4rem;
+    grid-template-areas:
+    "activeIcon img name action"
+    "activeIcon img info action";
+  }
+
   &:has(.c-folder-card__input:checked) .c-folder-card__active-icon {
-    display: block;
+    display: flex;
   }
 }
 
@@ -26,6 +36,7 @@
 }
 
 .c-folder-card__link {
+  //display: none;
   opacity: 0;
   position: absolute;
   inset: 0;
@@ -34,6 +45,8 @@
 .c-folder-card__active-icon {
   display: none;
   padding-left: $space-8;
+  grid-area: activeIcon;
+  align-items: center;
 }
 
 .c-folder-card__infos {
@@ -46,8 +59,21 @@
   padding: $space-12;
   background-color: var(--card-icon-bg);
   border-radius: var(--radius-lg);
+  grid-area: img;
+}
+
+.c-folder-card__name {
+  grid-area: name;
+}
+
+.c-folder-card__number {
+  grid-area: info;
 }
 
 .c-folder-card__action {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  grid-area: action;
 }
