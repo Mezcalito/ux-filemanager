@@ -1,0 +1,13 @@
+.c-toggle-buttons {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--toggle-button-border);
+
+  button {
+    padding: $space-10;
+  }
+}
+
+.c-toggle-buttons__active {
+  background-color: var(--toggle-button-active-bg);
+}

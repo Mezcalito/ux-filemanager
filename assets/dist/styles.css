@@ -39,6 +39,7 @@
   --color-neutral-white: #FFFFFF;
   --color-grey-20: #F9FAFB;
   --color-grey-50: #F7F8FA;
+  --color-grey-80: rgba(51, 57, 69, 0.05);
   --color-grey-100: #DEE1E8;
   --color-grey-500: #7F889C;
   --color-grey-700: #566071;
@@ -73,6 +74,11 @@
   --button-label: var(--color-neutral-white);
   --search-field-bg: var(--color-grey-50);
   --search-field-placeholder: var(--color-grey-500);
+  --toggle-button-border: var(--color-actions-success-600);
+  --toggle-button-active-bg: var(--color-actions-success-50);
+  --card-bg: var(--color-grey-50);
+  --card-active-bg: var(--color-grey-80);
+  --card-icon-bg: var(--color-grey-100);
 }
 
 /* ===================================================================
@@ -179,6 +185,11 @@ video {
 svg:not(:root) {
   display: block;
   overflow: hidden;
+}
+
+button {
+  margin: 0;
+  padding: 0;
 }
 
 a, button, [role=button], input:not([type=range]), label, select, summary, textarea {
@@ -300,6 +311,7 @@ body {
 }
 
 .c-content {
+  overflow: auto;
   padding: 1.6rem;
 }
 
@@ -314,6 +326,20 @@ body {
 .c-content__buttons {
   display: flex;
   gap: 0.8rem;
+}
+
+.c-content__cards {
+  margin-top: 1.6rem;
+}
+.c-content__cards--list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.c-content__cards--grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.6rem;
 }
 
 .c-button {
@@ -407,6 +433,70 @@ body {
   color: var(--search-field-placeholder);
 }
 
+.c-toggle-buttons {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--toggle-button-border);
+}
+.c-toggle-buttons button {
+  padding: 1rem;
+}
+
+.c-toggle-buttons__active {
+  background-color: var(--toggle-button-active-bg);
+}
+
+.c-folder-card {
+  padding: 0.8rem 1.6rem 0.8rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: background-color var(--transition-in-out);
+}
+.c-folder-card:hover, .c-folder-card:has(.c-folder-card__input:checked) {
+  background-color: var(--card-active-bg);
+}
+.c-folder-card:has(.c-folder-card__input:checked) .c-folder-card__active-icon {
+  display: block;
+}
+
+.c-folder-card__input {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+}
+
+.c-folder-card__link {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+}
+
+.c-folder-card__active-icon {
+  display: none;
+  padding-left: 0.8rem;
+}
+
+.c-folder-card__infos {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.c-folder-card__icon {
+  padding: 1.2rem;
+  background-color: var(--card-icon-bg);
+  border-radius: var(--radius-lg);
+}
+
+.c-folder-card__action {
+  position: relative;
+}
+
 .u-color-neutral-black {
   color: #000000;
 }
@@ -421,6 +511,10 @@ body {
 
 .u-color-grey-50 {
   color: #F7F8FA;
+}
+
+.u-color-grey-80 {
+  color: rgba(51, 57, 69, 0.05);
 }
 
 .u-color-grey-100 {

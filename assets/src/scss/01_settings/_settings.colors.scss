@@ -3,6 +3,7 @@ $theme-color: (
   'neutral-white': '#FFFFFF',
   'grey-20': '#F9FAFB',
   'grey-50': '#F7F8FA',
+  'grey-80': 'rgba(51, 57, 69, 0.05)',
   'grey-100': '#DEE1E8',
   'grey-500': '#7F889C',
   'grey-700': '#566071',
@@ -53,4 +54,11 @@ $theme-color: (
 
   --search-field-bg: var(--color-grey-50);
   --search-field-placeholder: var(--color-grey-500);
+
+  --toggle-button-border: var(--color-actions-success-600);
+  --toggle-button-active-bg: var(--color-actions-success-50);
+
+  --card-bg: var(--color-grey-50);
+  --card-active-bg: var(--color-grey-80);
+  --card-icon-bg: var(--color-grey-100);
 }
