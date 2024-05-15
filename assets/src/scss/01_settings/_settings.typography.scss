@@ -1,0 +1,75 @@
+@mixin heading($level: 'm', $color: var(--page-text), $font-weight: 600, $font-family: var(--font-primary)) {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: $font-weight;
+  color: $color;
+
+  @if $level == 'xxxl' {
+    font-size: 2.6rem;
+    line-height: 3.1rem;
+  } @else if $level == 'xxl' {
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+  } @else if $level == 'xl' {
+    font-size: 2.0rem;
+    line-height: 2.4rem;
+  } @else if $level == 'l' {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+  } @else if $level == 'm' {
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+  } @else if $level == 's' {
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+  } @else {
+    @error "Unknown level #{$level}.";
+  }
+}
+
+@mixin text($level: 'm', $color: var(--page-text), $font-weight: 400, $font-family: var(--font-primary)) {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: $font-weight;
+  color: $color;
+
+  @if $level == 'xl' {
+    font-size: 2.0rem;
+    line-height: 2.8rem;
+  } @else if $level == 'l' {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+  } @else if $level == 'm' {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  } @else if $level == 's' {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  } @else if $level == 'xs' {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  } @else if $level == 'xxs' {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  } @else {
+    @error "Unknown level #{$level}.";
+  }
+}
+
+@mixin caps($level: 'xs', $color: var(--page-text), $font-weight: 500, $font-family: var(--font-primary)) {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: $font-weight;
+  color: $color;
+  text-transform: uppercase;
+
+  @if $level == 'xs' {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  } @else if $level == 'xxs' {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  } @else {
+    @error "Unknown level #{$level}.";
+  }
+}

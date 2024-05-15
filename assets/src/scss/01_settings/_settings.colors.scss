@@ -1,0 +1,56 @@
+$theme-color: (
+  'neutral-black': '#000000',
+  'neutral-white': '#FFFFFF',
+  'grey-20': '#F9FAFB',
+  'grey-50': '#F7F8FA',
+  'grey-100': '#DEE1E8',
+  'grey-500': '#7F889C',
+  'grey-700': '#566071',
+  'grey-900': '#333945',
+  'actions-success-50': '#EBF7EB',
+  'actions-success-500': '#34994C',
+  'actions-success-600': '#128438',
+  'actions-success-800': '#00591D',
+  'actions-danger-50': '#FFEDE8',
+  'actions-danger-600': '#E60020',
+  'actions-warning-50': '#FFF0E2',
+  'actions-warning-600': '#BC5400',
+  'actions-news-50': '#ECF5FD',
+  'actions-news-600': '#007AB6',
+  'actions-news-100': '#D9E8FA',
+);
+
+:root {
+  // Primitives
+  @each $name, $color in $theme-color {
+    --color-#{$name}: #{$color};
+  }
+
+  --color-brand-gradient: linear-gradient(180deg, rgba(193, 0, 34, 0.4) 0%, rgba(255, 255, 255, 0.4) 100%);
+  --color-brand-eko-gradient: linear-gradient(180deg, rgba(240, 125, 0, 0.4) 0%, rgba(240, 125, 0, 0) 100%);
+
+  --color-shadow-mid: 0px 3.5px 5.5px rgba(0, 0, 0, 0.04);
+  --color-shadow-deep: 0px 4px 13px rgba(0, 0, 0, 0.1);
+  --color-shadow-soft-down: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
+  --color-shadow-soft-up: 0px -4.5px 5.5px rgba(0, 0, 0, 0.02);
+  --color-shadow-soft-right: 4px 0px 5.5px rgba(0, 0, 0, 0.02);
+
+  // Assignation
+  --selection: var(--color-neutral-white);
+  --selection-bg: var(--color-grey-900);
+
+  --page-bg: var(--color-neutral-white);
+  --page-text: var(--color-grey-900);
+
+  --link: var(--color-neutral-black);
+  --link-hover: var(--color-neutral-black);
+
+  --border-grey-50: var(--color-grey-50);
+
+  --button-bg: var(--color-actions-success-600);
+  --button-bg-hover: var(--color-actions-success-800);
+  --button-label: var(--color-neutral-white);
+
+  --search-field-bg: var(--color-grey-50);
+  --search-field-placeholder: var(--color-grey-500);
+}

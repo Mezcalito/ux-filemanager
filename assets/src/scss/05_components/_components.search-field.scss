@@ -1,0 +1,24 @@
+.c-search-field {
+  width: 27rem;
+  position: relative;
+
+  & > svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: $space-16;
+  }
+}
+
+.c-search-field__input {
+  padding: $space-8 $space-16 $space-8 4.4rem;
+  width: 100%;
+  outline: none;
+  border: 0;
+  background-color: var(--search-field-bg);
+  border-radius: var(--radius-md);
+
+  &::placeholder {
+    color: var(--search-field-placeholder);
+  }
+}

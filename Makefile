@@ -35,6 +35,13 @@ php: ## Connect to the PHP container
 node: ## Connect to the Node container
 	@$(NODE_CONT) sh
 
+## —— Assets —————————————————————————————————————————————————————————————————
+assets/watch:
+	@$(YARN) watch
+
+assets/build:
+	@$(YARN) build
+
 ## —— CI —————————————————————————————————————————————————————————————————————
 ci: ## Run all CI jobs
 	@$(MAKE) static

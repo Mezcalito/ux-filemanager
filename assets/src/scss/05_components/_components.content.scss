@@ -1,0 +1,16 @@
+.c-content {
+  padding: $space-16;
+}
+
+.c-content__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-8;
+}
+
+.c-content__buttons {
+  display: flex;
+  gap: $space-8;
+}

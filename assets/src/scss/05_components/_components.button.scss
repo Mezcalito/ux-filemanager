@@ -1,0 +1,14 @@
+.c-button {
+  padding: $space-8 $space-14;
+  background-color: var(--button-bg);
+  color: var(--button-label);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-in-out);
+  display: flex;
+  align-items: center;
+  gap: $space-10;
+
+  &:hover {
+    background-color: var(--button-bg-hover);
+  }
+}

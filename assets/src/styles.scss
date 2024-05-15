@@ -1,0 +1,49 @@
+// ------------------ //
+// SETTINGS
+// ------------------ //
+@import
+"./scss/01_settings/settings.fonts",
+"./scss/01_settings/settings.typography",
+"./scss/01_settings/settings.colors",
+"./scss/01_settings/settings.breakpoints",
+"./scss/01_settings/settings.media-queries",
+"./scss/01_settings/settings.spacing",
+"./scss/01_settings/settings.variables"
+;
+
+// ------------------ //
+// GENERICS
+// ------------------ //
+@import
+"./scss/02_generics/generics.reset",
+"./scss/02_generics/generics.box-sizing",
+"./scss/02_generics/generics.reduced-motion"
+;
+
+// ------------------ //
+// ELEMENTS
+// ------------------ //
+@import
+"./scss/03_elements/elements.page"
+;
+
+// ------------------ //
+// COMPONENTS
+// ------------------ //
+@import
+"./scss/05_components/components.layout",
+"./scss/05_components/components.sidebar",
+"./scss/05_components/components.content",
+"./scss/05_components/components.button",
+"./scss/05_components/components.text",
+"./scss/05_components/components.search-field"
+;
+
+// ------------------ //
+// UTILITIES
+// ------------------ //
+@import
+"./scss/06_utilities/utilities.color",
+"./scss/06_utilities/utilities.font-weight",
+"./scss/06_utilities/utilities.sr"
+;

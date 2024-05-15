@@ -1,0 +1,12 @@
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  @include text('m', var(--page-text));
+  background-color: var(--page-bg);
+  height: 100vh;
+  height: 100svh;
+  overflow-x: hidden;
+}
