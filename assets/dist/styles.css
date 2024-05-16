@@ -40,8 +40,9 @@
   --color-grey-20: #F9FAFB;
   --color-grey-50: #F7F8FA;
   --color-grey-100: #DEE1E8;
+  --color-grey-200: #F1F2F5;
+  --color-grey-300: #EDEEF1;
   --color-grey-500: #7F889C;
-  --color-grey-700: #566071;
   --color-grey-900: #333945;
   --color-actions-success-50: #EBF7EB;
   --color-actions-success-500: #34994C;
@@ -76,9 +77,10 @@
   --toggle-button-border: var(--color-actions-success-600);
   --toggle-button-active-bg: var(--color-actions-success-50);
   --card-bg: var(--color-grey-50);
-  --card-hover-bg: #F1F2F5;
-  --card-active-bg: #EDEEF1;
+  --card-hover-bg: var(--color-grey-200);
+  --card-active-bg: var(--color-grey-300);
   --card-icon-bg: var(--color-grey-100);
+  --actions-selected-bg: var(--color-grey-200);
 }
 
 /* ===================================================================
@@ -350,6 +352,11 @@ body {
 
 .c-content__cards {
   margin-top: 1.6rem;
+}
+@media (max-width: 767px) {
+  .c-content__cards {
+    margin-top: 1.2rem;
+  }
 }
 .c-content__cards--list {
   display: flex;
@@ -694,6 +701,41 @@ body {
   transition: opacity var(--transition-in-out);
 }
 
+.c-actions-selected {
+  margin-top: 1.6rem;
+  padding: 0.8rem 1.6rem;
+  background-color: var(--actions-selected-bg);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .c-actions-selected {
+    margin-top: 1.2rem;
+    justify-content: space-between;
+  }
+}
+
+.c-actions-selected__head {
+  display: flex;
+  align-items: center;
+}
+
+.c-actions-selected__info {
+  margin: 0 2.4rem 0 1rem;
+}
+
+.c-actions-selected__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+@media (max-width: 767px) {
+  .c-actions-selected__actions {
+    gap: 2.4rem;
+  }
+}
+
 .u-color-neutral-black {
   color: #000000;
 }
@@ -714,12 +756,16 @@ body {
   color: #DEE1E8;
 }
 
-.u-color-grey-500 {
-  color: #7F889C;
+.u-color-grey-200 {
+  color: #F1F2F5;
 }
 
-.u-color-grey-700 {
-  color: #566071;
+.u-color-grey-300 {
+  color: #EDEEF1;
+}
+
+.u-color-grey-500 {
+  color: #7F889C;
 }
 
 .u-color-grey-900 {

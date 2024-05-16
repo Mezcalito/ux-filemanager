@@ -33,6 +33,10 @@
 .c-content__cards {
   margin-top: $space-16;
 
+  @include max-width(md) {
+    margin-top: $space-12;
+  }
+
   &--list {
     display: flex;
     flex-direction: column;

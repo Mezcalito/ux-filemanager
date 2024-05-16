@@ -1,0 +1,32 @@
+.c-actions-selected {
+  margin-top: $space-16;
+  padding: $space-8 $space-16;
+  background-color: var(--actions-selected-bg);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+
+  @include max-width(md) {
+    margin-top: $space-12;
+    justify-content: space-between;
+  }
+}
+
+.c-actions-selected__head {
+  display: flex;
+  align-items: center;
+}
+
+.c-actions-selected__info {
+  margin: 0 $space-24 0 $space-10;
+}
+
+.c-actions-selected__actions {
+  display: flex;
+  align-items: center;
+  gap: $space-16;
+
+  @include max-width(md) {
+    gap: $space-24;
+  }
+}

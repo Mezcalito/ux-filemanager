@@ -4,8 +4,9 @@ $theme-color: (
   'grey-20': '#F9FAFB',
   'grey-50': '#F7F8FA',
   'grey-100': '#DEE1E8',
+  'grey-200': '#F1F2F5',
+  'grey-300': '#EDEEF1',
   'grey-500': '#7F889C',
-  'grey-700': '#566071',
   'grey-900': '#333945',
   'actions-success-50': '#EBF7EB',
   'actions-success-500': '#34994C',
@@ -58,7 +59,9 @@ $theme-color: (
   --toggle-button-active-bg: var(--color-actions-success-50);
 
   --card-bg: var(--color-grey-50);
-  --card-hover-bg: #F1F2F5;
-  --card-active-bg: #EDEEF1;
+  --card-hover-bg: var(--color-grey-200);
+  --card-active-bg: var(--color-grey-300);
   --card-icon-bg: var(--color-grey-100);
+
+  --actions-selected-bg: var(--color-grey-200);
 }
