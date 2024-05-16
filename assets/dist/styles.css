@@ -321,6 +321,11 @@ body {
   overflow: auto;
   padding: 1.6rem;
 }
+@media (max-width: 767px) {
+  .c-content {
+    padding-top: 0;
+  }
+}
 
 @media (min-width: 768px) {
   .c-content__actions {
@@ -734,6 +739,17 @@ body {
   .c-actions-selected__actions {
     gap: 2.4rem;
   }
+}
+
+.c-back {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-bottom: 1px solid var(--border-grey-50);
+  margin-bottom: 1.2rem;
+  margin-right: -1.6rem;
+  margin-left: -1.6rem;
+  padding: 1.6rem;
 }
 
 .u-color-neutral-black {

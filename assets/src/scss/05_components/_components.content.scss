@@ -1,6 +1,10 @@
 .c-content {
   overflow: auto;
   padding: $space-16;
+
+  @include max-width(md) {
+    padding-top: 0;
+  }
 }
 
 .c-content__actions {

@@ -1,0 +1,10 @@
+.c-back {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+  border-bottom: 1px solid var(--border-grey-50);
+  margin-bottom: $space-12;
+  margin-right: calc($space-16 * -1);
+  margin-left: calc($space-16 * -1);
+  padding: 1.6rem;
+}
