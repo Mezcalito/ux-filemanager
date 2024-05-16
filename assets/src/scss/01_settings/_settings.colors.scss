@@ -1,5 +1,6 @@
 $theme-color: (
   'neutral-black': '#000000',
+  'neutral-black-40': 'rgba(0, 0, 0, 0.4)',
   'neutral-white': '#FFFFFF',
   'grey-20': '#F9FAFB',
   'grey-50': '#F7F8FA',
@@ -65,4 +66,6 @@ $theme-color: (
   --card-icon-bg: var(--color-grey-100);
 
   --actions-selected-bg: var(--color-grey-200);
+
+  --modal-overlay-bg: var(--color-neutral-black-40);
 }
