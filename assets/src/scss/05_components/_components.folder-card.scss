@@ -11,7 +11,10 @@
   grid-gap: 0 $space-16;
   grid-template-columns: 5.6rem 1fr 2.4rem;
 
-  &:hover,
+  &:hover {
+    background-color: var(--card-hover-bg);
+  }
+
   &:has(.c-folder-card__input:checked) {
     background-color: var(--card-active-bg);
   }
@@ -25,6 +28,11 @@
 
   &:has(.c-folder-card__input:checked) .c-folder-card__active-icon {
     display: flex;
+  }
+
+  &:has(.c-folder-card__input:checked) .c-folder-card__action {
+    pointer-events: none;
+    opacity: 0.5;
   }
 }
 
@@ -76,4 +84,5 @@
   align-items: center;
   justify-content: end;
   grid-area: action;
+  transition: opacity var(--transition-in-out);
 }

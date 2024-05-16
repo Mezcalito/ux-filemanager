@@ -11,7 +11,10 @@
   grid-gap: 0 $space-16;
   grid-template-columns: 5.6rem 1fr 2.4rem;
 
-  &:hover,
+  &:hover {
+    background-color: var(--card-hover-bg);
+  }
+
   &:has(.c-file-card__input:checked) {
     background-color: var(--card-active-bg);
   }
@@ -26,17 +29,22 @@
   &:has(.c-file-card__input:checked) .c-file-card__active-icon {
     display: flex;
   }
+
+  &:has(.c-file-card__input:checked) .c-file-card__action {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }
 
 .c-file-card__input {
-  //display: none;
+  display: none;
   opacity: 0;
   position: absolute;
   inset: 0;
 }
 
 .c-file-card__link {
-  display: none;
+  //display: none;
   opacity: 0;
   position: absolute;
   inset: 0;
@@ -91,4 +99,5 @@
   align-items: center;
   justify-content: end;
   grid-area: action;
+  transition: opacity var(--transition-in-out);
 }

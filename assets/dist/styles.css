@@ -39,7 +39,6 @@
   --color-neutral-white: #FFFFFF;
   --color-grey-20: #F9FAFB;
   --color-grey-50: #F7F8FA;
-  --color-grey-80: rgba(51, 57, 69, 0.05);
   --color-grey-100: #DEE1E8;
   --color-grey-500: #7F889C;
   --color-grey-700: #566071;
@@ -77,7 +76,8 @@
   --toggle-button-border: var(--color-actions-success-600);
   --toggle-button-active-bg: var(--color-actions-success-50);
   --card-bg: var(--color-grey-50);
-  --card-active-bg: var(--color-grey-80);
+  --card-hover-bg: #F1F2F5;
+  --card-active-bg: #EDEEF1;
   --card-icon-bg: var(--color-grey-100);
 }
 
@@ -533,7 +533,10 @@ body {
   grid-gap: 0 1.6rem;
   grid-template-columns: 5.6rem 1fr 2.4rem;
 }
-.c-folder-card:hover, .c-folder-card:has(.c-folder-card__input:checked) {
+.c-folder-card:hover {
+  background-color: var(--card-hover-bg);
+}
+.c-folder-card:has(.c-folder-card__input:checked) {
   background-color: var(--card-active-bg);
 }
 .c-folder-card:has(.c-folder-card__input:checked) {
@@ -542,6 +545,10 @@ body {
 }
 .c-folder-card:has(.c-folder-card__input:checked) .c-folder-card__active-icon {
   display: flex;
+}
+.c-folder-card:has(.c-folder-card__input:checked) .c-folder-card__action {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .c-folder-card__input {
@@ -591,6 +598,7 @@ body {
   align-items: center;
   justify-content: end;
   grid-area: action;
+  transition: opacity var(--transition-in-out);
 }
 
 .c-file-card {
@@ -604,7 +612,10 @@ body {
   grid-gap: 0 1.6rem;
   grid-template-columns: 5.6rem 1fr 2.4rem;
 }
-.c-file-card:hover, .c-file-card:has(.c-file-card__input:checked) {
+.c-file-card:hover {
+  background-color: var(--card-hover-bg);
+}
+.c-file-card:has(.c-file-card__input:checked) {
   background-color: var(--card-active-bg);
 }
 .c-file-card:has(.c-file-card__input:checked) {
@@ -614,15 +625,19 @@ body {
 .c-file-card:has(.c-file-card__input:checked) .c-file-card__active-icon {
   display: flex;
 }
+.c-file-card:has(.c-file-card__input:checked) .c-file-card__action {
+  pointer-events: none;
+  opacity: 0.5;
+}
 
 .c-file-card__input {
+  display: none;
   opacity: 0;
   position: absolute;
   inset: 0;
 }
 
 .c-file-card__link {
-  display: none;
   opacity: 0;
   position: absolute;
   inset: 0;
@@ -676,6 +691,7 @@ body {
   align-items: center;
   justify-content: end;
   grid-area: action;
+  transition: opacity var(--transition-in-out);
 }
 
 .u-color-neutral-black {
@@ -692,10 +708,6 @@ body {
 
 .u-color-grey-50 {
   color: #F7F8FA;
-}
-
-.u-color-grey-80 {
-  color: rgba(51, 57, 69, 0.05);
 }
 
 .u-color-grey-100 {
