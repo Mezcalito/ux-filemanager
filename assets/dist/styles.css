@@ -69,6 +69,7 @@
   --link: var(--color-neutral-black);
   --link-hover: var(--color-neutral-black);
   --border-grey-50: var(--color-grey-50);
+  --border-grey-100: var(--color-grey-100);
   --button-bg: var(--color-actions-success-600);
   --button-bg-hover: var(--color-actions-success-800);
   --button-label: var(--color-neutral-white);
@@ -743,6 +744,86 @@ body {
   margin-right: -1.6rem;
   margin-left: -1.6rem;
   padding: 1.6rem;
+}
+
+.c-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-in-out);
+}
+@media (max-width: 767px) {
+  .c-modal {
+    padding: 0 1.6rem;
+  }
+}
+
+.c-modal--open {
+  opacity: 1;
+  pointer-events: all;
+}
+.c-modal--open .c-modal__dialog {
+  transform: scale(1);
+}
+
+.c-modal__dialog {
+  position: relative;
+  border: 0;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  transition: transform var(--transition-in-out);
+  transform: scale(0.95);
+}
+.c-modal__dialog > p {
+  text-align: center;
+}
+
+.c-modal__dialog--md {
+  width: 33rem;
+}
+@media (max-width: 767px) {
+  .c-modal__dialog--md {
+    width: 100%;
+  }
+}
+
+.c-modal__dialog--lg {
+  width: 68.6rem;
+}
+@media (max-width: 767px) {
+  .c-modal__dialog--lg {
+    width: 100%;
+  }
+}
+
+.c-modal__close {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+}
+
+.c-modal__content--with-border {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-grey-100);
+  padding: 1.6rem;
+}
+
+.c-modal__actions {
+  display: flex;
+  align-items: center;
+  margin-top: 1.6rem;
+  gap: 2.4rem;
+  justify-content: end;
 }
 
 .u-color-neutral-black {
