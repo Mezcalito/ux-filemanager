@@ -1,5 +1,4 @@
 .c-actions-selected {
-  margin-top: $space-16;
   padding: $space-8 $space-16;
   background-color: var(--actions-selected-bg);
   border-radius: var(--radius-full);
@@ -7,7 +6,6 @@
   align-items: center;
 
   @include max-width(md) {
-    margin-top: $space-12;
     justify-content: space-between;
   }
 }
