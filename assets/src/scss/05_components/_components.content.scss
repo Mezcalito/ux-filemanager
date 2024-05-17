@@ -52,7 +52,7 @@
 
     .c-file-card {
       padding: $space-8;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 2.4rem;
       grid-template-areas:
           "name action"
           "img img"
@@ -80,7 +80,7 @@
     @include max-width(md) {
       .c-folder-card {
         padding: $space-8;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2.4rem;
         grid-template-areas:
           "name action"
           "img img"

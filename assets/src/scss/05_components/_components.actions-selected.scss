@@ -13,10 +13,14 @@
 .c-actions-selected__head {
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .c-actions-selected__info {
   margin: 0 $space-24 0 $space-10;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .c-actions-selected__actions {

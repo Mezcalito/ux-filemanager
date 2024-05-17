@@ -374,7 +374,7 @@ body {
 }
 .c-content__cards--grid .c-file-card {
   padding: 0.8rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2.4rem;
   grid-template-areas: "name action" "img img" "info info";
   grid-gap: 0.8rem;
 }
@@ -394,7 +394,7 @@ body {
 @media (max-width: 767px) {
   .c-content__cards--grid .c-folder-card {
     padding: 0.8rem;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2.4rem;
     grid-template-areas: "name action" "img img" "info info";
     grid-gap: 0.8rem;
   }
@@ -597,6 +597,10 @@ body {
 
 .c-folder-card__name {
   grid-area: name;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  align-self: end;
 }
 
 .c-folder-card__number {
@@ -684,8 +688,10 @@ body {
 
 .c-file-card__name {
   grid-area: name;
-  display: flex;
-  align-items: end;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  align-self: end;
 }
 
 .c-file-card__infos {
@@ -721,10 +727,14 @@ body {
 .c-actions-selected__head {
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .c-actions-selected__info {
   margin: 0 2.4rem 0 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .c-actions-selected__actions {

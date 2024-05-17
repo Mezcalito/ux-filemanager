@@ -81,8 +81,10 @@
 
 .c-file-card__name {
   grid-area: name;
-  display: flex;
-  align-items: end;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  align-self: end;
 }
 
 .c-file-card__infos {
