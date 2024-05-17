@@ -6,4 +6,14 @@
   margin-right: calc($space-16 * -1);
   margin-left: calc($space-16 * -1);
   padding: 1.6rem;
+  position: relative;
+}
+
+.c-back__action {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
 }

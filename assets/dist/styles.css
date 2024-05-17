@@ -756,6 +756,14 @@ body {
   margin-right: -1.6rem;
   margin-left: -1.6rem;
   padding: 1.6rem;
+  position: relative;
+}
+
+.c-back__action::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
 }
 
 .c-modal {
