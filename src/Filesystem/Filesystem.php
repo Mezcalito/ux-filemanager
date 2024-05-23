@@ -20,6 +20,11 @@ readonly class Filesystem implements FilesystemInterface
     ) {
     }
 
+    public function info(string $id): Node
+    {
+        return $this->storage->getProvider()->info($id);
+    }
+
     public function read(string $id): string
     {
         return $this->storage->getProvider()->read($id);

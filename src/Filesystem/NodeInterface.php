@@ -19,6 +19,8 @@ interface NodeInterface
 
     public function getPath(): string;
 
+    public function getSize(): ?int;
+
     public function isFile(): bool;
 
     public function isDir(): bool;

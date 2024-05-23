@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\Provider;
 
+use Mezcalito\FileManagerBundle\Filesystem\Node;
+
 interface ProviderInterface
 {
+    public function info(string $id): Node;
+
     public function read(string $id): string;
 
     public function write(string $id, string $contents): void;

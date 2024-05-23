@@ -26,6 +26,21 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $this->rootLocation = rtrim($location, '\\/').\DIRECTORY_SEPARATOR;
     }
 
+    public function info(string $id): Node
+    {
+        $location = $this->prefixPath($id);
+        $fileInfo = new \SplFileInfo($location);
+
+        return new Node(
+            id: $id,
+            path: $id,
+            pathname: $location,
+            size: $fileInfo->isFile() ? $fileInfo->getSize() : null,
+            lastModified: (new \DateTime)->setTimestamp($fileInfo->getMTime()),
+            type: $fileInfo->isFile() ? Node::TYPE_FILE : Node::TYPE_DIR,
+        );
+    }
+
     public function read(string $id): string
     {
         $location = $this->prefixPath($id);
@@ -90,18 +105,21 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $location = $this->prefixPath($id);
         $iterator = $recursive ? $this->listDirectoryRecursive($location) : new \DirectoryIterator($location);
 
+        /** @var \SplFileInfo|\DirectoryIterator $fileInfo */
         foreach ($iterator as $fileInfo) {
             if ($fileInfo instanceof \DirectoryIterator && $fileInfo->isDot()) {
                 continue;
             }
 
             $path = $this->stripPrefix($fileInfo->getPathname());
-            $isDirectory = $fileInfo->isDir();
 
             yield new Node(
-                $path,
-                $path,
-                $isDirectory ? Node::TYPE_DIR : Node::TYPE_FILE,
+                id: $path,
+                path: $path,
+                pathname: $fileInfo->getPathname(),
+                size: $fileInfo->isFile() ? $fileInfo->getSize() : null,
+                lastModified: (new \DateTime)->setTimestamp($fileInfo->getMTime()),
+                type: $fileInfo->isFile() ? Node::TYPE_FILE : Node::TYPE_DIR,
             );
         }
     }

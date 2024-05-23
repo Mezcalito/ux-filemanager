@@ -15,6 +15,8 @@ namespace Mezcalito\FileManagerBundle\Filesystem;
 
 interface FilesystemInterface
 {
+    public function info(string $id): Node;
+
     public function read(string $id): string;
 
     public function write(string $id, string $contents): void;

@@ -22,6 +22,9 @@ readonly class Node implements NodeInterface
     public function __construct(
         private string $id,
         private string $path,
+        private string $pathname,
+        private ?int $size = null,
+        private ?\DateTime $lastModified = null,
         private string $type = self::TYPE_FILE,
     ) {
     }
@@ -34,6 +37,26 @@ readonly class Node implements NodeInterface
     public function getPath(): string
     {
         return $this->path;
+    }
+
+    public function getFilename(): string
+    {
+        return basename($this->path);
+    }
+
+    public function getPathname(): string
+    {
+        return $this->pathname;
+    }
+
+    public function getSize(): ?int
+    {
+        return $this->size;
+    }
+
+    public function getLastModified(): ?\DateTime
+    {
+        return $this->lastModified;
     }
 
     public function isFile(): bool
