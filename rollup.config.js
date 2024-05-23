@@ -14,19 +14,14 @@ module.exports = {
     ],
     plugins: [
         resolve(),
-        typescript({
-            filterRoot: 'assets',
-            include: ['assets/*.ts'],
-            compilerOptions: {
-                outDir: 'dist',
-                declaration: true,
-                emitDeclarationOnly: true,
-            }
-        }),
+        typescript(),
         commonjs(),
         scss({
             fileName: 'styles.css',
             watch: ['assets/src/scss', 'assets/src/scss/styles.scss'],
         }),
     ],
+    watch: {
+        include: 'assets/**',
+    },
 };

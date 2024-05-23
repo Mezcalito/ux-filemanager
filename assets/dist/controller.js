@@ -1,9 +1,18 @@
 import { Controller } from '@hotwired/stimulus';
 
-class controller extends Controller {
-    connect() {
-        console.log('Hello from Stimulus Controller');
+class DisplayController extends Controller {
+    changeMode(event) {
+        this.modeValue = event.params.mode;
+    }
+    modeValueChanged() {
+        this.nodeTargets.forEach((node) => {
+            node.classList.toggle('display-grid', this.modeValue === 'grid');
+        });
     }
 }
+DisplayController.values = {
+    mode: { type: String, default: 'list' },
+};
+DisplayController.targets = ['node'];
 
-export { controller as default };
+export { DisplayController };
