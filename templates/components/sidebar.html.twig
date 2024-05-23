@@ -1,0 +1,11 @@
+{# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
+
+<aside {{ attributes.defaults({class: 'c-sidebar u-hidden@until-md'}) }}>
+    {% for node in filesystem.listDirectory('/')|filter(node => node.isDir()) %}
+        <li>
+            <button data-action="live#emit" data-live-event-param="updateCurrentPath" data-live-path-param="{{ node.path }}" class="{% if currentPath == node.path %}is-active{% endif %}">
+                {{ node.id }}
+            </button>
+        </li>
+    {% endfor %}
+</aside>

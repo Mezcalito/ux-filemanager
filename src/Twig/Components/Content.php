@@ -18,8 +18,8 @@ use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
-#[AsLiveComponent('Mezcalito:FileManager', template: '@MezcalitoFileManager/components/file_manager.html.twig')]
-class FileManager
+#[AsLiveComponent('Mezcalito:Content', template: '@MezcalitoFileManager/components/content.html.twig')]
+class Content
 {
     use DefaultActionTrait;
     use FilesystemToolsTrait;

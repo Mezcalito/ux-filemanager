@@ -17,7 +17,10 @@ use Mezcalito\FileManagerBundle\Collection\FilesystemCollection;
 use Mezcalito\FileManagerBundle\Filesystem\Filesystem;
 use Mezcalito\FileManagerBundle\Filesystem\Storage;
 use Mezcalito\FileManagerBundle\Provider\Factory\LocalFilesystemProviderFactory;
+use Mezcalito\FileManagerBundle\Twig\Components\Content;
 use Mezcalito\FileManagerBundle\Twig\Components\FileManager;
+use Mezcalito\FileManagerBundle\Twig\Components\Node;
+use Mezcalito\FileManagerBundle\Twig\Components\Sidebar;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -75,6 +78,22 @@ class MezcalitoFileManagerExtension extends Extension
         }
 
         $container->register(FileManager::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true)
+            ->setArguments([
+                new Reference(FilesystemCollection::class),
+            ]);
+
+        $container->register(Sidebar::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $container->register(Content::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $container->register( Node::class)
+            ->setAutowired(true)
             ->setAutoconfigured(true);
     }
 }

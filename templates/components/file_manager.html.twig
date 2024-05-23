@@ -1,0 +1,6 @@
+{# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
+
+<div {{ attributes.defaults({class: 'c-layout'}) }}>
+    <twig:Mezcalito:Sidebar :storage="storage" :currentPath="currentPath"/>
+    <twig:Mezcalito:Content :storage="storage" :currentPath="currentPath"/>
+</div>
