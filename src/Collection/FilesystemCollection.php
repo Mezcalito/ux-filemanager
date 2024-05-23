@@ -27,7 +27,8 @@ readonly class FilesystemCollection implements CollectionInterface
 
     public function get(string $name): Filesystem
     {
-        $filesystem = $this->filesystems[$name] ?? null;
+        $filesystems = $this->filesystems instanceof \Traversable ? iterator_to_array($this->filesystems) : $this->filesystems;
+        $filesystem = $filesystems[$name] ?? null;
         if (null === $filesystem) {
             throw new \InvalidArgumentException(sprintf('Filesystem "%s" not found.', $name));
         }
