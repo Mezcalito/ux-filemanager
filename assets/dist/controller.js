@@ -15,4 +15,22 @@ DisplayController.values = {
 };
 DisplayController.targets = ['node'];
 
-export { DisplayController };
+class SubmenuController extends Controller {
+    open() {
+        this.openValue = true;
+    }
+    close(event) {
+        if (event.target === this.panelTarget) {
+            this.openValue = false;
+        }
+    }
+    openValueChanged() {
+        this.panelTarget.classList.toggle('c-submenu--open', this.openValue);
+    }
+}
+SubmenuController.values = {
+    open: { type: Boolean, default: false },
+};
+SubmenuController.targets = ['panel'];
+
+export { DisplayController, SubmenuController };
