@@ -19,8 +19,8 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
-#[AsLiveComponent('Mezcalito:Node', template: '@MezcalitoFileManager/components/node.html.twig')]
-class Node
+#[AsLiveComponent('Mezcalito:File', template: '@MezcalitoFileManager/components/file.html.twig')]
+class File
 {
     use DefaultActionTrait;
     use FilesystemToolsTrait;

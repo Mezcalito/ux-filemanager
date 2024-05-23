@@ -1,11 +1,7 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<div {{ attributes.defaults({class: 'c-file-card'}) }}>
+<div {{ attributes.defaults({class: 'c-file-card', 'data-mezcalito--ux-filemanager--display-target': 'node'}) }}>
     <input class='c-file-card__input' type='checkbox' name='test' id='test' />
-
-    {% if this.node.isDir() %}
-        <button class='c-file-card__link' data-action="dblclick->live#emit" data-live-event-param="updateCurrentPath" data-live-path-param="{{ this.node.path }}"></button>
-    {% endif %}
 
     <div class='c-file-card__active-icon'>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">

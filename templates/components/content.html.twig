@@ -90,7 +90,11 @@
 
     <div class='c-content__cards c-content__cards--list'>
         {% for node in filesystem.listDirectory(currentPath) %}
-            <twig:Mezcalito:Node :storage="storage" :id="node.id" data-mezcalito--ux-filemanager--display-target="node"/>
+            {% if node.isDir() %}
+                <twig:Mezcalito:Folder :storage="storage" :id="node.id"/>
+            {% else %}
+                <twig:Mezcalito:File :storage="storage" :id="node.id"/>
+            {% endif %}
         {% endfor %}
     </div>
 
