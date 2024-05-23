@@ -13,14 +13,9 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\Twig\Trait;
 
-use Mezcalito\FileManagerBundle\Collection\FilesystemCollection;
-use Mezcalito\FileManagerBundle\Filesystem\Filesystem;
-use Symfony\Contracts\Service\Attribute\Required;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveListener;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
-use Symfony\UX\LiveComponent\ComponentToolsTrait;
-use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
 trait FilesystemContextTrait
 {

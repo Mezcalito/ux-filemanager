@@ -92,7 +92,7 @@ class MezcalitoFileManagerExtension extends Extension
             ->setAutowired(true)
             ->setAutoconfigured(true);
 
-        $container->register( Node::class)
+        $container->register(Node::class)
             ->setAutowired(true)
             ->setAutoconfigured(true);
     }

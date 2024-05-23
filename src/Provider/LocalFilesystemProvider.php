@@ -36,7 +36,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
             path: $id,
             pathname: $location,
             size: $fileInfo->isFile() ? $fileInfo->getSize() : null,
-            lastModified: (new \DateTime)->setTimestamp($fileInfo->getMTime()),
+            lastModified: (new \DateTime())->setTimestamp($fileInfo->getMTime()),
             type: $fileInfo->isFile() ? Node::TYPE_FILE : Node::TYPE_DIR,
         );
     }
@@ -118,7 +118,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
                 path: $path,
                 pathname: $fileInfo->getPathname(),
                 size: $fileInfo->isFile() ? $fileInfo->getSize() : null,
-                lastModified: (new \DateTime)->setTimestamp($fileInfo->getMTime()),
+                lastModified: (new \DateTime())->setTimestamp($fileInfo->getMTime()),
                 type: $fileInfo->isFile() ? Node::TYPE_FILE : Node::TYPE_DIR,
             );
         }

@@ -22,6 +22,6 @@ use Symfony\UX\LiveComponent\DefaultActionTrait;
 class FileManager
 {
     use DefaultActionTrait;
-    use FilesystemToolsTrait;
     use FilesystemContextTrait;
+    use FilesystemToolsTrait;
 }
