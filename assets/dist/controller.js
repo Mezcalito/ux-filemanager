@@ -1,10 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
 
 class DisplayController extends Controller {
-    connect() {
-        this.listButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'list');
-        this.gridButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'grid');
-    }
     changeMode(event) {
         this.modeValue = event.params.mode;
     }

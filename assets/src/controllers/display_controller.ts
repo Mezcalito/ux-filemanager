@@ -12,11 +12,6 @@ export class DisplayController extends Controller {
     declare listButtonTarget: HTMLElement;
     declare gridButtonTarget: HTMLElement;
 
-    connect() {
-        this.listButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'list');
-        this.gridButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'grid');
-    }
-
     changeMode(event: ActionEvent) {
         this.modeValue = event.params.mode;
     }
