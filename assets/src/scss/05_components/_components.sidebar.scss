@@ -1,4 +1,14 @@
 .c-sidebar {
   padding: $space-16;
   border-right: 1px solid var(--border-grey-50);
+  overflow: auto;
+  display: flex;
+
+  ul {
+    list-style: none;
+  }
+
+  & > ul {
+    padding: 0;
+  }
 }

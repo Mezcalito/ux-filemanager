@@ -36,4 +36,105 @@ SubmenuController.values = {
 };
 SubmenuController.targets = ['panel'];
 
-export { DisplayController, SubmenuController };
+class CollapseController extends Controller {
+    constructor() {
+        super(...arguments);
+        this.overflow = false;
+    }
+    connect() {
+        console.log('cc');
+        if (!this.hasWrapperTarget) {
+            console.warn('CollapseController : The wrapper target is required');
+            return;
+        }
+        if (!this.hasContentTarget) {
+            console.warn('CollapseController : The content target is required');
+            return;
+        }
+        this.wrapperResizeObserver = new ResizeObserver(this.onWrapperResize.bind(this));
+        this.wrapperResizeObserver.observe(this.wrapperTarget);
+        this.wrapperTarget.addEventListener('transitionend', this.onTransitionEnd.bind(this));
+        this.contentResizeObserver = new ResizeObserver(this.onContentResize.bind(this));
+        this.contentResizeObserver.observe(this.contentTarget);
+    }
+    show() {
+        this.visibleValue = true;
+    }
+    hide() {
+        this.visibleValue = false;
+    }
+    toggle() {
+        this.visibleValue = !this.visibleValue;
+    }
+    onWrapperResize() {
+        const { height: wrapperHeight } = this.wrapperTarget.getBoundingClientRect();
+        const { height: contentHeight } = this.contentTarget.getBoundingClientRect();
+        this.overflow = wrapperHeight < contentHeight;
+        this.element.classList.toggle('c-collapse--overflow', this.overflow);
+        if (this.hasOverflowClass) {
+            this.overflow
+                ? this.element.classList.add(...this.overflowClasses)
+                : this.element.classList.remove(...this.overflowClasses);
+        }
+    }
+    onContentResize(entries) {
+        const { height } = entries[0].contentRect;
+        this.element.style.setProperty('--collapse-height', `${height}px`);
+    }
+    onTransitionEnd() {
+        this.element.classList.remove('c-collapse--transition');
+    }
+    visibleValueChanged(visible) {
+        if (!this.hasWrapperTarget || !this.hasContentTarget)
+            return;
+        this.element.classList.toggle('c-collapse--visible', visible);
+        this.element.classList.toggle('c-collapse--hidden', !visible);
+        this.element.classList.add('c-collapse--transition');
+        if (visible) {
+            if (this.hasVisibleClass)
+                this.element.classList.add(...this.visibleClasses);
+            if (this.hasHiddenClass)
+                this.element.classList.remove(...this.hiddenClasses);
+            this.wrapperTarget.style.setProperty('opacity', '1');
+            this.dispatch('show', { detail: { fade: this.fadeValue, gradient: this.gradientValue } });
+        }
+        else {
+            if (this.hasVisibleClass)
+                this.element.classList.remove(...this.visibleClasses);
+            if (this.hasHiddenClass)
+                this.element.classList.add(...this.hiddenClasses);
+            this.wrapperTarget.style.setProperty('opacity', this.fadeValue ? '0' : '1');
+            this.dispatch('hide', { detail: { fade: this.fadeValue, gradient: this.gradientValue } });
+        }
+    }
+    gradientValueChanged(gradient) {
+        this.element.classList.toggle('c-collapse--gradient', gradient);
+    }
+    fadeValueChanged(fade) {
+        this.element.classList.toggle('c-collapse--fade', fade);
+        if (!this.visibleValue)
+            this.wrapperTarget.style.setProperty('opacity', fade ? '0' : '1');
+    }
+    disconnect() {
+        var _a;
+        (_a = this.contentResizeObserver) === null || _a === void 0 ? void 0 : _a.disconnect();
+    }
+}
+CollapseController.values = {
+    visible: {
+        type: Boolean,
+        default: false,
+    },
+    gradient: {
+        type: Boolean,
+        default: false,
+    },
+    fade: {
+        type: Boolean,
+        default: true,
+    },
+};
+CollapseController.targets = ['wrapper', 'content'];
+CollapseController.classes = ['visible', 'hidden', 'overflow'];
+
+export { CollapseController, DisplayController, SubmenuController };

@@ -84,6 +84,8 @@
   --card-icon-bg: var(--color-grey-100);
   --actions-selected-bg: var(--color-grey-200);
   --modal-overlay-bg: var(--color-neutral-black-40);
+  --folder-collapse-active-bg: var(--color-actions-news-50);
+  --folder-collapse-active: var(--color-actions-news-600);
 }
 
 /* ===================================================================
@@ -144,12 +146,6 @@ abbr[title], abbr[data-original-title] {
   text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
-}
-
-ol, ul, dl {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 ol ol, ul ul, ol ul, ul ol {
@@ -318,6 +314,14 @@ body {
 .c-sidebar {
   padding: 1.6rem;
   border-right: 1px solid var(--border-grey-50);
+  overflow: auto;
+  display: flex;
+}
+.c-sidebar ul {
+  list-style: none;
+}
+.c-sidebar > ul {
+  padding: 0;
 }
 
 .c-content {
@@ -888,6 +892,114 @@ body {
   padding: 1rem;
   width: 4rem;
   height: 4rem;
+}
+
+:root {
+  /* Global */
+  --collapse-height: 0px;
+  --collapse-min-height: 0px;
+  /* Transitions */
+  --collapse-duration: 400ms;
+  --collapse-show-duration: var(--collapse-duration);
+  --collapse-hide-duration: var(--collapse-duration);
+  --collapse-show-easing: cubic-bezier(0.33, 1, 0.68, 1);
+  --collapse-hide-easing: cubic-bezier(0.33, 1, 0.68, 1);
+  /* Gradient */
+  --collapse-gradient-height: 20%;
+  --collapse-gradient-background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.c-collapse[data-mezcalito--ux-filemanager--collapse-visible-value=true] > .c-collapse__head .c-collapse__arrow {
+  transform: rotate(90deg);
+}
+.c-collapse[data-mezcalito--ux-filemanager--collapse-visible-value=false] > .c-collapse__head .c-collapse__arrow {
+  transform: rotate(0deg) !important;
+}
+
+.c-collapse__head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-in-out);
+  width: fit-content;
+}
+.c-collapse__head button {
+  transition: color var(--transition-in-out);
+}
+.c-collapse__head svg path {
+  transition: stroke var(--transition-in-out);
+}
+.c-collapse__head:not(.c-collapse__head--first) {
+  margin-bottom: 0.8rem;
+}
+
+.c-collapse__head--first {
+  margin-bottom: 1rem;
+}
+
+.c-collapse__head--active {
+  background-color: var(--folder-collapse-active-bg);
+}
+.c-collapse__head--active button {
+  color: var(--folder-collapse-active);
+}
+.c-collapse__head--active svg path {
+  stroke: var(--folder-collapse-active);
+}
+
+.c-collapse > .c-collapse__wrapper {
+  position: relative;
+  height: max(0px, var(--collapse-min-height));
+  overflow: hidden;
+}
+
+.c-collapse--transition.c-collapse > .c-collapse__wrapper {
+  transition: height var(--collapse-hide-duration) var(--collapse-hide-easing), opacity var(--collapse-hide-duration) var(--collapse-hide-easing);
+}
+
+.c-collapse--visible > .c-collapse__wrapper,
+[data-mezcalito--ux-filemanager--collapse-visible-value=true] > .c-collapse__wrapper {
+  height: var(--collapse-height);
+}
+
+.c-collapse--transition.c-collapse--visible > .c-collapse__wrapper,
+.c-collapse--transition[data-mezcalito--ux-filemanager--collapse-visible-value=true] > .c-collapse__wrapper {
+  transition: height var(--collapse-show-duration) var(--collapse-show-easing), opacity var(--collapse-show-duration) var(--collapse-show-easing);
+}
+
+.c-collapse--gradient > .c-collapse__wrapper:after,
+[data-mezcalito--ux-filemanager--collapse-gradient-value=true] > .c-collapse__wrapper:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--collapse-gradient-height);
+  background: var(--collapse-gradient-background);
+  pointer-events: none;
+  z-index: 1;
+  transform: translateY(0);
+  transition: transform var(--collapse-duration) var(--collapse-hide-easing);
+}
+
+.c-collapse--gradient.c-collapse--visible > .c-collapse__wrapper:after,
+[data-mezcalito--ux-filemanager--collapse-gradient-value=true][data-mezcalito--ux-filemanager--collapse-visible-value=true] > .c-collapse__wrapper:after {
+  transform: translateY(100%);
+  transition: transform var(--collapse-duration) var(--collapse-show-easing);
+}
+
+.c-collapse__content {
+  display: inline-block;
+}
+
+.c-collapse__action {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .u-color-neutral-black {
