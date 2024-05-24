@@ -8,6 +8,10 @@
   }
 }
 
-.c-toggle-buttons__active {
+.c-toggle-buttons__action {
+  transition: background-color var(--transition-in-out);
+}
+
+.c-toggle-buttons__action--active {
   background-color: var(--toggle-button-active-bg);
 }

@@ -23,7 +23,7 @@ export class DisplayController extends Controller {
             card.classList.toggle('display-grid', this.modeValue === 'grid');
         });
         this.listTarget.classList.toggle('c-content__cards--grid', this.modeValue === 'grid');
-        this.listButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'list');
-        this.gridButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'grid');
+        this.listButtonTarget.classList.toggle('c-toggle-buttons__action--active', this.modeValue === 'list');
+        this.gridButtonTarget.classList.toggle('c-toggle-buttons__action--active', this.modeValue === 'grid');
     }
 }
