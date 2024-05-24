@@ -86,6 +86,9 @@
   --modal-overlay-bg: var(--color-neutral-black-40);
   --folder-collapse-active-bg: var(--color-actions-news-50);
   --folder-collapse-active: var(--color-actions-news-600);
+  --card-actions-content-bg: var(--color-neutral-white);
+  --card-actions-button: var(--color-grey-700);
+  --card-actions-button-bg-hover: var(--color-grey-50);
 }
 
 /* ===================================================================
@@ -1008,6 +1011,46 @@ body {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+}
+
+.c-card-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: end;
+  height: fit-content;
+  grid-area: action;
+  z-index: 1;
+  transition: opacity var(--transition-in-out);
+}
+
+.c-card-actions__content {
+  position: absolute;
+  background-color: var(--card-actions-content-bg);
+  top: 0;
+  right: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-in-out);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 2rem 0.8rem 0.8rem;
+  box-shadow: var(--color-shadow-deep);
+}
+.c-card-actions__content > button {
+  padding: 0.9rem 1.2rem;
+  color: var(--card-actions-button);
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  transition: background-color var(--transition-in-out);
+}
+.c-card-actions__content > button:hover {
+  background-color: var(--card-actions-button-bg-hover);
+}
+.c-card-actions__content.is-active {
+  pointer-events: all;
+  opacity: 1;
 }
 
 .u-color-neutral-black {

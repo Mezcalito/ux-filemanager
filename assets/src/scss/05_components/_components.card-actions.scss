@@ -1,0 +1,46 @@
+.c-card-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: end;
+  height: fit-content;
+  grid-area: action;
+  z-index: 1;
+  transition: opacity var(--transition-in-out);
+}
+
+.c-card-actions__action {
+
+}
+
+.c-card-actions__content {
+  position: absolute;
+  background-color: var(--card-actions-content-bg);
+  top: 0;
+  right: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-in-out);
+  border-radius: var(--radius-md);
+  padding: $space-8 $space-20 $space-8 $space-8;
+  box-shadow: var(--color-shadow-deep);
+
+  & > button {
+    padding: 0.9rem $space-12;
+    color: var(--card-actions-button);
+    display: flex;
+    align-items: center;
+    gap: $space-16;
+    transition: background-color var(--transition-in-out);
+
+    &:hover {
+      background-color: var(--card-actions-button-bg-hover);
+    }
+  }
+
+  &.is-active {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
