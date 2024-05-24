@@ -39,11 +39,9 @@
 }
 
 .c-content__cards {
-  &--list {
-    display: flex;
-    flex-direction: column;
-    gap: $space-8;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
 
   &--grid {
     display: grid;

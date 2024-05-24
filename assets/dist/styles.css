@@ -362,7 +362,7 @@ body {
   gap: 0.8rem;
 }
 
-.c-content__cards--list {
+.c-content__cards {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;

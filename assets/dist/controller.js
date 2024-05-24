@@ -1,19 +1,26 @@
 import { Controller } from '@hotwired/stimulus';
 
 class DisplayController extends Controller {
+    connect() {
+        this.listButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'list');
+        this.gridButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'grid');
+    }
     changeMode(event) {
         this.modeValue = event.params.mode;
     }
     modeValueChanged() {
-        this.nodeTargets.forEach((node) => {
-            node.classList.toggle('display-grid', this.modeValue === 'grid');
+        this.cardTargets.forEach((card) => {
+            card.classList.toggle('display-grid', this.modeValue === 'grid');
         });
+        this.listTarget.classList.toggle('c-content__cards--grid', this.modeValue === 'grid');
+        this.listButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'list');
+        this.gridButtonTarget.classList.toggle('c-toggle-buttons__active', this.modeValue === 'grid');
     }
 }
 DisplayController.values = {
     mode: { type: String, default: 'list' },
 };
-DisplayController.targets = ['node'];
+DisplayController.targets = ['list', 'card', 'listButton', 'gridButton'];
 
 class SubmenuController extends Controller {
     open() {

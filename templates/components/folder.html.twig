@@ -1,6 +1,6 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<div {{ attributes.defaults({class: 'c-folder-card', 'data-mezcalito--ux-filemanager--display-target': 'node'}) }}>
+<div {{ attributes.defaults({class: 'c-folder-card', 'data-mezcalito--ux-filemanager--display-target': 'card'}) }}>
     <input class='c-folder-card__input' type='checkbox' name='test' id='test' />
 
     <button class='c-folder-card__link' data-action="dblclick->live#emit" data-live-event-param="updateCurrentPath" data-live-path-param="{{ this.node.path }}"></button>
