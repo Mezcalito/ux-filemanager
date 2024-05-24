@@ -3,6 +3,9 @@
   --collapse-height: 0px;
   --collapse-min-height: 0px;
 
+  --collapse-width: 0px;
+  --collapse-min-width: 0px;
+
   /* Transitions */
   --collapse-duration: 400ms;
   --collapse-show-duration: var(--collapse-duration);
@@ -69,6 +72,7 @@
 .c-collapse > .c-collapse__wrapper {
   position: relative;
   height: max(0px, var(--collapse-min-height));
+  width: max(0px, var(--collapse-min-width));
   overflow: hidden;
 }
 
@@ -81,6 +85,7 @@
 .c-collapse--visible > .c-collapse__wrapper,
 [data-mezcalito--ux-filemanager--collapse-visible-value="true"] > .c-collapse__wrapper {
   height: var(--collapse-height);
+  width: var(--collapse-width);
 }
 
 .c-collapse--transition.c-collapse--visible > .c-collapse__wrapper,

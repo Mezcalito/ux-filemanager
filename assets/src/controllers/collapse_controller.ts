@@ -42,7 +42,6 @@ export class CollapseController extends Controller<HTMLElement> {
     private contentResizeObserver?: ResizeObserver;
 
     connect() {
-        console.log('cc');
         if (!this.hasWrapperTarget) {
             console.warn('CollapseController : The wrapper target is required');
             return;
@@ -89,6 +88,7 @@ export class CollapseController extends Controller<HTMLElement> {
     onContentResize(entries: ResizeObserverEntry[]) {
         const { height } = entries[0].contentRect;
         this.element.style.setProperty('--collapse-height', `${height}px`);
+        this.element.style.setProperty('--collapse-width', `auto`);
     }
 
     onTransitionEnd() {
