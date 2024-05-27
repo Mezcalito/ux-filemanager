@@ -59,9 +59,5 @@
     "tabWidth": 4,
     "bracketSameLine": true,
     "singleQuote": true
-  },
-  "dependencies": {
-    "@hotwired/stimulus": "^3.2.2",
-    "stimulus-use": "^0.52.2"
   }
 }

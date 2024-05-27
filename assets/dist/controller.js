@@ -137,116 +137,17 @@ CollapseController.values = {
 CollapseController.targets = ['wrapper', 'content'];
 CollapseController.classes = ['visible', 'hidden', 'overflow'];
 
-/*
- * stimulus-use 0.52.1
- */
-
-const composeEventName = (name, controller, eventPrefix) => {
-  let composedName = name;
-  if (eventPrefix === true) {
-    composedName = `${controller.identifier}:${name}`;
-  } else if (typeof eventPrefix === "string") {
-    composedName = `${eventPrefix}:${name}`;
-  }
-  return composedName;
-};
-
-const extendedEvent = (type, event, detail) => {
-  const {bubbles: bubbles, cancelable: cancelable, composed: composed} = event || {
-    bubbles: true,
-    cancelable: true,
-    composed: true
-  };
-  if (event) {
-    Object.assign(detail, {
-      originalEvent: event
-    });
-  }
-  const customEvent = new CustomEvent(type, {
-    bubbles: bubbles,
-    cancelable: cancelable,
-    composed: composed,
-    detail: detail
-  });
-  return customEvent;
-};
-
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-  const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-  const vertInView = rect.top <= windowHeight && rect.top + rect.height > 0;
-  const horInView = rect.left <= windowWidth && rect.left + rect.width > 0;
-  return vertInView && horInView;
-}
-
-const defaultOptions$5 = {
-  events: [ "click", "touchend" ],
-  onlyVisible: true,
-  dispatchEvent: true,
-  eventPrefix: true
-};
-
-const useClickOutside = (composableController, options = {}) => {
-  const controller = composableController;
-  const {onlyVisible: onlyVisible, dispatchEvent: dispatchEvent, events: events, eventPrefix: eventPrefix} = Object.assign({}, defaultOptions$5, options);
-  const onEvent = event => {
-    const targetElement = (options === null || options === void 0 ? void 0 : options.element) || controller.element;
-    if (targetElement.contains(event.target) || !isElementInViewport(targetElement) && onlyVisible) {
-      return;
-    }
-    if (controller.clickOutside) {
-      controller.clickOutside(event);
-    }
-    if (dispatchEvent) {
-      const eventName = composeEventName("click:outside", controller, eventPrefix);
-      const clickOutsideEvent = extendedEvent(eventName, event, {
-        controller: controller
-      });
-      targetElement.dispatchEvent(clickOutsideEvent);
-    }
-  };
-  const observe = () => {
-    events === null || events === void 0 ? void 0 : events.forEach((event => {
-      window.addEventListener(event, onEvent, true);
-    }));
-  };
-  const unobserve = () => {
-    events === null || events === void 0 ? void 0 : events.forEach((event => {
-      window.removeEventListener(event, onEvent, true);
-    }));
-  };
-  const controllerDisconnect = controller.disconnect.bind(controller);
-  Object.assign(controller, {
-    disconnect() {
-      unobserve();
-      controllerDisconnect();
-    }
-  });
-  observe();
-  return [ observe, unobserve ];
-};
-
-class DebounceController extends Controller {}
-
-DebounceController.debounces = [];
-
-class ThrottleController extends Controller {}
-
-ThrottleController.throttles = [];
-
 class ToggleController extends Controller {
-    connect() {
-        useClickOutside(this);
+    change() {
+        this.isActiveValue = !this.isActiveValue;
     }
-    clickOutside() {
+    close(event) {
+        if (this.element === event.target || this.element.contains(event.target))
+            return;
         this.isActiveValue = false;
     }
     isActiveValueChanged() {
         this.contentTarget.classList.toggle('is-active', this.isActiveValue);
-    }
-    change() {
-        this.isActiveValue = !this.isActiveValue;
     }
 }
 ToggleController.values = {

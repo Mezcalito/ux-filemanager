@@ -1,5 +1,4 @@
-import { Controller } from '@hotwired/stimulus';
-import { useClickOutside } from 'stimulus-use';
+import {ActionEvent, Controller} from '@hotwired/stimulus';
 
 export class ToggleController extends Controller {
   static values = {
@@ -11,20 +10,17 @@ export class ToggleController extends Controller {
   declare contentTarget: HTMLElement;
   declare isActiveValue: boolean;
 
-  connect() {
-    //@ts-ignore
-    useClickOutside(this);
+  change() {
+    this.isActiveValue = !this.isActiveValue;
   }
 
-  clickOutside() {
+  close(event: ActionEvent) {
+    if(this.element === event.target || this.element.contains((event.target as HTMLElement))) return;
+
     this.isActiveValue = false;
   }
 
   isActiveValueChanged(): void {
     this.contentTarget.classList.toggle('is-active', this.isActiveValue);
-  }
-
-  change() {
-    this.isActiveValue = !this.isActiveValue;
   }
 }
