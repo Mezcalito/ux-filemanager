@@ -8,6 +8,7 @@ $theme-color: (
   'grey-200': '#F1F2F5',
   'grey-300': '#EDEEF1',
   'grey-500': '#7F889C',
+  'grey-700': '#566071',
   'grey-900': '#333945',
   'actions-success-50': '#EBF7EB',
   'actions-success-500': '#34994C',
@@ -50,6 +51,7 @@ $theme-color: (
   --border-grey-50: var(--color-grey-50);
   --border-grey-100: var(--color-grey-100);
   --border-grey-900: var(--color-grey-900);
+  --border-success-800: var(--color-actions-success-800);
 
   --button-bg: var(--color-actions-success-600);
   --button-bg-hover: var(--color-actions-success-800);
@@ -81,4 +83,8 @@ $theme-color: (
 
   --field-placeholder: var(--color-grey-500);
   --field-error-border: var(--color-actions-danger-600);
+
+  --select-current: var(--color-actions-success-800);
+  --select-list-bg: var(--color-neutral-white);
+  --select-active-bg: #E7F3EB;
 }

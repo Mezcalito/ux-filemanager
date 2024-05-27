@@ -1,0 +1,49 @@
+{# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
+
+<div {{ attributes.defaults({class: 'c-custom-select', 'data-controller': 'mezcalito--ux-filemanager--select', 'data-action': 'click@window->mezcalito--ux-filemanager--select#close'}) }}>
+    <div class="c-custom-select__input-wrapper" data-action="click->mezcalito--ux-filemanager--select#toggle">
+        <input class="c-custom-select__input" type="text" placeholder="Tout voir" readonly
+               data-mezcalito--ux-filemanager--select-target="input">
+        <div class="c-custom-select__current-wrapper">
+            <p class="c-custom-select__current c-text-xs u-fw-500 u-color-actions-success-800" data-mezcalito--ux-filemanager--select-target="current">Sort by</p>
+            <span class="c-custom-select__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M12 10L8 6L4 10" stroke="#00591D" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+        </div>
+
+    </div>
+    <div class="c-custom-select__list-wrapper" data-mezcalito--ux-filemanager--select-target="list">
+        <ul class="c-custom-select__list">
+            <li class="c-custom-select__item">
+                <button type='button' class='c-text-s u-color-grey-700'
+                        data-mezcalito--ux-filemanager--select-target="item"
+                        data-action="click->mezcalito--ux-filemanager--select#selectOption">
+                    Date high to low
+                </button>
+            </li>
+            <li class="c-custom-select__item">
+                <button type='button' class='c-text-s u-color-grey-700'
+                        data-mezcalito--ux-filemanager--select-target="item"
+                        data-action="click->mezcalito--ux-filemanager--select#selectOption">
+                    Date low to high
+                </button>
+            </li>
+            <li class="c-custom-select__item">
+                <button type='button' class='c-text-s u-color-grey-700'
+                        data-mezcalito--ux-filemanager--select-target="item"
+                        data-action="click->mezcalito--ux-filemanager--select#selectOption">
+                    Size high to low
+                </button>
+            </li>
+            <li class="c-custom-select__item">
+                <button type='button' class='c-text-s u-color-grey-700'
+                        data-mezcalito--ux-filemanager--select-target="item"
+                        data-action="click->mezcalito--ux-filemanager--select#selectOption">
+                    Size low to high
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

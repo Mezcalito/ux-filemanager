@@ -1,0 +1,88 @@
+.c-custom-select {
+  position: relative;
+
+  &.is-active {
+    .c-custom-select__list-wrapper {
+      display: flex;
+    }
+
+    .c-custom-select__icon {
+      transform: rotate(0deg);
+    }
+
+    .c-custom-select__input-wrapper {
+      background-color: var(--select-active-bg);
+    }
+  }
+}
+
+.c-custom-select__input-wrapper {
+  cursor: pointer;
+  padding: $space-8 $space-14 $space-8 $space-16;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-success-800);
+  transition: background-color var(--transition-in-out);
+
+  &:hover {
+    background-color: var(--select-active-bg);
+  }
+}
+
+.c-custom-select__input {
+  position: absolute;
+  height: 0;
+  width: 0;
+  border: 0;
+  padding: 0;
+}
+
+.c-custom-select__current-wrapper {
+  display: flex;
+  align-items: center;
+  gap: $space-10;
+}
+
+.c-custom-select__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(180deg);
+
+  @include min-width(md) {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  @include max-width(md) {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}
+
+.c-custom-select__list-wrapper {
+  display: none;
+  background-color: var(--select-list-bg);
+  border: 1px solid var(--border-grey-100);
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  padding: $space-8;
+  max-height: 22rem;
+  position: absolute;
+  top: calc(100% + $space-8);
+  z-index: 5;
+  box-shadow: var(--color-shadow-deep);
+  gap: 0.4rem;
+  width: max-content;
+  right: 0;
+}
+
+.c-custom-select__list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c-custom-select__item {
+  padding: 0.9rem 4.5rem 0.9rem 1.2rem;
+}

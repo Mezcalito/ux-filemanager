@@ -24,6 +24,7 @@ use Mezcalito\FileManagerBundle\Twig\Components\Folder;
 use Mezcalito\FileManagerBundle\Twig\Components\FolderCollapse;
 use Mezcalito\FileManagerBundle\Twig\Components\Modal;
 use Mezcalito\FileManagerBundle\Twig\Components\Field;
+use Mezcalito\FileManagerBundle\Twig\Components\Select;
 use Mezcalito\FileManagerBundle\Twig\Components\Sidebar;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -113,6 +114,10 @@ class MezcalitoFileManagerExtension extends Extension
             ->setAutoconfigured(true);
 
         $container->register(Field::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $container->register(Select::class)
             ->setAutowired(true)
             ->setAutoconfigured(true);
     }

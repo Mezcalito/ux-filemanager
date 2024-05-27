@@ -169,4 +169,44 @@ ModalController.values = {
 };
 ModalController.targets = ['content'];
 
-export { CollapseController, DisplayController, ModalController, SubmenuController, ToggleController };
+class SelectController extends Controller {
+    connect() {
+        const activeItem = this.element.querySelector('.c-custom-select__item.is-active');
+        if (activeItem) {
+            this.currentTarget.innerHTML = activeItem.innerHTML;
+            this.inputTarget.value = activeItem.dataset.value ? activeItem.dataset.value : activeItem.innerText;
+        }
+    }
+    isActiveValueChanged() {
+        this.element.classList.toggle('is-active', this.isActiveValue);
+    }
+    toggle(e) {
+        e.stopPropagation();
+        this.isActiveValue = !this.isActiveValue;
+    }
+    selectOption(e) {
+        var _a, _b;
+        if (!e.currentTarget)
+            return;
+        this.inputTarget.value = e.currentTarget.dataset.value
+            ? e.currentTarget.dataset.value
+            : e.currentTarget.innerText;
+        this.currentTarget.innerHTML = (_a = e.currentTarget) === null || _a === void 0 ? void 0 : _a.innerHTML;
+        this.itemTargets.forEach(elem => {
+            elem.classList.remove('is-active');
+        });
+        (_b = e.currentTarget) === null || _b === void 0 ? void 0 : _b.classList.add('is-active');
+        this.isActiveValue = false;
+    }
+    close(event) {
+        if (this.element === event.target || this.element.contains(event.target))
+            return;
+        this.isActiveValue = false;
+    }
+}
+SelectController.values = {
+    isActive: Boolean,
+};
+SelectController.targets = ['input', 'item', 'current'];
+
+export { CollapseController, DisplayController, ModalController, SelectController, SubmenuController, ToggleController };
