@@ -3,7 +3,7 @@
 
 {% set hasChild = filesystem.listDirectory(node.path)|filter(child => child.isDir())|length > 0 %}
 
-<li {{ attributes.defaults({class: 'c-collapse', 'data-controller': hasChild ? 'mezcalito--ux-filemanager--collapse' : '', 'data-mezcalito--ux-filemanager--collapse-visible-value': "false"}) }}>
+<li {{ attributes.defaults({class: hasChild ? 'c-collapse c-collapse__openable' : 'c-collapse', 'data-controller': hasChild ? 'mezcalito--ux-filemanager--collapse' : '', 'data-mezcalito--ux-filemanager--collapse-visible-value': "false"}) }}>
 
     <div class='c-collapse__head{% if currentPath == node.path %} c-collapse__head--active{% endif %}'>
         {% if hasChild %}

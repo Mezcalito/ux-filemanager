@@ -954,6 +954,10 @@ body {
   transform: rotate(0deg) !important;
 }
 
+.c-collapse__openable {
+  margin-left: -2.3rem;
+}
+
 .c-collapse__head {
   display: flex;
   align-items: center;
