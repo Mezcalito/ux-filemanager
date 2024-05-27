@@ -9,6 +9,7 @@
   justify-content: center;
   pointer-events: none;
   transition: opacity var(--transition-in-out);
+  z-index: 1;
 }
 
 .c-modal__overlay {

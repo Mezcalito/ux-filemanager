@@ -827,6 +827,7 @@ body {
   justify-content: center;
   pointer-events: none;
   transition: opacity var(--transition-in-out);
+  z-index: 1;
 }
 
 .c-modal__overlay {
@@ -939,6 +940,10 @@ body {
   width: 100%;
   transition: transform var(--transition-in-out);
   transform: translateY(100%);
+}
+.c-submenu__content ul {
+  list-style: none;
+  padding: 0;
 }
 
 .c-submenu__item {

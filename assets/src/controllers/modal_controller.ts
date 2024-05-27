@@ -10,10 +10,6 @@ export class ModalController extends Controller {
   declare contentTarget: HTMLElement;
   declare isActiveValue: boolean;
 
-  connect() {
-    this.isActiveValue = true;
-  }
-
   change() {
     this.isActiveValue = !this.isActiveValue;
   }

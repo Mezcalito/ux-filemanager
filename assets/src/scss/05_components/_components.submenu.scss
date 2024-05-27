@@ -26,6 +26,11 @@
   width: 100%;
   transition: transform var(--transition-in-out);
   transform: translateY(100%);
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
 }
 
 .c-submenu__item {

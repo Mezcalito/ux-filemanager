@@ -1,7 +1,5 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-{% props size = 'md' %}
-
 <div {{ attributes.defaults({class: 'c-modal', 'data-mezcalito--ux-filemanager--modal-target': 'content'}) }}>
     <div class='c-modal__overlay' data-action='click->mezcalito--ux-filemanager--modal#change'></div>
     <dialog class='c-modal__dialog c-modal__dialog--{{ size }}'>

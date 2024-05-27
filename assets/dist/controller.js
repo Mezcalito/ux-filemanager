@@ -156,9 +156,6 @@ ToggleController.values = {
 ToggleController.targets = ['content'];
 
 class ModalController extends Controller {
-    connect() {
-        this.isActiveValue = true;
-    }
     change() {
         this.isActiveValue = !this.isActiveValue;
     }

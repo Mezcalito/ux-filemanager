@@ -16,6 +16,7 @@ namespace Mezcalito\FileManagerBundle\Twig\Components;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemContextTrait;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
+use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent('Mezcalito:Modal', template: '@MezcalitoFileManager/components/modal.html.twig')]
@@ -24,4 +25,7 @@ class Modal
     use DefaultActionTrait;
     use FilesystemContextTrait;
     use FilesystemToolsTrait;
+
+    #[LiveProp]
+    public string $size = 'md';
 }
