@@ -78,6 +78,7 @@
   --search-field-placeholder: var(--color-grey-500);
   --toggle-button-border: var(--color-actions-success-600);
   --toggle-button-active-bg: var(--color-actions-success-50);
+  --toggle-button-mob: var(--color-neutral-white);
   --card-bg: var(--color-grey-50);
   --card-hover-bg: var(--color-grey-200);
   --card-active-bg: var(--color-grey-300);
@@ -358,12 +359,6 @@ body {
   }
 }
 
-.c-content__toggle {
-  padding: 1rem;
-  background-color: var(--button-bg);
-  border-radius: var(--radius-md);
-}
-
 .c-content__buttons {
   display: flex;
   gap: 0.8rem;
@@ -544,8 +539,25 @@ body {
   overflow: hidden;
   border: 1px solid var(--toggle-button-border);
 }
+@media (max-width: 767px) {
+  .c-toggle-buttons {
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-bg);
+  }
+}
 .c-toggle-buttons button {
   padding: 1rem;
+}
+@media (max-width: 767px) {
+  .c-toggle-buttons button {
+    padding: 0;
+  }
+  .c-toggle-buttons button svg path {
+    stroke: var(--toggle-button-mob);
+  }
 }
 
 .c-toggle-buttons__action {
@@ -554,6 +566,11 @@ body {
 
 .c-toggle-buttons__action--active {
   background-color: var(--toggle-button-active-bg);
+}
+@media (max-width: 767px) {
+  .c-toggle-buttons__action--active {
+    display: none;
+  }
 }
 
 .c-folder-card {
