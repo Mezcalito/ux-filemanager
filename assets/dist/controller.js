@@ -155,4 +155,21 @@ ToggleController.values = {
 };
 ToggleController.targets = ['content'];
 
-export { CollapseController, DisplayController, SubmenuController, ToggleController };
+class ModalController extends Controller {
+    connect() {
+        this.isActiveValue = true;
+    }
+    change() {
+        this.isActiveValue = !this.isActiveValue;
+    }
+    isActiveValueChanged() {
+        this.contentTarget.classList.toggle('c-modal--open', this.isActiveValue);
+        document.body.classList.toggle('u-overflow-hidden', this.isActiveValue);
+    }
+}
+ModalController.values = {
+    isActive: Boolean,
+};
+ModalController.targets = ['content'];
+
+export { CollapseController, DisplayController, ModalController, SubmenuController, ToggleController };

@@ -1,0 +1,36 @@
+.c-field {
+
+}
+
+.c-field__wrapper {
+  position: relative;
+}
+
+.c-field__input {
+  width: 100%;
+  outline: none;
+  border: 1px solid var(--border-grey-100);
+  padding: 0.9rem 4rem 0.9rem $space-16;
+  border-radius: var(--radius-md);
+
+  &:not(.c-field__input--error) {
+    &:focus {
+      border-color: var(--border-grey-900);
+    }
+  }
+
+  &::placeholder {
+    color: var(--field-placeholder);
+  }
+}
+
+.c-field__input--error {
+  border-color: var(--field-error-border);
+}
+
+.c-field__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: $space-16;
+}

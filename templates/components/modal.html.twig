@@ -1,0 +1,71 @@
+{# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
+
+{% props size = 'md' %}
+
+<div {{ attributes.defaults({class: 'c-modal', 'data-mezcalito--ux-filemanager--modal-target': 'content'}) }}>
+    <div class='c-modal__overlay' data-action='click->mezcalito--ux-filemanager--modal#change'></div>
+    <dialog class='c-modal__dialog c-modal__dialog--{{ size }}'>
+        <button class='c-modal__close' type='button' data-action='click->mezcalito--ux-filemanager--modal#change'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                <g clip-path="url(#clip0_8932_2476)">
+                    <path d="M18 6.75L6 18.75" stroke="#566071" stroke-width="1.71429" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 6.75L18 18.75" stroke="#566071" stroke-width="1.71429" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                    <clipPath id="clip0_8932_2476">
+                        <rect width="24" height="24" fill="white" transform="translate(0 0.75)"/>
+                    </clipPath>
+                </defs>
+            </svg>
+        </button>
+        <p class='c-text-l u-fw-700 u-color-grey-900'>Titre de la modal</p>
+        <p class='c-text-s u-fw-400 u-color-grey-700'>Exemple se description pour la modal</p>
+
+        {#
+        <form action=''>
+            <div class='c-modal__content'>
+                <twig:Mezcalito:Field label='Folder name'/>
+            </div>
+            <div class='c-modal__actions'>
+                <button type='button' class='c-text-s u-fw-700 u-color-neutral-black' data-action='click->mezcalito--ux-filemanager--modal#change'>Cancel</button>
+                <button type='button' class='c-button'>Move item</button>
+            </div>
+        </form>
+        #}
+
+        <div class='c-modal__content c-modal__content--with-border'>
+            <ul>
+                <li
+                        class="c-collapse"
+                        data-controller="mezcalito--ux-filemanager--collapse"
+                        data-mezcalito--ux-filemanager--collapse-visible-value="true"
+                >
+                    <div class='c-collapse__head c-collapse__head--first{% if currentPath == '/' %} c-collapse__head--active{% endif %}'>
+                        <button class='c-collapse__arrow' type="button" data-action="mezcalito--ux-filemanager--collapse#toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                <path d="M5.25 11.3L8.75 7.8L5.25 4.3" stroke="#566071" stroke-width="1.169" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button data-action="live#emit" data-live-event-param="updateCurrentPath" data-live-path-param="/" class="c-collapse__action c-text-xs u-fw-700{% if currentPath == '/' %} is-active{% endif %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                <path d="M4.16667 4.13334H7.5L10 6.63334H15.8333C16.2754 6.63334 16.6993 6.80893 17.0118 7.12149C17.3244 7.43405 17.5 7.85798 17.5 8.30001V14.9667C17.5 15.4087 17.3244 15.8326 17.0118 16.1452C16.6993 16.4577 16.2754 16.6333 15.8333 16.6333H4.16667C3.72464 16.6333 3.30072 16.4577 2.98816 16.1452C2.67559 15.8326 2.5 15.4087 2.5 14.9667V5.80001C2.5 5.35798 2.67559 4.93405 2.98816 4.62149C3.30072 4.30893 3.72464 4.13334 4.16667 4.13334Z" stroke="#566071" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            My files
+                        </button>
+                    </div>
+                    <div class="c-collapse__wrapper" data-mezcalito--ux-filemanager--collapse-target="wrapper">
+                        <ul class="c-collapse__content" data-mezcalito--ux-filemanager--collapse-target="content">
+                            {% for node in filesystem.listDirectory('/')|filter(node => node.isDir()) %}
+                                <twig:Mezcalito:FolderCollapse :storage="storage" :id="node.id" :node='node' :currentPath='currentPath'/>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class='c-modal__actions'>
+            <button type='button' class='c-text-s u-fw-700 u-color-neutral-black' data-action='click->mezcalito--ux-filemanager--modal#change'>Cancel</button>
+            <button type='button' class='c-button'>Move item</button>
+        </div>
+    </dialog>
+</div>

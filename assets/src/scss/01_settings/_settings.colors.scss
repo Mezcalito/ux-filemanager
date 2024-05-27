@@ -49,10 +49,12 @@ $theme-color: (
 
   --border-grey-50: var(--color-grey-50);
   --border-grey-100: var(--color-grey-100);
+  --border-grey-900: var(--color-grey-900);
 
   --button-bg: var(--color-actions-success-600);
   --button-bg-hover: var(--color-actions-success-800);
   --button-label: var(--color-neutral-white);
+  --button-disabled-label: var(--color-grey-500);
 
   --search-field-bg: var(--color-grey-50);
   --search-field-placeholder: var(--color-grey-500);
@@ -76,4 +78,7 @@ $theme-color: (
   --card-actions-content-bg: var(--color-neutral-white);
   --card-actions-button: var(--color-grey-700);
   --card-actions-button-bg-hover: var(--color-grey-50);
+
+  --field-placeholder: var(--color-grey-500);
+  --field-error-border: var(--color-actions-danger-600);
 }
