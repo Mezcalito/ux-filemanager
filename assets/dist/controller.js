@@ -155,20 +155,6 @@ ToggleController.values = {
 };
 ToggleController.targets = ['content'];
 
-class ModalController extends Controller {
-    change() {
-        this.isActiveValue = !this.isActiveValue;
-    }
-    isActiveValueChanged() {
-        this.contentTarget.classList.toggle('c-modal--open', this.isActiveValue);
-        document.body.classList.toggle('u-overflow-hidden', this.isActiveValue);
-    }
-}
-ModalController.values = {
-    isActive: Boolean,
-};
-ModalController.targets = ['content'];
-
 class SelectController extends Controller {
     connect() {
         const activeItem = this.element.querySelector('.c-custom-select__item.is-active');
@@ -209,4 +195,4 @@ SelectController.values = {
 };
 SelectController.targets = ['input', 'item', 'current'];
 
-export { CollapseController, DisplayController, ModalController, SelectController, SubmenuController, ToggleController };
+export { CollapseController, DisplayController, SelectController, SubmenuController, ToggleController };
