@@ -10,7 +10,17 @@
     </div>
 
     <div class='c-file-card__picture'>
-        <img src="data:image/png;base64, {{ this.base64Content }}" alt="{{ this.node.filename }}" width='200' height='200'/>
+        {% if this.base64Content %}
+            <img src="data:image/png;base64, {{ this.base64Content }}" alt="{{ this.node.filename }}" width='200' height='200'/>
+        {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="53" height="54" viewBox="0 0 53 54" fill="none">
+                <path d="M33.0574 18.2567H33.0792" stroke="#A9AFBC" stroke-width="3.27875" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.5708 7.32764H39.615C41.3542 7.32764 43.0221 8.01851 44.2519 9.24828C45.4816 10.4781 46.1725 12.146 46.1725 13.8851V37.9293M44.3014 44.7032C43.6914 45.3278 42.9624 45.8238 42.1575 46.1621C41.3526 46.5003 40.4881 46.6739 39.615 46.6726H13.385C11.6459 46.6726 9.97793 45.9818 8.74816 44.752C7.51839 43.5222 6.82751 41.8543 6.82751 40.1151V13.8851C6.82751 12.0381 7.59037 10.3703 8.81662 9.17904" stroke="#A9AFBC" stroke-width="3.27875" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.82751 35.7435L17.7567 24.8143C19.7851 22.8624 22.2857 22.8624 24.3142 24.8143L35.2433 35.7435" stroke="#A9AFBC" stroke-width="3.27875" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M35.9646 27.7389C37.2193 27.6208 38.4892 28.1017 39.6149 29.1859L46.1724 35.7434" stroke="#A9AFBC" stroke-width="3.27875" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.82751 7.32764L46.1725 46.6726" stroke="#A9AFBC" stroke-width="3.27875" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        {% endif %}
     </div>
 
     <p class='c-file-card__name c-text-s u-fw-700 u-color-grey-900'>{{ this.node.filename }}</p>
@@ -18,7 +28,6 @@
     <div class='c-file-card__infos'>
         {% if this.node.lastModified is not null %}<p class='c-text-xs u-fw-400 u-color-grey-500'>{{ this.node.lastModified|date("m/d/Y") }}</p>{% endif %}
         {% if this.node.size is not null %}<p class="c-text-xs u-fw-400 u-color-grey-500">{{ _self.human_filesize(this.node.size) }}</p>{% endif %}
-{#        <p class='c-text-xs u-fw-400 u-color-grey-500'>1300 x 600</p>#}
     </div>
 
     <div class='c-card-actions' data-controller='mezcalito--ux-filemanager--toggle'>

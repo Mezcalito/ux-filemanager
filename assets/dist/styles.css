@@ -40,6 +40,7 @@
   --color-neutral-white: #FFFFFF;
   --color-grey-20: #F9FAFB;
   --color-grey-50: #F7F8FA;
+  --color-grey-80: #EFF0F3;
   --color-grey-100: #DEE1E8;
   --color-grey-200: #F1F2F5;
   --color-grey-300: #EDEEF1;
@@ -86,7 +87,8 @@
   --card-bg: var(--color-grey-50);
   --card-hover-bg: var(--color-grey-200);
   --card-active-bg: var(--color-grey-300);
-  --card-icon-bg: var(--color-grey-100);
+  --card-icon-bg-100: var(--color-grey-100);
+  --card-icon-bg-80: var(--color-grey-80);
   --actions-selected-bg: var(--color-grey-200);
   --modal-overlay-bg: var(--color-neutral-black-40);
   --folder-collapse-active-bg: var(--color-actions-news-50);
@@ -404,6 +406,16 @@ body {
   width: 100%;
   height: 100%;
 }
+.c-content__cards--grid .c-file-card__picture svg {
+  width: 5.2rem;
+  height: 5.2rem;
+}
+@media (max-width: 767px) {
+  .c-content__cards--grid .c-file-card__picture svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
 .c-content__cards--grid .c-file-card__name {
   align-self: center;
 }
@@ -428,6 +440,16 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+.c-content__cards--grid .c-folder-card__icon svg {
+  width: 5.2rem;
+  height: 5.2rem;
+}
+@media (max-width: 767px) {
+  .c-content__cards--grid .c-folder-card__icon svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
 }
 .c-content__cards--grid .c-folder-card__name {
   align-self: center;
@@ -646,7 +668,7 @@ body {
 
 .c-folder-card__icon {
   padding: 1.2rem;
-  background-color: var(--card-icon-bg);
+  background-color: var(--card-icon-bg-100);
   border-radius: var(--radius-lg);
   grid-area: img;
 }
@@ -730,11 +752,18 @@ body {
 .c-file-card__picture {
   width: 5.6rem;
   height: 5.6rem;
-  background-color: var(--card-icon-bg);
+  background-color: var(--card-icon-bg-80);
   border-radius: var(--radius-sm);
   grid-area: img;
   margin: auto 0;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.c-file-card__picture svg {
+  width: 3.2rem;
+  height: 3.2rem;
 }
 .c-file-card__picture img {
   width: 100%;
@@ -1239,6 +1268,10 @@ body {
 
 .u-color-grey-50 {
   color: #F7F8FA;
+}
+
+.u-color-grey-80 {
+  color: #EFF0F3;
 }
 
 .u-color-grey-100 {

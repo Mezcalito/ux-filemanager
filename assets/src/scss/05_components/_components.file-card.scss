@@ -71,6 +71,14 @@
   grid-area: img;
   margin: auto 0;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
 
   img {
     width: 100%;
