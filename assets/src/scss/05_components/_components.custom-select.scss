@@ -85,4 +85,10 @@
 
 .c-custom-select__item {
   padding: 0.9rem 4.5rem 0.9rem 1.2rem;
+  transition: background-color var(--transition-in-out);
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    background-color: var(--select-item-hover);
+  }
 }

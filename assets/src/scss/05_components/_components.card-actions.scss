@@ -29,6 +29,7 @@
   & > button {
     padding: 0.9rem $space-12;
     color: var(--card-actions-button);
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     gap: $space-16;

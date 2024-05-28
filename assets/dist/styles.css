@@ -99,6 +99,7 @@
   --select-current: var(--color-actions-success-800);
   --select-list-bg: var(--color-neutral-white);
   --select-active-bg: #E7F3EB;
+  --select-item-hover: var(--color-grey-50);
 }
 
 /* ===================================================================
@@ -1087,6 +1088,7 @@ body {
 .c-card-actions__content > button {
   padding: 0.9rem 1.2rem;
   color: var(--card-actions-button);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   gap: 1.6rem;
@@ -1212,6 +1214,11 @@ body {
 
 .c-custom-select__item {
   padding: 0.9rem 4.5rem 0.9rem 1.2rem;
+  transition: background-color var(--transition-in-out);
+  border-radius: var(--radius-sm);
+}
+.c-custom-select__item:hover {
+  background-color: var(--select-item-hover);
 }
 
 .u-color-neutral-black {
