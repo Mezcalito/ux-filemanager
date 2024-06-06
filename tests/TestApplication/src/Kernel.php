@@ -18,6 +18,7 @@ use Psr\Log\NullLogger;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\TwigBundle\TwigBundle;
+use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
@@ -46,6 +47,7 @@ final class Kernel extends BaseKernel
     public function registerBundles(): iterable
     {
         yield new FrameworkBundle();
+        yield new WebProfilerBundle();
         yield new TwigBundle();
         yield new TwigComponentBundle();
         yield new LiveComponentBundle();
@@ -63,6 +65,11 @@ final class Kernel extends BaseKernel
 
         $routes->add('template', '/render-template/{template}')
             ->controller('kernel::renderTemplate');
+
+        if ('dev' === $routes->env()) {
+            $routes->import('@WebProfilerBundle/Resources/config/routing/wdt.xml')->prefix('/_wdt');
+            $routes->import('@WebProfilerBundle/Resources/config/routing/profiler.xml')->prefix('/_profiler');
+        }
     }
 
     protected function configureContainer(ContainerConfigurator $container): void
@@ -88,6 +95,31 @@ final class Kernel extends BaseKernel
                 'handler_id' => null,
             ];
             $frameworkConfig['annotations']['enabled'] = false;
+        }
+
+        if ('dev' === $container->env()) {
+            $container->extension('web_profiler', [
+                'toolbar' => true,
+                'intercept_redirects' => false,
+            ]);
+            $container->extension('framework', [
+                'profiler' => [
+                    'only_exceptions' => false,
+                    'collect_serializer_data' => true,
+                ],
+            ]);
+        }
+
+        if ('test' === $container->env()) {
+            $container->extension('web_profiler', [
+                'toolbar' => false,
+                'intercept_redirects' => false,
+            ]);
+            $container->extension('framework', [
+                'profiler' => [
+                    'collect' => false,
+                ],
+            ]);
         }
 
         $container->extension('framework', $frameworkConfig);
