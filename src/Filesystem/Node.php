@@ -44,6 +44,15 @@ readonly class Node implements NodeInterface
         return basename($this->path);
     }
 
+    public function getExtension(): ?string
+    {
+        if ($this->isDir()) {
+            return null;
+        }
+
+        return pathinfo($this->path, \PATHINFO_EXTENSION);
+    }
+
     public function getPathname(): string
     {
         return $this->pathname;

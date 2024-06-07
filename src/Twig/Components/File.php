@@ -33,8 +33,13 @@ class File
         return $this->filesystem->info($this->id);
     }
 
-    public function getBase64Content(): string
+    public function getBase64Content(): ?string
     {
+        $fileInfo = $this->getNode();
+        if (!\in_array($fileInfo->getExtension(), ['jpeg', 'jpg', 'png', 'gif', 'svg', 'webp', 'bmp'])) {
+            return null;
+        }
+
         return base64_encode($this->filesystem->read($this->id));
     }
 }
