@@ -201,8 +201,8 @@ class ModalController extends Controller {
     }
     open({ params }) {
         if (params.value) {
-            this.valueTarget.value = params.value;
-            this.valueTarget.dispatchEvent(new Event('change', { bubbles: true }));
+            this.oldValueTarget.value = params.value;
+            this.oldValueTarget.dispatchEvent(new Event('change', { bubbles: true }));
         }
         this.actionTarget.value = params.action;
         this.actionTarget.dispatchEvent(new Event('change', { bubbles: true }));
@@ -211,8 +211,8 @@ class ModalController extends Controller {
         document.body.classList.add('u-overflow-hidden');
     }
     close() {
-        this.valueTarget.value = '';
-        this.valueTarget.dispatchEvent(new Event('change', { bubbles: true }));
+        this.oldValueTarget.value = '';
+        this.oldValueTarget.dispatchEvent(new Event('change', { bubbles: true }));
         this.actionTarget.value = '';
         this.actionTarget.dispatchEvent(new Event('change', { bubbles: true }));
         this.dialogTarget.classList.remove('c-modal--open');
@@ -220,6 +220,6 @@ class ModalController extends Controller {
         document.body.classList.remove('u-overflow-hidden');
     }
 }
-ModalController.targets = ['dialog', 'action', 'value'];
+ModalController.targets = ['dialog', 'action', 'oldValue'];
 
 export { CollapseController, DisplayController, ModalController, SelectController, SubmenuController, ToggleController };

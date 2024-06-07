@@ -67,7 +67,7 @@ class FilesystemProviderTest extends TestCase
         $adapter = new LocalFilesystemProvider(static::ROOT);
         $adapter->write('first.txt', 'contents');
         $this->assertFileExists(static::ROOT.'/first.txt');
-        $adapter->move('first.txt', 'first.txt', 'second.txt');
+        $adapter->move('first.txt', 'second.txt');
         $this->assertFileExists(static::ROOT.'/second.txt');
         $this->assertFileDoesNotExist(static::ROOT.'/first.txt');
     }
@@ -77,7 +77,7 @@ class FilesystemProviderTest extends TestCase
         $adapter = new LocalFilesystemProvider(static::ROOT);
         $adapter->write('first.txt', 'contents');
         $this->assertFileExists(static::ROOT.'/first.txt');
-        $adapter->copy('first.txt', 'first.txt', 'second.txt');
+        $adapter->copy('first.txt', 'second.txt');
         $this->assertFileExists(static::ROOT.'/first.txt');
         $this->assertEquals('contents', $adapter->read('/first.txt'));
         $this->assertFileExists(static::ROOT.'/second.txt');

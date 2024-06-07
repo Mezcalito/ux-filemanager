@@ -40,14 +40,14 @@ readonly class Filesystem implements FilesystemInterface
         $this->storage->getProvider()->delete($id);
     }
 
-    public function move(string $id, string $source, string $destination): void
+    public function move(string $id, string $destination): void
     {
-        $this->storage->getProvider()->copy($id, $source, $destination);
+        $this->storage->getProvider()->move($id, $destination);
     }
 
-    public function copy(string $id, string $source, string $destination): void
+    public function copy(string $id, string $destination): void
     {
-        $this->storage->getProvider()->copy($id, $source, $destination);
+        $this->storage->getProvider()->copy($id, $destination);
     }
 
     public function listDirectory(string $id, bool $recursive = false): \Generator

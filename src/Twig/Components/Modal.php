@@ -19,6 +19,7 @@ use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
+use Symfony\UX\LiveComponent\Attribute\PreReRender;
 use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
@@ -35,7 +36,16 @@ class Modal
     public ?string $action = null;
 
     #[LiveProp(writable: true)]
+    public ?string $oldValue = null;
+
+    #[LiveProp(writable: true)]
     public ?string $value = null;
+
+    #[PreReRender]
+    public function preRender(): void
+    {
+        $this->value = $this->oldValue;
+    }
 
     #[ExposeInTemplate]
     public function getSize(): string
@@ -58,7 +68,7 @@ class Modal
             default => '',
         };
 
-        return sprintf($title, $this->value);
+        return sprintf($title, $this->oldValue);
     }
 
     #[ExposeInTemplate]
@@ -70,7 +80,7 @@ class Modal
             default => '',
         };
 
-        return sprintf($subtitle, $this->value);
+        return sprintf($subtitle, $this->oldValue);
     }
 
     #[ExposeInTemplate]
@@ -79,7 +89,7 @@ class Modal
         return match (ModalAction::tryFrom($this->action ?? '')) {
             ModalAction::CREATE, ModalAction::RENAME => 'input',
             ModalAction::MOVE => 'files',
-            default => 'hidden',
+            default => null,
         };
     }
 
@@ -93,11 +103,11 @@ class Modal
     public function save(): void
     {
         match (ModalAction::tryFrom($this->action ?? '')) {
-            ModalAction::CREATE => $this->getFilesystem()->createDirectory($this->getPath()),
-            ModalAction::DELETE_FOLDER => $this->getFilesystem()->deleteDirectory($this->getPath()),
-            ModalAction::DELETE_FILE => $this->getFilesystem()->delete($this->getPath()),
+            ModalAction::CREATE => $this->getFilesystem()->createDirectory($this->getPath($this->value)),
+            ModalAction::DELETE_FOLDER => $this->getFilesystem()->deleteDirectory($this->getPath($this->value)),
+            ModalAction::DELETE_FILE => $this->getFilesystem()->delete($this->getPath($this->value)),
             ModalAction::UPLOAD => null,
-            ModalAction::RENAME => null,
+            ModalAction::RENAME => $this->getFilesystem()->move($this->getPath($this->oldValue), $this->getPath($this->value)),
             ModalAction::MOVE => null,
             default => null,
         };
@@ -106,12 +116,12 @@ class Modal
         $this->dispatchBrowserEvent('modal:close');
     }
 
-    private function getPath(): string
+    private function getPath(string $value): string
     {
         if ('/' === $this->currentPath) {
-            return $this->currentPath.$this->value;
+            return $this->currentPath.$value;
         }
 
-        return sprintf('/%s/%s', $this->currentPath, $this->value);
+        return sprintf('/%s/%s', $this->currentPath, $value);
     }
 }

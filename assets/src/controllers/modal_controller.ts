@@ -1,10 +1,10 @@
 import {Controller} from '@hotwired/stimulus';
 
 export class ModalController extends Controller {
-  static targets = ['dialog', 'action', 'value'];
+  static targets = ['dialog', 'action', 'oldValue'];
   declare dialogTarget: HTMLDialogElement;
   declare actionTarget: HTMLInputElement;
-  declare valueTarget: HTMLInputElement;
+  declare oldValueTarget: HTMLInputElement;
 
   initialize() {
     window.addEventListener('modal:close', () => this.close());
@@ -12,8 +12,8 @@ export class ModalController extends Controller {
 
   open({params}: {params: any}) {
     if (params.value) {
-      this.valueTarget.value = params.value;
-      this.valueTarget.dispatchEvent(new Event('change', { bubbles: true }));
+      this.oldValueTarget.value = params.value;
+      this.oldValueTarget.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
     this.actionTarget.value = params.action;
@@ -25,8 +25,8 @@ export class ModalController extends Controller {
   }
 
   close() {
-    this.valueTarget.value = '';
-    this.valueTarget.dispatchEvent(new Event('change', { bubbles: true }));
+    this.oldValueTarget.value = '';
+    this.oldValueTarget.dispatchEvent(new Event('change', { bubbles: true }));
     this.actionTarget.value = '';
     this.actionTarget.dispatchEvent(new Event('change', { bubbles: true }));
 

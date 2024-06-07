@@ -76,9 +76,9 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         }
     }
 
-    public function move(string $id, string $source, string $destination): void
+    public function move(string $id, string $destination): void
     {
-        $sourcePath = $this->prefixPath($source);
+        $sourcePath = $this->prefixPath($id);
         $destinationPath = $this->prefixPath($destination);
 
         $this->checkDirectoryExists(\dirname($destinationPath));
@@ -88,9 +88,9 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         }
     }
 
-    public function copy(string $id, string $source, string $destination): void
+    public function copy(string $id, string $destination): void
     {
-        $sourcePath = $this->prefixPath($source);
+        $sourcePath = $this->prefixPath($id);
         $destinationPath = $this->prefixPath($destination);
 
         $this->checkDirectoryExists(\dirname($destinationPath));
