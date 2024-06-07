@@ -195,4 +195,31 @@ SelectController.values = {
 };
 SelectController.targets = ['input', 'item', 'current'];
 
-export { CollapseController, DisplayController, SelectController, SubmenuController, ToggleController };
+class ModalController extends Controller {
+    initialize() {
+        window.addEventListener('modal:close', () => this.close());
+    }
+    open({ params }) {
+        if (params.value) {
+            this.valueTarget.value = params.value;
+            this.valueTarget.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        this.actionTarget.value = params.action;
+        this.actionTarget.dispatchEvent(new Event('change', { bubbles: true }));
+        this.dialogTarget.showModal();
+        this.dialogTarget.classList.add('c-modal--open');
+        document.body.classList.add('u-overflow-hidden');
+    }
+    close() {
+        this.valueTarget.value = '';
+        this.valueTarget.dispatchEvent(new Event('change', { bubbles: true }));
+        this.actionTarget.value = '';
+        this.actionTarget.dispatchEvent(new Event('change', { bubbles: true }));
+        this.dialogTarget.classList.remove('c-modal--open');
+        this.dialogTarget.close();
+        document.body.classList.remove('u-overflow-hidden');
+    }
+}
+ModalController.targets = ['dialog', 'action', 'value'];
+
+export { CollapseController, DisplayController, ModalController, SelectController, SubmenuController, ToggleController };

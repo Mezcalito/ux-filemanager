@@ -16,6 +16,7 @@ namespace Mezcalito\FileManagerBundle\Twig\Components;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemContextTrait;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
+use Symfony\UX\LiveComponent\Attribute\LiveListener;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent('Mezcalito:FileManager', template: '@MezcalitoFileManager/components/file_manager.html.twig')]
@@ -24,4 +25,10 @@ class FileManager
     use DefaultActionTrait;
     use FilesystemContextTrait;
     use FilesystemToolsTrait;
+
+    #[LiveListener('refresh')]
+    public function refresh(): void
+    {
+        dump('coucou');
+    }
 }

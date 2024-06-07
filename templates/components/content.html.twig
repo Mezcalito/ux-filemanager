@@ -1,6 +1,6 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<div {{ attributes.defaults({class: 'c-content', 'data-controller': 'mezcalito--ux-filemanager--display mezcalito--ux-filemanager--modal'}) }}>
+<div {{ attributes.defaults({class: 'c-content', 'data-controller': 'mezcalito--ux-filemanager--display'}) }}>
     <div class='c-back u-hidden@from-md'>
         <button type='button' class='c-back__action'>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -23,7 +23,7 @@
         </div>
 
         <div class='c-content__buttons u-hidden@until-md'>
-            <button class='c-button c-text-xs u-fw-500 u-color-neutral-white' data-action='mezcalito--ux-filemanager--modal#change'>
+            <button class='c-button c-text-xs u-fw-500 u-color-neutral-white' data-action="mezcalito--ux-filemanager--modal#open" data-mezcalito--ux-filemanager--modal-action-param="create">
                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_8891_105)">
                         <g clip-path="url(#clip1_8891_105)">
@@ -44,7 +44,7 @@
                 Create folder
             </button>
 
-            <button class='c-button c-text-xs u-fw-500 u-color-neutral-white' data-action='mezcalito--ux-filemanager--modal#change'>
+            <button class='c-button c-text-xs u-fw-500 u-color-neutral-white' data-action="mezcalito--ux-filemanager--modal#open" data-mezcalito--ux-filemanager--modal-action-param="upload">
                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M9.33341 2.13334C9.7016 2.13334 10.0001 2.43182 10.0001 2.80001V5.46667H12.6667C13.0349 5.46667 13.3334 5.76515 13.3334 6.13334C13.3334 6.50153 13.0349 6.80001 12.6667 6.80001H10.0001C9.64646 6.80001 9.30732 6.65953 9.05727 6.40948C8.80722 6.15943 8.66675 5.8203 8.66675 5.46667V2.80001C8.66675 2.43182 8.96522 2.13334 9.33341 2.13334Z" fill="white"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.66675 3.46667C4.48994 3.46667 4.32037 3.53691 4.19534 3.66193C4.07032 3.78696 4.00008 3.95653 4.00008 4.13334V13.4667C4.00008 13.6435 4.07032 13.8131 4.19534 13.9381C4.32037 14.0631 4.48994 14.1333 4.66675 14.1333H11.3334C11.5102 14.1333 11.6798 14.0631 11.8048 13.9381C11.9298 13.8131 12.0001 13.6435 12.0001 13.4667V6.40948L9.05727 3.46667H4.66675ZM3.25253 2.71913C3.62761 2.34405 4.13632 2.13334 4.66675 2.13334H9.33342C9.51023 2.13334 9.6798 2.20358 9.80482 2.3286L13.1382 5.66193C13.2632 5.78696 13.3334 5.95653 13.3334 6.13334V13.4667C13.3334 13.9971 13.1227 14.5058 12.7476 14.8809C12.3726 15.256 11.8638 15.4667 11.3334 15.4667H4.66675C4.13631 15.4667 3.62761 15.256 3.25253 14.8809C2.87746 14.5058 2.66675 13.9971 2.66675 13.4667V4.13334C2.66675 3.60291 2.87746 3.0942 3.25253 2.71913Z" fill="white"/>
@@ -104,7 +104,7 @@
             <div class='c-submenu__content'>
                 <ul>
                     <li>
-                        <button type='button' class='c-submenu__item c-submenu__button c-text-s u-color-grey-700' data-action='mezcalito--ux-filemanager--modal#change'>
+                        <button type='button' class='c-submenu__item c-submenu__button c-text-s u-color-grey-700' data-action="mezcalito--ux-filemanager--modal#open" data-mezcalito--ux-filemanager--modal-action-param="create">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.16672 4.15833C3.94349 4.15833 3.72941 4.24701 3.57157 4.40485C3.41372 4.56269 3.32505 4.77677 3.32505 5V14.1667C3.32505 14.3899 3.41372 14.604 3.57157 14.7618C3.72941 14.9197 3.94349 15.0083 4.16672 15.0083H10C10.4557 15.0083 10.825 15.3777 10.825 15.8333C10.825 16.289 10.4557 16.6583 10 16.6583H4.16672C3.50588 16.6583 2.87212 16.3958 2.40484 15.9285C1.93756 15.4613 1.67505 14.8275 1.67505 14.1667V5C1.67505 4.33917 1.93756 3.7054 2.40484 3.23812C2.87212 2.77085 3.50588 2.50833 4.16672 2.50833H7.50005C7.71885 2.50833 7.92869 2.59525 8.08341 2.74997L10.3418 5.00833H15.8334C16.4942 5.00833 17.128 5.27085 17.5953 5.73812C18.0625 6.2054 18.325 6.83917 18.325 7.5V10.4167C18.325 10.8723 17.9557 11.2417 17.5 11.2417C17.0444 11.2417 16.675 10.8723 16.675 10.4167V7.5C16.675 7.27677 16.5864 7.06269 16.4285 6.90485C16.2707 6.74701 16.0566 6.65833 15.8334 6.65833H10C9.78124 6.65833 9.5714 6.57141 9.41669 6.41669L7.15832 4.15833H4.16672Z" fill="#566071"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5083 15.8333C12.5083 15.3777 12.8777 15.0083 13.3333 15.0083H18.3333C18.7889 15.0083 19.1583 15.3777 19.1583 15.8333C19.1583 16.289 18.7889 16.6583 18.3333 16.6583H13.3333C12.8777 16.6583 12.5083 16.289 12.5083 15.8333Z" fill="#566071"/>
@@ -114,7 +114,7 @@
                         </button>
                     </li>
                     <li>
-                        <button type='button' class='c-submenu__item c-submenu__button c-text-s u-color-grey-700' data-action='mezcalito--ux-filemanager--modal#change'>
+                        <button type='button' class='c-submenu__item c-submenu__button c-text-s u-color-grey-700' data-action="mezcalito--ux-filemanager--modal#open" data-mezcalito--ux-filemanager--modal-action-param="upload">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6667 1.66667C12.1269 1.66667 12.5 2.03977 12.5 2.50001V5.83334H15.8334C16.2936 5.83334 16.6667 6.20643 16.6667 6.66667C16.6667 7.12691 16.2936 7.50001 15.8334 7.50001H12.5C12.058 7.50001 11.6341 7.32441 11.3215 7.01185C11.009 6.69929 10.8334 6.27537 10.8334 5.83334V2.50001C10.8334 2.03977 11.2065 1.66667 11.6667 1.66667Z" fill="#566071"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.83337 3.33334C5.61236 3.33334 5.4004 3.42114 5.24412 3.57742C5.08784 3.7337 5.00004 3.94566 5.00004 4.16667V15.8333C5.00004 16.0544 5.08784 16.2663 5.24412 16.4226C5.4004 16.5789 5.61236 16.6667 5.83337 16.6667H14.1667C14.3877 16.6667 14.5997 16.5789 14.756 16.4226C14.9122 16.2663 15 16.0544 15 15.8333V7.01185L11.3215 3.33334H5.83337ZM4.06561 2.3989C4.53445 1.93006 5.17033 1.66667 5.83337 1.66667H11.6667C11.8877 1.66667 12.0997 1.75447 12.256 1.91075L16.4226 6.07742C16.5789 6.2337 16.6667 6.44566 16.6667 6.66667V15.8333C16.6667 16.4964 16.4033 17.1323 15.9345 17.6011C15.4656 18.0699 14.8297 18.3333 14.1667 18.3333H5.83337C5.17033 18.3333 4.53445 18.0699 4.06561 17.6011C3.59677 17.1323 3.33337 16.4964 3.33337 15.8333V4.16667C3.33337 3.50363 3.59677 2.86775 4.06561 2.3989Z" fill="#566071"/>
@@ -129,5 +129,4 @@
         </div>
     </div>
 
-    <twig:Mezcalito:Modal size='lg' :storage="storage" :currentPath="currentPath"/>
 </div>
