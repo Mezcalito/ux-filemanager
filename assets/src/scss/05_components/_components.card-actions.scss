@@ -34,6 +34,7 @@
     align-items: center;
     gap: $space-16;
     transition: background-color var(--transition-in-out);
+    width: 100%;
 
     &:hover {
       background-color: var(--card-actions-button-bg-hover);

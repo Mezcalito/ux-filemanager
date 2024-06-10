@@ -1093,6 +1093,7 @@ body {
   align-items: center;
   gap: 1.6rem;
   transition: background-color var(--transition-in-out);
+  width: 100%;
 }
 .c-card-actions__content > button:hover {
   background-color: var(--card-actions-button-bg-hover);
