@@ -73,6 +73,12 @@
   }
 }
 
+.c-collapse__head--disabled {
+  .c-collapse__action {
+    color: var(--folder-collapse-disabled);
+  }
+}
+
 .c-collapse > .c-collapse__wrapper {
   position: relative;
   height: max(0px, var(--collapse-min-height));

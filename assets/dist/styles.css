@@ -59,6 +59,7 @@
   --modal-overlay-bg: var(--color-neutral-black-40);
   --folder-collapse-active-bg: var(--color-actions-news-50);
   --folder-collapse-active: var(--color-actions-news-600);
+  --folder-collapse-disabled: var(--color-grey-500);
   --card-actions-content-bg: var(--color-neutral-white);
   --card-actions-button: var(--color-grey-700);
   --card-actions-button-bg-hover: var(--color-grey-50);
@@ -999,6 +1000,10 @@ body {
 }
 .c-collapse__head--active svg path {
   stroke: var(--folder-collapse-active);
+}
+
+.c-collapse__head--disabled .c-collapse__action {
+  color: var(--folder-collapse-disabled);
 }
 
 .c-collapse > .c-collapse__wrapper {

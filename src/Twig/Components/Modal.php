@@ -44,7 +44,9 @@ class Modal
     #[PreReRender]
     public function preRender(): void
     {
-        $this->value = $this->oldValue;
+        if (\in_array(ModalAction::tryFrom($this->action ?? ''), [ModalAction::CREATE, ModalAction::RENAME])) {
+            $this->value = $this->oldValue;
+        }
     }
 
     #[ExposeInTemplate]
@@ -108,7 +110,7 @@ class Modal
             ModalAction::DELETE_FILE => $this->getFilesystem()->delete($this->getPath($this->value)),
             ModalAction::UPLOAD => null,
             ModalAction::RENAME => $this->getFilesystem()->move($this->getPath($this->oldValue), $this->getPath($this->value)),
-            ModalAction::MOVE => null,
+            ModalAction::MOVE => $this->getFilesystem()->move($this->getPath($this->oldValue), $this->getPath($this->value.'/'.$this->oldValue)),
             default => null,
         };
 

@@ -1,15 +1,11 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-{% set block %}
-
-{% endset %}
-
 <aside {{ attributes.defaults({class: 'c-sidebar u-hidden@until-md'}) }}>
     <ul>
         <li
-                class="c-collapse"
-                data-controller="mezcalito--ux-filemanager--collapse"
-                data-mezcalito--ux-filemanager--collapse-visible-value="true"
+            class="c-collapse"
+            data-controller="mezcalito--ux-filemanager--collapse"
+            data-mezcalito--ux-filemanager--collapse-visible-value="true"
         >
             <div class='c-collapse__head c-collapse__head--first{% if currentPath == '/' %} c-collapse__head--active{% endif %}'>
                 <button class='c-collapse__arrow' type="button" data-action="mezcalito--ux-filemanager--collapse#toggle">
