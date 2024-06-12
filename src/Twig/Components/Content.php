@@ -33,6 +33,16 @@ class Content
     public Sort $sort = Sort::NAME_ASC;
 
     #[ExposeInTemplate]
+    public function getParentFolder(): ?string
+    {
+        if ('/' === $this->currentPath) {
+            return null;
+        }
+
+        return \dirname('/'.$this->currentPath);
+    }
+
+    #[ExposeInTemplate]
     public function getContent(): array
     {
         $nodes = iterator_to_array($this->getFilesystem()->listDirectory($this->currentPath));
