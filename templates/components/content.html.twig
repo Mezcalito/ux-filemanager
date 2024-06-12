@@ -133,8 +133,6 @@
         </div>
     </div>
 
-{#    {% include 'include/actions-selected.html.twig' %}#}
-
     <div class='c-content__cards' data-mezcalito--ux-filemanager--display-target='list'>
         {% for node in content %}
             {% if node.isDir() %}
@@ -145,8 +143,8 @@
         {% endfor %}
     </div>
 
-    <div class='u-hidden@from-md' data-controller="mezcalito--ux-filemanager--submenu">
-        <button class='c-button c-content__sticky-button' data-action="mezcalito--ux-filemanager--submenu#open">
+    <div class='u-hidden@from-md' data-controller="mezcalito--ux-filemanager--toggle">
+        <button class='c-button c-content__sticky-button' data-action="mezcalito--ux-filemanager--toggle#change">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M10 4.16663V15.8333" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M4.16675 10H15.8334" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
@@ -154,7 +152,7 @@
             New
         </button>
 
-        <div class='c-submenu' data-mezcalito--ux-filemanager--submenu-target="panel" data-action="click@window->mezcalito--ux-filemanager--submenu#close">
+        <div class='c-submenu' data-mezcalito--ux-filemanager--toggle-target="content" data-action="click@window->mezcalito--ux-filemanager--toggle#close">
             <div class='c-submenu__content'>
                 <ul>
                     <li>
@@ -182,5 +180,4 @@
             </div>
         </div>
     </div>
-
 </div>

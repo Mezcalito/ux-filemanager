@@ -7,14 +7,14 @@
   transition: opacity var(--transition-in-out);
   opacity: 0;
   pointer-events: none;
-}
 
-.c-submenu--open {
-  opacity: 1;
-  pointer-events: all;
+  &.is-active {
+    opacity: 1;
+    pointer-events: all;
 
-  .c-submenu__content {
-    transform: translateY(0);
+    .c-submenu__content {
+      transform: translateY(0);
+    }
   }
 }
 

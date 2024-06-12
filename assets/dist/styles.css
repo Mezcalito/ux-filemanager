@@ -903,12 +903,11 @@ body {
   opacity: 0;
   pointer-events: none;
 }
-
-.c-submenu--open {
+.c-submenu.is-active {
   opacity: 1;
   pointer-events: all;
 }
-.c-submenu--open .c-submenu__content {
+.c-submenu.is-active .c-submenu__content {
   transform: translateY(0);
 }
 
@@ -1198,9 +1197,6 @@ body {
 }
 .c-custom-select__list-wrapper.is-active {
   display: flex;
-}
-.c-custom-select__list-wrapper.is-active .c-custom-select__icon {
-  transform: rotate(0deg);
 }
 
 .c-custom-select__list {

@@ -16,8 +16,6 @@ export class DisplayController extends Controller {
         this.modeValue = event.params.mode;
     }
 
-    //c-toggle-buttons__active
-
     modeValueChanged() {
         this.cardTargets.forEach((card) => {
             card.classList.toggle('display-grid', this.modeValue === 'grid');
