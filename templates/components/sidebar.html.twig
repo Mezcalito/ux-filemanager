@@ -22,7 +22,7 @@
             </div>
             <div class="c-collapse__wrapper" data-mezcalito--ux-filemanager--collapse-target="wrapper">
                 <ul class="c-collapse__content" data-mezcalito--ux-filemanager--collapse-target="content">
-                    {% for node in filesystem.listDirectory('/')|filter(node => node.isDir()) %}
+                    {% for node in nodes %}
                         <twig:Mezcalito:FolderCollapse :storage="storage" :id="node.id" :node='node' :currentPath='currentPath'/>
                     {% endfor %}
                 </ul>
