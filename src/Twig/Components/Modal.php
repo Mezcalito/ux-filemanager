@@ -110,8 +110,8 @@ class Modal
     {
         match (ModalAction::tryFrom($this->action ?? '')) {
             ModalAction::CREATE => $this->getFilesystem()->createDirectory($this->getPath($this->value)),
-            ModalAction::DELETE_FOLDER => $this->getFilesystem()->deleteDirectory($this->getPath($this->value)),
-            ModalAction::DELETE_FILE => $this->getFilesystem()->delete($this->getPath($this->value)),
+            ModalAction::DELETE_FOLDER => $this->getFilesystem()->deleteDirectory($this->getPath($this->oldValue)),
+            ModalAction::DELETE_FILE => $this->getFilesystem()->delete($this->getPath($this->oldValue)),
             ModalAction::UPLOAD => $this->uploadFiles($request->files->all('uploads')),
             ModalAction::RENAME => $this->getFilesystem()->move($this->getPath($this->oldValue), $this->getPath($this->value)),
             ModalAction::MOVE => $this->getFilesystem()->move($this->getPath($this->oldValue), $this->getPath($this->value.'/'.$this->oldValue)),
