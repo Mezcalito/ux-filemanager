@@ -1,19 +1,5 @@
 .c-custom-select {
   position: relative;
-
-  &.is-active {
-    .c-custom-select__list-wrapper {
-      display: flex;
-    }
-
-    .c-custom-select__icon {
-      transform: rotate(0deg);
-    }
-
-    .c-custom-select__input-wrapper {
-      background-color: var(--select-active-bg);
-    }
-  }
 }
 
 .c-custom-select__input-wrapper {
@@ -74,6 +60,10 @@
   gap: 0.4rem;
   width: max-content;
   right: 0;
+
+  &.is-active {
+    display: flex;
+  }
 }
 
 .c-custom-select__list {
@@ -90,5 +80,24 @@
 
   &:hover {
     background-color: var(--select-item-hover);
+  }
+}
+
+.c-custom-select__item > button {
+  display: flex;
+  align-items: center;
+  gap: $space-10;
+  width: 100%;
+
+  svg {
+    @include min-width(md) {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+
+    @include max-width(md) {
+      width: 1rem;
+      height: 1rem;
+    }
   }
 }

@@ -17,8 +17,20 @@
         </svg>
     </div>
 
-    <p class='c-folder-card__name c-text-s u-fw-700 u-color-grey-900'>{{ this.node.filename }}</p>
-    <p class='c-folder-card__number c-text-xs u-fw-400 u-color-grey-500'>2 items</p>
+    <p class='c-folder-card__name c-text-s u-fw-700 u-color-grey-900'>
+        {{ this.node.filename }}
+
+        {% set childrenNumber = filesystem.listDirectory(this.node.path)|filter(child => child.isDir())|length %}
+        {% if childrenNumber > 0 %}
+            <span class='u-fw-400'>
+                ({{ childrenNumber }})
+            </span>
+        {% endif %}
+    </p>
+
+    <div class='c-file-card__infos'>
+        <p class='c-folder-card__number c-text-xs u-fw-400 u-color-grey-500'>{{ this.node.lastModified|date("m/d/Y") }}</p>
+    </div>
 
     <div class='c-card-actions' data-controller='mezcalito--ux-filemanager--toggle'>
         <button class='c-card-actions__action' data-action='mezcalito--ux-filemanager--toggle#change'>

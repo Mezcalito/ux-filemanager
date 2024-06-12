@@ -54,7 +54,61 @@
                 Upload file
             </button>
 
-            <twig:Mezcalito:Select/>
+            <div class="c-custom-select" data-controller="mezcalito--ux-filemanager--toggle" >
+                <div class="c-custom-select__input-wrapper" data-action="click->mezcalito--ux-filemanager--toggle#change click@window->mezcalito--ux-filemanager--toggle#close">
+                    <div class="c-custom-select__current-wrapper">
+                        <p class="c-custom-select__current c-text-xs u-fw-500 u-color-actions-success-800">Sort by</p>
+                        <span class="c-custom-select__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M12 10L8 6L4 10" stroke="#00591D" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="c-custom-select__list-wrapper" data-mezcalito--ux-filemanager--toggle-target="content">
+                    <ul class="c-custom-select__list">
+                        <li class="c-custom-select__item">
+                            <button type='button' class="c-text-s u-color-grey-700"
+                                    data-action="live#update"
+                                    data-model="sort"
+                                    data-value="{% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::NAME_ASC') %}name-desc{% else %}name-asc{% endif %}"
+                            >
+                                By name
+                                {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::NAME_ASC') %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+                                    </svg>
+                                {% endif %}
+                                {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::NAME_DESC') %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                                    </svg>
+                                {% endif %}
+                            </button>
+                        </li>
+                        <li class="c-custom-select__item">
+                            <button type='button' class="c-text-s u-color-grey-700"
+                                    data-action="live#update"
+                                    data-model="sort"
+                                    data-value="{% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::DATE_ASC') %}date-desc{% else %}date-asc{% endif %}"
+                            >
+                                By date
+                                {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::DATE_ASC') %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+                                    </svg>
+                                {% endif %}
+                                {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::DATE_DESC') %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                                    </svg>
+                                {% endif %}
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class='c-toggle-buttons'>
@@ -82,7 +136,7 @@
 {#    {% include 'include/actions-selected.html.twig' %}#}
 
     <div class='c-content__cards' data-mezcalito--ux-filemanager--display-target='list'>
-        {% for node in filesystem.listDirectory(currentPath) %}
+        {% for node in content %}
             {% if node.isDir() %}
                 <twig:Mezcalito:Folder :storage="storage" :id="node.id"/>
             {% else %}

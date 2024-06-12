@@ -1135,15 +1135,6 @@ body {
 .c-custom-select {
   position: relative;
 }
-.c-custom-select.is-active .c-custom-select__list-wrapper {
-  display: flex;
-}
-.c-custom-select.is-active .c-custom-select__icon {
-  transform: rotate(0deg);
-}
-.c-custom-select.is-active .c-custom-select__input-wrapper {
-  background-color: var(--select-active-bg);
-}
 
 .c-custom-select__input-wrapper {
   cursor: pointer;
@@ -1205,6 +1196,12 @@ body {
   width: max-content;
   right: 0;
 }
+.c-custom-select__list-wrapper.is-active {
+  display: flex;
+}
+.c-custom-select__list-wrapper.is-active .c-custom-select__icon {
+  transform: rotate(0deg);
+}
 
 .c-custom-select__list {
   width: 100%;
@@ -1220,6 +1217,25 @@ body {
 }
 .c-custom-select__item:hover {
   background-color: var(--select-item-hover);
+}
+
+.c-custom-select__item > button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .c-custom-select__item > button svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+@media (max-width: 767px) {
+  .c-custom-select__item > button svg {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .u-color-neutral-black {
