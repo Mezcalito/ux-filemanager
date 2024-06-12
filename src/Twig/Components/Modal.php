@@ -46,8 +46,8 @@ class Modal
     #[PreReRender]
     public function preRender(): void
     {
-        if (\in_array(ModalAction::tryFrom($this->action ?? ''), [ModalAction::CREATE, ModalAction::RENAME])) {
-            $this->value = $this->oldValue;
+        if (ModalAction::RENAME == ModalAction::tryFrom($this->action ?? '')) {
+            $this->value = basename((string) $this->oldValue);
         }
     }
 
@@ -109,17 +109,19 @@ class Modal
     public function save(Request $request): void
     {
         match (ModalAction::tryFrom($this->action ?? '')) {
-            ModalAction::CREATE => $this->getFilesystem()->createDirectory($this->getPath($this->value)),
-            ModalAction::DELETE_FOLDER => $this->getFilesystem()->deleteDirectory($this->getPath($this->oldValue)),
-            ModalAction::DELETE_FILE => $this->getFilesystem()->delete($this->getPath($this->oldValue)),
+            ModalAction::CREATE => $this->getFilesystem()->createDirectory($this->prefixPath($this->value)),
+            ModalAction::DELETE_FOLDER => $this->getFilesystem()->deleteDirectory($this->oldValue),
+            ModalAction::DELETE_FILE => $this->getFilesystem()->delete($this->oldValue),
             ModalAction::UPLOAD => $this->uploadFiles($request->files->all('uploads')),
-            ModalAction::RENAME => $this->getFilesystem()->move($this->getPath($this->oldValue), $this->getPath($this->value)),
-            ModalAction::MOVE => $this->getFilesystem()->move($this->getPath($this->oldValue), $this->getPath($this->value.'/'.$this->oldValue)),
+            ModalAction::RENAME => $this->getFilesystem()->move($this->oldValue, $this->prefixPath($this->value)),
+            ModalAction::MOVE => $this->getFilesystem()->move($this->oldValue, $this->value.'/'.basename((string) $this->oldValue)),
             default => null,
         };
 
         $this->dispatchBrowserEvent('filemanager:refresh');
         $this->dispatchBrowserEvent('modal:close');
+        $this->value = null;
+        $this->oldValue = null;
     }
 
     /**
@@ -128,11 +130,11 @@ class Modal
     private function uploadFiles(array $files): void
     {
         foreach ($files as $file) {
-            $this->getFilesystem()->write($this->getPath($file->getClientOriginalName()), $file->getContent());
+            $this->getFilesystem()->write($this->prefixPath($file->getClientOriginalName()), $file->getContent());
         }
     }
 
-    private function getPath(string $value): string
+    private function prefixPath(string $value): string
     {
         if ('/' === $this->currentPath) {
             return $this->currentPath.$value;

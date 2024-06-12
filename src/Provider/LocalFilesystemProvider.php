@@ -182,7 +182,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         return $this->rootLocation.ltrim($path, '\\/');
     }
 
-    public function stripPrefix(string $path): string
+    private function stripPrefix(string $path): string
     {
         return substr($path, \strlen($this->rootLocation));
     }
