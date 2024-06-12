@@ -16,6 +16,8 @@ namespace Mezcalito\FileManagerBundle\Twig\Components;
 use Mezcalito\FileManagerBundle\Enum\ModalAction;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemContextTrait;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
@@ -65,6 +67,7 @@ class Modal
             ModalAction::CREATE => 'New folder',
             ModalAction::DELETE_FOLDER => 'Delete folder "%s"',
             ModalAction::DELETE_FILE => 'Delete file "%s"',
+            ModalAction::UPLOAD => 'Upload files',
             ModalAction::RENAME => 'Rename your folder',
             ModalAction::MOVE => 'Move item "%s"',
             default => '',
@@ -90,6 +93,7 @@ class Modal
     {
         return match (ModalAction::tryFrom($this->action ?? '')) {
             ModalAction::CREATE, ModalAction::RENAME => 'input',
+            ModalAction::UPLOAD => 'upload',
             ModalAction::MOVE => 'files',
             default => null,
         };
@@ -102,13 +106,13 @@ class Modal
     }
 
     #[LiveAction]
-    public function save(): void
+    public function save(Request $request): void
     {
         match (ModalAction::tryFrom($this->action ?? '')) {
             ModalAction::CREATE => $this->getFilesystem()->createDirectory($this->getPath($this->value)),
             ModalAction::DELETE_FOLDER => $this->getFilesystem()->deleteDirectory($this->getPath($this->value)),
             ModalAction::DELETE_FILE => $this->getFilesystem()->delete($this->getPath($this->value)),
-            ModalAction::UPLOAD => null,
+            ModalAction::UPLOAD => $this->uploadFiles($request->files->all('uploads')),
             ModalAction::RENAME => $this->getFilesystem()->move($this->getPath($this->oldValue), $this->getPath($this->value)),
             ModalAction::MOVE => $this->getFilesystem()->move($this->getPath($this->oldValue), $this->getPath($this->value.'/'.$this->oldValue)),
             default => null,
@@ -116,6 +120,16 @@ class Modal
 
         $this->dispatchBrowserEvent('filemanager:refresh');
         $this->dispatchBrowserEvent('modal:close');
+    }
+
+    /**
+     * @param UploadedFile[] $files
+     */
+    private function uploadFiles(array $files): void
+    {
+        foreach ($files as $file) {
+            $this->getFilesystem()->write($this->getPath($file->getClientOriginalName()), $file->getContent());
+        }
     }
 
     private function getPath(string $value): string
