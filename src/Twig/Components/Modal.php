@@ -68,7 +68,7 @@ class Modal
             ModalAction::DELETE_FOLDER => 'Delete folder "%s"',
             ModalAction::DELETE_FILE => 'Delete file "%s"',
             ModalAction::UPLOAD => 'Upload files',
-            ModalAction::RENAME => 'Rename your folder',
+            ModalAction::RENAME => 'Rename item "%s"',
             ModalAction::MOVE => 'Move item "%s"',
             default => '',
         };

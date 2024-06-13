@@ -25,8 +25,11 @@
     "rector/rector": "^1.1",
     "symfony/asset": "^6.4|^7.0",
     "symfony/asset-mapper": "^6.4|^7.0",
+    "symfony/browser-kit": "^7.1",
+    "symfony/css-selector": "^7.1",
     "symfony/framework-bundle": "^6.4|^7.0",
     "symfony/stimulus-bundle": "^2.17",
+    "symfony/test-pack": "^1.0",
     "symfony/twig-bundle": "^6.4|^7.0",
     "symfony/web-profiler-bundle": "^7.0"
   },

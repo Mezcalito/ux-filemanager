@@ -35,6 +35,7 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->skip([
+        __DIR__.'/tests/bootstrap.php',
         __DIR__.'/tests/TestApplication/*',
         AddOverrideAttributeToOverriddenMethodsRector::class,
         FlipTypeControlToUseExclusiveTypeRector::class,

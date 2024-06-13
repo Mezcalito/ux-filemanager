@@ -3,12 +3,20 @@
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
          backupGlobals="false"
          backupStaticProperties="false"
-         bootstrap="vendor/autoload.php"
+         bootstrap="tests/bootstrap.php"
          cacheDirectory=".phpunit.cache"
          colors="true"
          processIsolation="false"
          stopOnFailure="false"
 >
+    <php>
+        <ini name="display_errors" value="1" />
+        <ini name="error_reporting" value="-1" />
+        <env name="APP_ENV" value="test" />
+        <env name="KERNEL_CLASS" value="Mezcalito\FileManagerBundle\Tests\TestApplication\Kernel" />
+        <server name="SHELL_VERBOSITY" value="-1" />
+    </php>
+
     <testsuites>
         <testsuite name="Mezcalito UX FileManager Test Suite">
             <directory>tests</directory>
