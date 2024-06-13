@@ -1,6 +1,6 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<div {{ attributes.defaults({class: 'c-content', 'data-controller': 'mezcalito--ux-filemanager--display'}) }}>
+<div class="c-content" {{ attributes.defaults({'data-controller': 'mezcalito--ux-filemanager--display'}) }}>
     <div class='c-back u-hidden@from-md'>
         {% if parentFolder is not null %}
             <button type='button' class='c-back__action' data-action="live#emit" data-live-event-param="updateCurrentPath" data-live-path-param="{{ parentFolder }}">

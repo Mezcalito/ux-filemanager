@@ -13,26 +13,25 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\Twig\Components;
 
-use Mezcalito\FileManagerBundle\Filesystem\Node as FsNode;
+use Mezcalito\FileManagerBundle\Filesystem\Node;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
-use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
-use Symfony\UX\LiveComponent\Attribute\LiveProp;
-use Symfony\UX\LiveComponent\DefaultActionTrait;
+use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
+use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
-#[AsLiveComponent('Mezcalito:File', template: '@MezcalitoFileManager/components/file.html.twig')]
+#[AsTwigComponent('Mezcalito:File', template: '@MezcalitoFileManager/components/file.html.twig')]
 class File
 {
-    use DefaultActionTrait;
     use FilesystemToolsTrait;
 
-    #[LiveProp]
     public string $id;
 
-    public function getNode(): ?FsNode
+    #[ExposeInTemplate]
+    public function getNode(): ?Node
     {
-        return $this->filesystem->info($this->id);
+        return $this->getFilesystem()->info($this->id);
     }
 
+    #[ExposeInTemplate]
     public function getBase64Content(): ?string
     {
         $fileInfo = $this->getNode();
@@ -40,6 +39,6 @@ class File
             return null;
         }
 
-        return base64_encode($this->filesystem->read($this->id));
+        return base64_encode($this->getFilesystem()->read($this->id));
     }
 }

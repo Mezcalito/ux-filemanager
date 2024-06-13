@@ -13,23 +13,21 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\Twig\Components;
 
-use Mezcalito\FileManagerBundle\Filesystem\Node as FsNode;
+use Mezcalito\FileManagerBundle\Filesystem\Node;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
-use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
-use Symfony\UX\LiveComponent\Attribute\LiveProp;
-use Symfony\UX\LiveComponent\DefaultActionTrait;
+use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
+use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
-#[AsLiveComponent('Mezcalito:Folder', template: '@MezcalitoFileManager/components/folder.html.twig')]
+#[AsTwigComponent('Mezcalito:Folder', template: '@MezcalitoFileManager/components/folder.html.twig')]
 class Folder
 {
-    use DefaultActionTrait;
     use FilesystemToolsTrait;
 
-    #[LiveProp]
     public string $id;
 
-    public function getNode(): ?FsNode
+    #[ExposeInTemplate]
+    public function getNode(): ?Node
     {
-        return $this->filesystem->info($this->id);
+        return $this->getFilesystem()->info($this->id);
     }
 }
