@@ -56,7 +56,7 @@ class Collapse {
     }
 }
 
-class FilemanagerController extends Controller {
+class default_1 extends Controller {
     constructor() {
         super(...arguments);
         this.toggleMap = new Map();
@@ -137,6 +137,6 @@ class FilemanagerController extends Controller {
         this.collapseMap.delete(element);
     }
 }
-FilemanagerController.targets = ['list', 'card', 'dialog', 'modalAction', 'modalOldValue', 'select', 'dropdown', 'submenu', 'collapse'];
+default_1.targets = ['list', 'card', 'dialog', 'modalAction', 'modalOldValue', 'select', 'dropdown', 'submenu', 'collapse'];
 
-export { FilemanagerController };
+export { default_1 as default };

@@ -9,7 +9,6 @@
     "controllers": {
       "filemanager": {
         "main": "dist/controller.js",
-        "name": "filemanager",
         "webpackMode": "eager",
         "fetch": "eager",
         "enabled": true,
@@ -20,16 +19,13 @@
     },
     "importmap": {
       "@hotwired/stimulus": "^3.0.0",
-      "@symfony/ux-live-component": "path:%PACKAGE%/dist/live_controller.js",
       "@mezcalito/ux-filemanager": "path:%PACKAGE%/dist/controller.js"
     }
   },
   "peerDependencies": {
-    "@hotwired/stimulus": "^3.0.0",
-    "@symfony/ux-live-component": "file:../vendor/symfony/ux-live-component/assets"
+    "@hotwired/stimulus": "^3.0.0"
   },
   "devDependencies": {
-    "@hotwired/stimulus": "^3.0.0",
-    "@symfony/ux-live-component": "file:../vendor/symfony/ux-live-component/assets"
+    "@hotwired/stimulus": "^3.0.0"
   }
 }

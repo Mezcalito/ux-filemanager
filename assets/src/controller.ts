@@ -4,7 +4,7 @@ import {ActionEvent, Controller} from "@hotwired/stimulus";
 import {Toggle} from "./scripts/toggle";
 import {Collapse} from "./scripts/collapse";
 
-export class FilemanagerController extends Controller {
+export default class extends Controller {
     static targets = [ 'list', 'card', 'dialog', 'modalAction', 'modalOldValue', 'select', 'dropdown', 'submenu', 'collapse' ];
 
     declare listTarget: HTMLElement;

@@ -17,8 +17,9 @@ module.exports = {
         typescript(),
         commonjs(),
         scss({
-            fileName: 'styles.css',
+            fileName: 'styles.min.css',
             watch: ['assets/src/scss', 'assets/src/scss/styles.scss'],
+            outputStyle: 'compressed',
         }),
     ],
     watch: {
