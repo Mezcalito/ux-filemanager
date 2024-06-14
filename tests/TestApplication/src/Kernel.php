@@ -32,16 +32,11 @@ final class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
-    public function index(): Response
-    {
-        return new Response('index');
-    }
-
-    public function renderTemplate(string $template, ?Environment $twig = null): Response
+    public function index(?Environment $twig = null): Response
     {
         $twig ??= $this->container->get('twig');
 
-        return new Response($twig->render($template.'.html.twig'));
+        return new Response($twig->render('filemanager.html.twig'));
     }
 
     public function registerBundles(): iterable
@@ -62,9 +57,6 @@ final class Kernel extends BaseKernel
 
         $routes->add('homepage', '/')
             ->controller('kernel::index');
-
-        $routes->add('template', '/render-template/{template}')
-            ->controller('kernel::renderTemplate');
 
         if ('dev' === $routes->env()) {
             $routes->import('@WebProfilerBundle/Resources/config/routing/wdt.xml')->prefix('/_wdt');
