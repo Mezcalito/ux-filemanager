@@ -1,8 +1,8 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
 <div {{ attributes }}>
-    <dialog class="c-modal c-modal--{{ size }}" data-action="close->mezcalito--ux-filemanager--modal#close" data-mezcalito--ux-filemanager--modal-target="dialog">
-        <button class='c-modal__close' type='button' data-action="mezcalito--ux-filemanager--modal#close">
+    <dialog class="c-modal c-modal--{{ size }}" data-action="close->mezcalito--ux-filemanager--filemanager#closeModal" data-mezcalito--ux-filemanager--filemanager-target="dialog">
+        <button class='c-modal__close' type='button' data-action="mezcalito--ux-filemanager--filemanager#closeModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                 <g clip-path="url(#clip0_8932_2476)">
                     <path d="M18 6.75L6 18.75" stroke="#566071" stroke-width="1.71429" stroke-linecap="round" stroke-linejoin="round"/>
@@ -28,11 +28,11 @@
             </div>
         {% endif %}
 
-        <input type="hidden" data-model="norender|oldValue" data-mezcalito--ux-filemanager--modal-target="oldValue"/>
-        <input type="hidden" data-model="action" data-mezcalito--ux-filemanager--modal-target="action"/>
+        <input type="hidden" data-model="norender|oldValue" data-mezcalito--ux-filemanager--filemanager-target="modalOldValue"/>
+        <input type="hidden" data-model="action" data-mezcalito--ux-filemanager--filemanager-target="modalAction"/>
 
         <div class='c-modal__actions'>
-            <button type='button' class='c-text-s u-fw-700 u-color-neutral-black' data-action="mezcalito--ux-filemanager--modal#close">Cancel</button>
+            <button type='button' class='c-text-s u-fw-700 u-color-neutral-black' data-action="mezcalito--ux-filemanager--filemanager#closeModal">Cancel</button>
             <button type='button' class='c-button' data-action="live#action" data-live-action-param="files|save">{{ actionLabel|capitalize }}</button>
         </div>
     </dialog>

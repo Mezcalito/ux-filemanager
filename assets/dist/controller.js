@@ -1,167 +1,142 @@
 import { Controller } from '@hotwired/stimulus';
 
-class DisplayController extends Controller {
-    changeMode(event) {
-        this.modeValue = event.params.mode;
-    }
-    modeValueChanged() {
-        this.cardTargets.forEach((card) => {
-            card.classList.toggle('display-grid', this.modeValue === 'grid');
-        });
-        this.listTarget.classList.toggle('c-content__cards--grid', this.modeValue === 'grid');
-        this.listButtonTarget.classList.toggle('c-toggle-buttons__action--active', this.modeValue === 'list');
-        this.gridButtonTarget.classList.toggle('c-toggle-buttons__action--active', this.modeValue === 'grid');
-    }
-}
-DisplayController.values = {
-    mode: { type: String, default: 'list' },
-};
-DisplayController.targets = ['list', 'card', 'listButton', 'gridButton'];
-
-class CollapseController extends Controller {
-    constructor() {
-        super(...arguments);
-        this.overflow = false;
+class Toggle {
+    constructor(wrapper, triggerSelector, contentSelector, clickOutsideSelector) {
+        this.active = false;
+        this.wrapper = wrapper;
+        this.trigger = wrapper.querySelector(triggerSelector);
+        this.content = wrapper.querySelector(contentSelector);
+        if (clickOutsideSelector === undefined) {
+            clickOutsideSelector = contentSelector;
+        }
+        this.clickOutside = wrapper.querySelector(clickOutsideSelector);
     }
     connect() {
-        if (!this.hasWrapperTarget) {
-            console.warn('CollapseController : The wrapper target is required');
-            return;
-        }
-        if (!this.hasContentTarget) {
-            console.warn('CollapseController : The content target is required');
-            return;
-        }
-        this.wrapperResizeObserver = new ResizeObserver(this.onWrapperResize.bind(this));
-        this.wrapperResizeObserver.observe(this.wrapperTarget);
-        this.wrapperTarget.addEventListener('transitionend', this.onTransitionEnd.bind(this));
-        this.contentResizeObserver = new ResizeObserver(this.onContentResize.bind(this));
-        this.contentResizeObserver.observe(this.contentTarget);
-    }
-    show() {
-        this.visibleValue = true;
-    }
-    hide() {
-        this.visibleValue = false;
-    }
-    toggle() {
-        this.visibleValue = !this.visibleValue;
-    }
-    onWrapperResize() {
-        const { height: wrapperHeight } = this.wrapperTarget.getBoundingClientRect();
-        const { height: contentHeight } = this.contentTarget.getBoundingClientRect();
-        this.overflow = wrapperHeight < contentHeight;
-        this.element.classList.toggle('c-collapse--overflow', this.overflow);
-        if (this.hasOverflowClass) {
-            this.overflow
-                ? this.element.classList.add(...this.overflowClasses)
-                : this.element.classList.remove(...this.overflowClasses);
-        }
-    }
-    onContentResize(entries) {
-        const { height } = entries[0].contentRect;
-        this.element.style.setProperty('--collapse-height', `${height}px`);
-        this.element.style.setProperty('--collapse-width', `auto`);
-    }
-    onTransitionEnd() {
-        this.element.classList.remove('c-collapse--transition');
-    }
-    visibleValueChanged(visible) {
-        if (!this.hasWrapperTarget || !this.hasContentTarget)
-            return;
-        this.element.classList.toggle('c-collapse--visible', visible);
-        this.element.classList.toggle('c-collapse--hidden', !visible);
-        this.element.classList.add('c-collapse--transition');
-        if (visible) {
-            if (this.hasVisibleClass)
-                this.element.classList.add(...this.visibleClasses);
-            if (this.hasHiddenClass)
-                this.element.classList.remove(...this.hiddenClasses);
-            this.wrapperTarget.style.setProperty('opacity', '1');
-            this.dispatch('show', { detail: { fade: this.fadeValue, gradient: this.gradientValue } });
-        }
-        else {
-            if (this.hasVisibleClass)
-                this.element.classList.remove(...this.visibleClasses);
-            if (this.hasHiddenClass)
-                this.element.classList.add(...this.hiddenClasses);
-            this.wrapperTarget.style.setProperty('opacity', this.fadeValue ? '0' : '1');
-            this.dispatch('hide', { detail: { fade: this.fadeValue, gradient: this.gradientValue } });
-        }
-    }
-    gradientValueChanged(gradient) {
-        this.element.classList.toggle('c-collapse--gradient', gradient);
-    }
-    fadeValueChanged(fade) {
-        this.element.classList.toggle('c-collapse--fade', fade);
-        if (!this.visibleValue)
-            this.wrapperTarget.style.setProperty('opacity', fade ? '0' : '1');
+        this.trigger.addEventListener('click', this.toggle.bind(this), true);
+        window.addEventListener('click', this.close.bind(this), true);
     }
     disconnect() {
-        var _a;
-        (_a = this.contentResizeObserver) === null || _a === void 0 ? void 0 : _a.disconnect();
+        this.trigger.removeEventListener('click', this.toggle.bind(this), true);
+        window.removeEventListener('click', this.close.bind(this), true);
     }
-}
-CollapseController.values = {
-    visible: {
-        type: Boolean,
-        default: false,
-    },
-    gradient: {
-        type: Boolean,
-        default: false,
-    },
-    fade: {
-        type: Boolean,
-        default: true,
-    },
-};
-CollapseController.targets = ['wrapper', 'content'];
-CollapseController.classes = ['visible', 'hidden', 'overflow'];
-
-class ToggleController extends Controller {
-    change() {
-        this.isActiveValue = !this.isActiveValue;
+    toggle() {
+        this.active = !this.active;
+        this.content.classList.toggle('is-active', this.active);
     }
     close(event) {
-        if (this.element === event.target || this.element.contains(event.target))
+        if (this.clickOutside === event.target || this.clickOutside.contains(event.target))
             return;
-        this.isActiveValue = false;
-    }
-    isActiveValueChanged() {
-        this.contentTarget.classList.toggle('is-active', this.isActiveValue);
+        this.active = false;
+        this.content.classList.remove('is-active');
     }
 }
-ToggleController.values = {
-    isActive: Boolean,
-};
-ToggleController.targets = ['content'];
 
-class ModalController extends Controller {
-    initialize() {
-        window.addEventListener('modal:close', () => this.close());
+class Collapse {
+    constructor(element) {
+        this.visible = false;
+        this.element = element;
+        this.trigger = element.querySelector('.c-collapse__arrow');
+        this.wrapper = element.querySelector('.c-collapse__wrapper');
+        this.content = element.querySelector('.c-collapse__content');
+        this.visible = 'true' === element.dataset.visible;
     }
-    open({ params }) {
+    connect() {
+        this.trigger.addEventListener('click', this.collapse.bind(this), true);
+    }
+    disconnect() {
+        this.trigger.removeEventListener('click', this.collapse.bind(this), true);
+    }
+    collapse() {
+        if (null === this.wrapper || null === this.content)
+            return;
+        this.visible = !this.visible;
+        this.element.classList.toggle('c-collapse--visible', this.visible);
+        this.element.classList.toggle('c-collapse--hidden', !this.visible);
+        this.element.dataset.visible = this.visible ? 'true' : 'false';
+    }
+}
+
+class FilemanagerController extends Controller {
+    constructor() {
+        super(...arguments);
+        this.toggleMap = new Map();
+        this.collapseMap = new Map();
+    }
+    initialize() {
+        window.addEventListener('modal:close', () => this.closeModal());
+    }
+    changeDisplayMode(event) {
+        document.querySelectorAll('.c-toggle-buttons__action').forEach((button) => {
+            button.classList.remove('c-toggle-buttons__action--active');
+        });
+        event.currentTarget.classList.add('c-toggle-buttons__action--active');
+        const mode = event.params.mode;
+        this.cardTargets.forEach((card) => {
+            card.classList.toggle('display-grid', mode === 'grid');
+        });
+        this.listTarget.classList.toggle('c-content__cards--grid', mode === 'grid');
+    }
+    openModal({ params }) {
         if (params.value) {
-            this.oldValueTarget.value = params.value;
-            this.oldValueTarget.dispatchEvent(new Event('change', { bubbles: true }));
+            this.modalOldValueTarget.value = params.value;
+            this.modalOldValueTarget.dispatchEvent(new Event('change', { bubbles: true }));
         }
-        this.actionTarget.value = params.action;
-        this.actionTarget.dispatchEvent(new Event('change', { bubbles: true }));
+        this.modalActionTarget.value = params.action;
+        this.modalActionTarget.dispatchEvent(new Event('change', { bubbles: true }));
         this.dialogTarget.showModal();
         this.dialogTarget.classList.add('c-modal--open');
         document.body.classList.add('u-overflow-hidden');
     }
-    close() {
-        this.oldValueTarget.value = '';
-        this.oldValueTarget.dispatchEvent(new Event('change', { bubbles: true }));
-        this.actionTarget.value = '';
-        this.actionTarget.dispatchEvent(new Event('change', { bubbles: true }));
+    closeModal() {
+        this.modalOldValueTarget.value = '';
+        this.modalOldValueTarget.dispatchEvent(new Event('change', { bubbles: true }));
+        this.modalActionTarget.value = '';
+        this.modalActionTarget.dispatchEvent(new Event('change', { bubbles: true }));
         this.dialogTarget.classList.remove('c-modal--open');
         this.dialogTarget.close();
         document.body.classList.remove('u-overflow-hidden');
     }
+    selectTargetConnected(element) {
+        const toggle = new Toggle(element, '.c-custom-select__input-wrapper', '.c-custom-select__list-wrapper');
+        toggle.connect();
+        this.toggleMap.set(element, toggle);
+    }
+    selectTargetDisconnected(element) {
+        const toggle = this.toggleMap.get(element);
+        toggle.disconnect();
+        this.toggleMap.delete(element);
+    }
+    dropdownTargetConnected(element) {
+        const toggle = new Toggle(element, '.c-card-actions__action', '.c-card-actions__content');
+        toggle.connect();
+        this.toggleMap.set(element, toggle);
+    }
+    dropdownTargetDisconnected(element) {
+        const toggle = this.toggleMap.get(element);
+        toggle.disconnect();
+        this.toggleMap.delete(element);
+    }
+    submenuTargetConnected(element) {
+        const toggle = new Toggle(element, '.c-content__sticky-button', '.c-submenu', '.c-submenu__content');
+        toggle.connect();
+        this.toggleMap.set(element, toggle);
+    }
+    submenuTargetDisconnected(element) {
+        const toggle = this.toggleMap.get(element);
+        toggle.disconnect();
+        this.toggleMap.delete(element);
+    }
+    collapseTargetConnected(element) {
+        const collapse = new Collapse(element);
+        collapse.connect();
+        this.collapseMap.set(element, collapse);
+    }
+    collapseTargetDisconnected(element) {
+        const collapse = this.collapseMap.get(element);
+        collapse.disconnect();
+        this.collapseMap.delete(element);
+    }
 }
-ModalController.targets = ['dialog', 'action', 'oldValue'];
+FilemanagerController.targets = ['list', 'card', 'dialog', 'modalAction', 'modalOldValue', 'select', 'dropdown', 'submenu', 'collapse'];
 
-export { CollapseController, DisplayController, ModalController, ToggleController };
+export { FilemanagerController };

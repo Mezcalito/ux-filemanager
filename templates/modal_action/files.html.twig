@@ -1,11 +1,7 @@
 <ul>
-    <li
-        class="c-collapse"
-        data-controller="mezcalito--ux-filemanager--collapse"
-        data-mezcalito--ux-filemanager--collapse-visible-value="true"
-    >
-        <div class='c-collapse__head c-collapse__head--first'>
-            <button class='c-collapse__arrow' type="button" data-action="mezcalito--ux-filemanager--collapse#toggle">
+    <li class="c-collapse" data-mezcalito--ux-filemanager--filemanager-target="collapse" data-visible="true">
+        <div class="c-collapse__head c-collapse__head--first">
+            <button class="c-collapse__arrow" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
                     <path d="M5.25 11.3L8.75 7.8L5.25 4.3" stroke="#566071" stroke-width="1.169" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -17,8 +13,8 @@
                 My files
             </button>
         </div>
-        <div class="c-collapse__wrapper" data-mezcalito--ux-filemanager--collapse-target="wrapper">
-            <ul class="c-collapse__content" data-mezcalito--ux-filemanager--collapse-target="content">
+        <div class="c-collapse__wrapper">
+            <ul class="c-collapse__content">
                 {% for node in filesystem.listDirectory('/')|filter(node => node.isDir()) %}
                     {{ _self.folder(filesystem, oldValue, value, node) }}
                 {% endfor %}
@@ -29,10 +25,10 @@
 
 {% macro folder(filesystem, oldValue, value, node) %}
     {% set hasChild = filesystem.listDirectory(node.path)|filter(child => child.isDir())|length > 0 %}
-    <li class="{% if hasChild %}c-collapse c-collapse__openable{% else %}c-collapse{% endif %}" {% if hasChild %}data-controller="mezcalito--ux-filemanager--collapse" data-mezcalito--ux-filemanager--collapse-visible-value="false"{% endif %}>
-        <div class='c-collapse__head{% if value == node.path %} c-collapse__head--active{% endif %}{% if oldValue == node.path %} c-collapse__head--disabled{% endif %}'>
+    <li class="{% if hasChild %}c-collapse c-collapse__openable{% else %}c-collapse{% endif %}" {% if hasChild %}data-mezcalito--ux-filemanager--filemanager-target="collapse"{% endif %}>
+        <div class="c-collapse__head{% if value == node.path %} c-collapse__head--active{% endif %}{% if oldValue == node.path %} c-collapse__head--disabled{% endif %}">
             {% if hasChild %}
-                <button class='c-collapse__arrow' type="button" data-action="mezcalito--ux-filemanager--collapse#toggle">
+                <button class="c-collapse__arrow" type="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
                         <path d="M5.25 11.3L8.75 7.8L5.25 4.3" stroke="#566071" stroke-width="1.169" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -44,13 +40,13 @@
                 </svg>
                 {{ node.id | split('/') | last }}
                 {% if hasChild %}
-                    <span class='u-fw-400'>({{ filesystem.listDirectory(node.path)|filter(child => child.isDir())|length }})</span>
+                    <span class="u-fw-400">({{ filesystem.listDirectory(node.path)|filter(child => child.isDir())|length }})</span>
                 {% endif %}
             </button>
         </div>
         {% if hasChild %}
-            <div class="c-collapse__wrapper" data-mezcalito--ux-filemanager--collapse-target="wrapper">
-                <ul class="c-collapse__content" data-mezcalito--ux-filemanager--collapse-target="content">
+            <div class="c-collapse__wrapper">
+                <ul class="c-collapse__content">
                     {% for child in filesystem.listDirectory(node.path)|filter(node => node.isDir()) %}
                         {{ _self.folder(filesystem, oldValue, value, child) }}
                     {% endfor %}
