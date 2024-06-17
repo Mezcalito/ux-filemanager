@@ -1,6 +1,6 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<aside class="fm-c-sidebar fm-u-hidden@until-md" {{ attributes }}>
+<aside class="fm-c-sidebar fm-u-hidden@until-md" {{ attributes.defaults({'data-action': 'filemanager:refresh@window->live#$render'}) }}>
     <ul>
         <li class="fm-c-collapse" data-mezcalito--ux-filemanager--filemanager-target="collapse" data-visible="true">
             <div class="fm-c-collapse__head fm-c-collapse__head--first{% if currentPath == '/' %} fm-c-collapse__head--active{% endif %}">
@@ -55,4 +55,8 @@
             </div>
         {% endif %}
     </li>
+{% endmacro %}
+
+{% macro placeholder(props) %}
+    Loading... Please wait...
 {% endmacro %}

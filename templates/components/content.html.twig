@@ -1,6 +1,6 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<div class="fm-c-content" {{ attributes }}>
+<div class="fm-c-content" {{ attributes.defaults({'data-action': 'filemanager:refresh@window->live#$render'}) }}>
     <div class="fm-c-back fm-u-hidden@from-md">
         {% if parentFolder is not null %}
             <button type="button" class="fm-c-back__action" data-action="live#emit" data-live-event-param="updateCurrentPath" data-live-path-param="{{ parentFolder }}">
@@ -184,3 +184,7 @@
         </div>
     </div>
 </div>
+
+{% macro placeholder(props) %}
+    Loading... Please wait...
+{% endmacro %}
