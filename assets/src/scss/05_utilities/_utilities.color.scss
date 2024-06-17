@@ -1,5 +1,5 @@
 @each $name, $color in $theme-color {
-  .u-color-#{$name} {
+  .fm-u-color-#{$name} {
     color: #{$color};
   }
 }

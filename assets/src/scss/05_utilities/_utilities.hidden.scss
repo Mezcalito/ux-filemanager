@@ -1,15 +1,15 @@
-.u-hidden {
+.fm-u-hidden {
   display: none!important;
 }
 
 @each $name, $value in $breakpoints {
   @include min-width(#{$name}) {
-    .u-hidden\@from-#{$name} {
+    .fm-u-hidden\@from-#{$name} {
       display: none!important;
     }
   }
   @include max-width(#{$name}) {
-    .u-hidden\@until-#{$name} {
+    .fm-u-hidden\@until-#{$name} {
       display: none!important;
     }
   }

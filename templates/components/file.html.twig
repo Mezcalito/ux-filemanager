@@ -1,15 +1,15 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<div class="c-file-card" data-mezcalito--ux-filemanager--filemanager-target="card">
-    <input class="c-file-card__input" type="checkbox" name="test" id="test" />
+<div class="fm-c-file-card" data-mezcalito--ux-filemanager--filemanager-target="card">
+    <input class="fm-c-file-card__input" type="checkbox" name="test" id="test" />
 
-    <div class="c-file-card__active-icon">
+    <div class="fm-c-file-card__active-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
             <path d="M16.1627 5.8756C16.0148 5.71142 15.8078 5.6127 15.5871 5.60113C15.3665 5.58957 15.1502 5.66611 14.986 5.81393L7.24021 12.7848L3.63269 9.17726C3.55581 9.09766 3.46385 9.03418 3.36221 8.9905C3.26052 8.94686 3.15117 8.92386 3.04052 8.9229C2.92987 8.92194 2.82014 8.94302 2.71773 8.9849C2.61531 9.02682 2.52227 9.0887 2.44403 9.16694C2.36578 9.24518 2.30391 9.33822 2.26201 9.44062C2.2201 9.54306 2.19902 9.65278 2.19998 9.76342C2.20094 9.8741 2.22393 9.98342 2.26761 10.0851C2.31128 10.1868 2.37476 10.2787 2.45435 10.3556L6.62101 14.5223C6.77197 14.6731 6.97505 14.7604 7.18837 14.7659C7.40173 14.7715 7.60909 14.6951 7.76769 14.5523L16.101 7.05226C16.2652 6.90438 16.3639 6.69734 16.3755 6.4767C16.387 6.25605 16.3105 6.03983 16.1627 5.8756Z" fill="black"/>
         </svg>
     </div>
 
-    <div class="c-file-card__picture">
+    <div class="fm-c-file-card__picture">
         {% if base64Content %}
             <img src="data:image/png;base64, {{ this.base64Content }}" alt="{{ node.filename }}" width="200" height="200"/>
         {% else %}
@@ -23,23 +23,23 @@
         {% endif %}
     </div>
 
-    <p class="c-file-card__name c-text-s u-fw-700 u-color-grey-900">{{ node.filename }}</p>
+    <p class="fm-c-file-card__name fm-c-text-s fm-u-fw-700 fm-u-color-grey-900">{{ node.filename }}</p>
 
-    <div class="c-file-card__infos">
-        {% if node.lastModified is not null %}<p class="c-text-xs u-fw-400 u-color-grey-500">{{ node.lastModified|date("m/d/Y") }}</p>{% endif %}
-        {% if node.size is not null %}<p class="c-text-xs u-fw-400 u-color-grey-500">{{ _self.human_filesize(node.size) }}</p>{% endif %}
+    <div class="fm-c-file-card__infos">
+        {% if node.lastModified is not null %}<p class="fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ node.lastModified|date("m/d/Y") }}</p>{% endif %}
+        {% if node.size is not null %}<p class="fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ _self.human_filesize(node.size) }}</p>{% endif %}
     </div>
 
-    <div class="c-card-actions" data-mezcalito--ux-filemanager--filemanager-target="dropdown">
-        <button class="c-card-actions__action">
+    <div class="fm-c-card-actions" data-mezcalito--ux-filemanager--filemanager-target="dropdown">
+        <button class="fm-c-card-actions__action">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.25 12.8C10.25 11.8335 11.0335 11.05 12 11.05C12.9665 11.05 13.75 11.8335 13.75 12.8C13.75 13.7665 12.9665 14.55 12 14.55C11.0335 14.55 10.25 13.7665 10.25 12.8Z" fill="black"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.25 19.8001C10.25 18.8336 11.0335 18.0501 12 18.0501C12.9665 18.0501 13.75 18.8336 13.75 19.8001C13.75 20.7666 12.9665 21.5501 12 21.5501C11.0335 21.5501 10.25 20.7666 10.25 19.8001Z" fill="black"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.25 5.80014C10.25 4.83364 11.0335 4.05014 12 4.05014C12.9665 4.05014 13.75 4.83364 13.75 5.80014C13.75 6.76664 12.9665 7.55014 12 7.55014C11.0335 7.55014 10.25 6.76664 10.25 5.80014Z" fill="black"/>
             </svg>
         </button>
-        <div class="c-card-actions__content">
-            <button class="c-text-s" type="button" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="delete-file" data-mezcalito--ux-filemanager--filemanager-value-param="{{ node.id }}">
+        <div class="fm-c-card-actions__content">
+            <button class="fm-c-text-s" type="button" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="delete-file" data-mezcalito--ux-filemanager--filemanager-value-param="{{ node.id }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M1.33325 4.00004C1.33325 3.63185 1.63173 3.33337 1.99992 3.33337H13.9999C14.3681 3.33337 14.6666 3.63185 14.6666 4.00004C14.6666 4.36823 14.3681 4.66671 13.9999 4.66671H1.99992C1.63173 4.66671 1.33325 4.36823 1.33325 4.00004Z" fill="#566071"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6.66675 1.99996C6.48994 1.99996 6.32037 2.0702 6.19534 2.19522C6.07032 2.32025 6.00008 2.48982 6.00008 2.66663V3.99996C6.00008 4.36815 5.7016 4.66663 5.33341 4.66663C4.96522 4.66663 4.66675 4.36815 4.66675 3.99996V2.66663C4.66675 2.13619 4.87746 1.62748 5.25254 1.25241C5.62761 0.87734 6.13632 0.666626 6.66675 0.666626H9.33342C9.86385 0.666626 10.3726 0.87734 10.7476 1.25241C11.1227 1.62748 11.3334 2.13619 11.3334 2.66663V3.99996C11.3334 4.36815 11.0349 4.66663 10.6667 4.66663C10.2986 4.66663 10.0001 4.36815 10.0001 3.99996V2.66663C10.0001 2.48982 9.92984 2.32025 9.80482 2.19522C9.6798 2.0702 9.51023 1.99996 9.33342 1.99996H6.66675ZM3.33341 3.33329C3.7016 3.33329 4.00008 3.63177 4.00008 3.99996V13.3333C4.00008 13.5101 4.07032 13.6797 4.19534 13.8047C4.32037 13.9297 4.48994 14 4.66675 14H11.3334C11.5102 14 11.6798 13.9297 11.8048 13.8047C11.9298 13.6797 12.0001 13.5101 12.0001 13.3333V3.99996C12.0001 3.63177 12.2986 3.33329 12.6667 3.33329C13.0349 3.33329 13.3334 3.63177 13.3334 3.99996V13.3333C13.3334 13.8637 13.1227 14.3724 12.7476 14.7475C12.3726 15.1226 11.8638 15.3333 11.3334 15.3333H4.66675C4.13631 15.3333 3.62761 15.1226 3.25253 14.7475C2.87746 14.3724 2.66675 13.8637 2.66675 13.3333V3.99996C2.66675 3.63177 2.96522 3.33329 3.33341 3.33329Z" fill="#566071"/>
@@ -48,14 +48,14 @@
                 </svg>
                 Delete
             </button>
-            <button class="c-text-s" type="button" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="rename" data-mezcalito--ux-filemanager--filemanager-value-param="{{ node.id }}">
+            <button class="fm-c-text-s" type="button" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="rename" data-mezcalito--ux-filemanager--filemanager-value-param="{{ node.id }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0226 2.64079C10.3325 2.51246 10.6645 2.44641 10.9999 2.44641C11.3352 2.44641 11.6673 2.51246 11.9771 2.64079C12.2869 2.76913 12.5684 2.95722 12.8055 3.19435C13.0427 3.43147 13.2308 3.71298 13.3591 4.0228C13.4874 4.33262 13.5535 4.66469 13.5535 5.00003C13.5535 5.33537 13.4874 5.66744 13.3591 5.97726C13.2308 6.28708 13.0427 6.56858 12.8055 6.80571L5.80555 13.8057C5.68027 13.931 5.51037 14.0014 5.3332 14.0014H2.66654C2.29761 14.0014 1.99854 13.7023 1.99854 13.3334V10.6667C1.99854 10.4895 2.06891 10.3196 2.19419 10.1943L9.19419 3.19435C9.43131 2.95722 9.71282 2.76913 10.0226 2.64079ZM10.9999 3.78241C10.84 3.78241 10.6816 3.81391 10.5339 3.8751C10.3862 3.93629 10.2519 4.02598 10.1389 4.13904L3.33454 10.9434V12.6654H5.05651L11.8609 5.86102C11.9739 5.74795 12.0636 5.61372 12.1248 5.46599C12.186 5.31826 12.2175 5.15993 12.2175 5.00003C12.2175 4.84013 12.186 4.68179 12.1248 4.53407C12.0636 4.38634 11.9739 4.25211 11.8609 4.13904C11.7478 4.02598 11.6136 3.93629 11.4658 3.8751C11.3181 3.81391 11.1598 3.78241 10.9999 3.78241Z" fill="#566071"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M8.52768 3.86094C8.78855 3.60007 9.21151 3.60007 9.47238 3.86094L12.139 6.5276C12.3999 6.78847 12.3999 7.21143 12.139 7.4723C11.8782 7.73317 11.4552 7.73317 11.1944 7.4723L8.52768 4.80563C8.26681 4.54476 8.26681 4.12181 8.52768 3.86094Z" fill="#566071"/>
                 </svg>
                 Rename
             </button>
-            <button class="c-text-s" type="button" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="move" data-mezcalito--ux-filemanager--filemanager-value-param="{{ node.id }}">
+            <button class="fm-c-text-s" type="button" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="move" data-mezcalito--ux-filemanager--filemanager-value-param="{{ node.id }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.00003 3.33203C4.36896 3.33203 4.66803 3.63111 4.66803 4.00003V8.00003C4.66803 8.3533 4.80837 8.6921 5.05816 8.9419C5.30796 9.1917 5.64676 9.33203 6.00003 9.33203H11.054L9.52768 7.80571C9.26681 7.54484 9.26681 7.12189 9.52768 6.86102C9.78855 6.60015 10.2115 6.60015 10.4724 6.86102L13.139 9.52768C13.3999 9.78855 13.3999 10.2115 13.139 10.4724L10.4724 13.139C10.2115 13.3999 9.78855 13.3999 9.52768 13.139C9.26681 12.8782 9.26681 12.4552 9.52768 12.1944L11.054 10.668H6.00003C5.29243 10.668 4.61382 10.3869 4.11347 9.88659C3.61312 9.38625 3.33203 8.70763 3.33203 8.00003V4.00003C3.33203 3.63111 3.63111 3.33203 4.00003 3.33203Z" fill="#566071"/>
                 </svg>

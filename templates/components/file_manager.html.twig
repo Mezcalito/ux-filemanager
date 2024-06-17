@@ -1,6 +1,6 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<div {{ attributes.defaults({class: 'c-layout', 'data-controller': 'mezcalito--ux-filemanager--filemanager'}) }}>
+<div {{ attributes.defaults({class: 'fm-c-layout', 'data-controller': 'mezcalito--ux-filemanager--filemanager'}) }}>
     <twig:Mezcalito:Sidebar :storage="storage" data-action="filemanager:refresh@window->live#$render"/>
     <twig:Mezcalito:Content :storage="storage" data-action="filemanager:refresh@window->live#$render"/>
     <twig:Mezcalito:Modal :storage="storage"/>

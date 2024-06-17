@@ -1,4 +1,4 @@
-.c-submenu {
+.fm-c-submenu {
   background-color: var(--modal-overlay-bg);
   position: fixed;
   inset: 0;
@@ -12,13 +12,13 @@
     opacity: 1;
     pointer-events: all;
 
-    .c-submenu__content {
+    .fm-c-submenu__content {
       transform: translateY(0);
     }
   }
 }
 
-.c-submenu__content {
+.fm-c-submenu__content {
   position: relative;
   padding: $space-24 $space-16;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
@@ -33,14 +33,14 @@
   }
 }
 
-.c-submenu__item {
+.fm-c-submenu__item {
   display: flex;
   align-items: center;
   gap: $space-16;
   padding: $space-8 $space-12;
 }
 
-.c-submenu__button svg {
+.fm-c-submenu__button svg {
   border: 1px solid var(--border-grey-100);
   border-radius: 50%;
   padding: $space-10;

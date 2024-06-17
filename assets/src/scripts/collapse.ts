@@ -7,9 +7,9 @@ export class Collapse {
 
     constructor(element: HTMLElement) {
         this.element = element;
-        this.trigger = element.querySelector('.c-collapse__arrow') as HTMLElement;
-        this.wrapper = element.querySelector('.c-collapse__wrapper') as HTMLElement;
-        this.content = element.querySelector('.c-collapse__content') as HTMLElement;
+        this.trigger = element.querySelector('.fm-c-collapse__arrow') as HTMLElement;
+        this.wrapper = element.querySelector('.fm-c-collapse__wrapper') as HTMLElement;
+        this.content = element.querySelector('.fm-c-collapse__content') as HTMLElement;
         this.visible = 'true' === element.dataset.visible;
     }
 
@@ -26,8 +26,8 @@ export class Collapse {
 
         this.visible = !this.visible;
 
-        this.element.classList.toggle('c-collapse--visible', this.visible);
-        this.element.classList.toggle('c-collapse--hidden', !this.visible);
+        this.element.classList.toggle('fm-c-collapse--visible', this.visible);
+        this.element.classList.toggle('fm-c-collapse--hidden', !this.visible);
         this.element.dataset.visible = this.visible ? 'true' : 'false';
     }
 }

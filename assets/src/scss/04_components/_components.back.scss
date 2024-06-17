@@ -1,4 +1,4 @@
-.c-back {
+.fm-c-back {
   display: flex;
   align-items: center;
   gap: $space-8;
@@ -9,7 +9,7 @@
   position: relative;
 }
 
-.c-back__action {
+.fm-c-back__action {
   &::after {
     content: '';
     display: block;

@@ -21,17 +21,17 @@ export default class extends Controller {
     }
 
     changeDisplayMode(event: ActionEvent) {
-        document.querySelectorAll('.c-toggle-buttons__action').forEach((button) => {
-            button.classList.remove('c-toggle-buttons__action--active')
+        document.querySelectorAll('.fm-c-toggle-buttons__action').forEach((button) => {
+            button.classList.remove('fm-c-toggle-buttons__action--active')
         });
-        (event.currentTarget as HTMLButtonElement).classList.add('c-toggle-buttons__action--active');
+        (event.currentTarget as HTMLButtonElement).classList.add('fm-c-toggle-buttons__action--active');
 
         const mode = event.params.mode;
 
         this.cardTargets.forEach((card) => {
             card.classList.toggle('display-grid', mode === 'grid')
         });
-        this.listTarget.classList.toggle('c-content__cards--grid', mode === 'grid');
+        this.listTarget.classList.toggle('fm-c-content__cards--grid', mode === 'grid');
     }
 
     openModal({params}: {params: any}) {
@@ -44,8 +44,8 @@ export default class extends Controller {
         this.modalActionTarget.dispatchEvent(new Event('change', { bubbles: true }));
 
         this.dialogTarget.showModal();
-        this.dialogTarget.classList.add('c-modal--open');
-        document.body.classList.add('u-overflow-hidden');
+        this.dialogTarget.classList.add('fm-c-modal--open');
+        document.body.classList.add('fm-u-overflow-hidden');
     }
 
     closeModal() {
@@ -54,13 +54,13 @@ export default class extends Controller {
         this.modalActionTarget.value = '';
         this.modalActionTarget.dispatchEvent(new Event('change', { bubbles: true }));
 
-        this.dialogTarget.classList.remove('c-modal--open');
+        this.dialogTarget.classList.remove('fm-c-modal--open');
         this.dialogTarget.close();
-        document.body.classList.remove('u-overflow-hidden');
+        document.body.classList.remove('fm-u-overflow-hidden');
     }
 
     selectTargetConnected(element: HTMLElement) {
-        const toggle = new Toggle(element, '.c-custom-select__input-wrapper', '.c-custom-select__list-wrapper');
+        const toggle = new Toggle(element, '.fm-c-custom-select__input-wrapper', '.fm-c-custom-select__list-wrapper');
         toggle.connect();
 
         this.toggleMap.set(element, toggle);
@@ -74,7 +74,7 @@ export default class extends Controller {
     }
 
     dropdownTargetConnected(element: HTMLElement) {
-        const toggle = new Toggle(element, '.c-card-actions__action', '.c-card-actions__content');
+        const toggle = new Toggle(element, '.fm-c-card-actions__action', '.fm-c-card-actions__content');
         toggle.connect();
 
         this.toggleMap.set(element, toggle);
@@ -88,7 +88,7 @@ export default class extends Controller {
     }
 
     submenuTargetConnected(element: HTMLElement) {
-        const toggle = new Toggle(element, '.c-content__sticky-button', '.c-submenu', '.c-submenu__content');
+        const toggle = new Toggle(element, '.fm-c-content__sticky-button', '.fm-c-submenu', '.fm-c-submenu__content');
         toggle.connect();
 
         this.toggleMap.set(element, toggle);

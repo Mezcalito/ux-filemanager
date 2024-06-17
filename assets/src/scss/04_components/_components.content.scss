@@ -1,4 +1,4 @@
-.c-content {
+.fm-c-content {
   overflow: auto;
   padding: $space-16;
   display: flex;
@@ -11,7 +11,7 @@
   }
 }
 
-.c-content__actions {
+.fm-c-content__actions {
   @include min-width(md) {
     display: flex;
     flex-wrap: wrap;
@@ -27,18 +27,18 @@
   }
 }
 
-//.c-content__toggle {
+//.fm-c-content__toggle {
 //  padding: $space-10;
 //  background-color: var(--button-bg);
 //  border-radius: var(--radius-md);
 //}
 
-.c-content__buttons {
+.fm-c-content__buttons {
   display: flex;
   gap: $space-8;
 }
 
-.c-content__cards {
+.fm-c-content__cards {
   display: flex;
   flex-direction: column;
   gap: $space-8;
@@ -48,7 +48,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: $space-16;
 
-    .c-file-card {
+    .fm-c-file-card {
       padding: $space-8;
       grid-template-columns: 1fr 2.4rem;
       grid-template-rows: 3.2rem 13.5rem auto;
@@ -62,7 +62,7 @@
         grid-template-rows: 3.2rem 8rem auto;
       }
 
-      &:has(.c-file-card__input:checked) {
+      &:has(.fm-c-file-card__input:checked) {
         grid-template-columns: 2.8rem 1fr 2.4rem;
         grid-template-areas:
             "activeIcon name action"
@@ -71,7 +71,7 @@
       }
     }
 
-    .c-file-card__picture {
+    .fm-c-file-card__picture {
       width: 100%;
       height: 100%;
 
@@ -86,11 +86,11 @@
       }
     }
 
-    .c-file-card__name {
+    .fm-c-file-card__name {
       align-self: center;
     }
 
-    .c-folder-card {
+    .fm-c-folder-card {
       padding: $space-8;
       grid-template-columns: 1fr 2.4rem;
       grid-template-rows: 3.2rem 13.5rem auto;
@@ -104,7 +104,7 @@
         grid-template-rows: 3.2rem 8rem auto;
       }
 
-      &:has(.c-folder-card__input:checked) {
+      &:has(.fm-c-folder-card__input:checked) {
         grid-template-columns: 2.8rem 1fr 2.4rem;
         grid-template-areas:
             "activeIcon name action"
@@ -113,7 +113,7 @@
       }
     }
 
-    .c-folder-card__icon {
+    .fm-c-folder-card__icon {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -130,11 +130,11 @@
       }
     }
 
-    .c-folder-card__name {
+    .fm-c-folder-card__name {
       align-self: center;
     }
 
-    .c-file-card__infos {
+    .fm-c-file-card__infos {
       flex-direction: column;
       gap: 0;
     }
@@ -145,7 +145,7 @@
   }
 }
 
-.c-content__sticky-button {
+.fm-c-content__sticky-button {
   position: fixed;
   bottom: $space-16;
   right: $space-16;

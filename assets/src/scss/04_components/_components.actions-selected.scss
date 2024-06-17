@@ -1,4 +1,4 @@
-.c-actions-selected {
+.fm-c-actions-selected {
   padding: $space-8 $space-16;
   background-color: var(--actions-selected-bg);
   border-radius: var(--radius-full);
@@ -10,20 +10,20 @@
   }
 }
 
-.c-actions-selected__head {
+.fm-c-actions-selected__head {
   display: flex;
   align-items: center;
   overflow: hidden;
 }
 
-.c-actions-selected__info {
+.fm-c-actions-selected__info {
   margin: 0 $space-24 0 $space-10;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.c-actions-selected__actions {
+.fm-c-actions-selected__actions {
   display: flex;
   align-items: center;
   gap: $space-16;

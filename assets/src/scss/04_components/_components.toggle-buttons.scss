@@ -1,4 +1,4 @@
-.c-toggle-buttons {
+.fm-c-toggle-buttons {
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--toggle-button-border);
@@ -24,11 +24,11 @@
   }
 }
 
-.c-toggle-buttons__action {
+.fm-c-toggle-buttons__action {
   transition: background-color var(--transition-in-out);
 }
 
-.c-toggle-buttons__action--active {
+.fm-c-toggle-buttons__action--active {
   background-color: var(--toggle-button-active-bg);
 
   @include max-width(md) {

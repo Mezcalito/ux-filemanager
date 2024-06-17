@@ -1,4 +1,4 @@
-.c-modal {
+.fm-c-modal {
   transform: scale(0.95);
   border: 0;
   padding: $space-20;
@@ -15,13 +15,13 @@
   }
 }
 
-.c-modal--open {
+.fm-c-modal--open {
   opacity: 1;
   pointer-events: all;
   transform: scale(1);
 }
 
-.c-modal--md {
+.fm-c-modal--md {
   width: 33rem;
 
   @include max-width(md) {
@@ -29,7 +29,7 @@
   }
 }
 
-.c-modal--lg {
+.fm-c-modal--lg {
   width: 68.6rem;
 
   @include max-width(md) {
@@ -37,13 +37,13 @@
   }
 }
 
-.c-modal__close {
+.fm-c-modal__close {
   position: absolute;
   top: $space-16;
   right: $space-16;
 }
 
-.c-modal__content {
+.fm-c-modal__content {
   max-height: 29rem;
   overflow: auto;
 
@@ -55,19 +55,19 @@
     padding: 0;
   }
 
-  .c-collapse__content,
-  .c-collapse__head {
+  .fm-c-collapse__content,
+  .fm-c-collapse__head {
     width: 100%;
   }
 }
 
-.c-modal__content--with-border {
+.fm-c-modal__content--with-border {
   border-radius: var(--radius-md);
   border: 1px solid var(--border-grey-100);
   padding: $space-16;
 }
 
-.c-modal__actions {
+.fm-c-modal__actions {
   display: flex;
   align-items: center;
   margin-top: $space-32;

@@ -1,4 +1,4 @@
-.c-card-actions {
+.fm-c-card-actions {
   position: relative;
   display: flex;
   align-items: center;
@@ -10,11 +10,11 @@
   transition: opacity var(--transition-in-out);
 }
 
-.c-card-actions__action {
+.fm-c-card-actions__action {
 
 }
 
-.c-card-actions__content {
+.fm-c-card-actions__content {
   position: absolute;
   background-color: var(--card-actions-content-bg);
   top: 0;
