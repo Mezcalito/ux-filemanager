@@ -186,5 +186,22 @@
 </div>
 
 {% macro placeholder(props) %}
-    Loading... Please wait...
+    <div class='fm-c-content__loading'>
+        <div class='fm-c-content__loading-actions'>
+            <span class='fm-c-content__search-loader fm-c-content__loader'></span>
+            <div>
+                <span class='fm-c-content__box-loader fm-c-content__loader'></span>
+                <span class='fm-c-content__box-loader fm-c-content__loader'></span>
+                <span class='fm-c-content__box-loader fm-c-content__loader'></span>
+            </div>
+            <span class='fm-c-content__format-loader fm-c-content__loader'></span>
+            <span class='fm-c-content__format-loader-mob fm-c-content__loader'></span>
+        </div>
+        <div class='fm-c-content__bars-container'>
+            <span class='fm-c-content__bar-loader fm-c-content__loader'></span>
+            <span class='fm-c-content__bar-loader fm-c-content__loader'></span>
+            <span class='fm-c-content__bar-loader fm-c-content__loader'></span>
+            <span class='fm-c-content__bar-loader fm-c-content__loader'></span>
+        </div>
+    </div>
 {% endmacro %}
