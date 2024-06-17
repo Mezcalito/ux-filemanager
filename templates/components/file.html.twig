@@ -23,11 +23,11 @@
         {% endif %}
     </div>
 
-    <p class="fm-c-file-card__name fm-c-text-s fm-u-fw-700 fm-u-color-grey-900">{{ node.filename }}</p>
+    <span class="fm-c-file-card__name fm-c-text-s fm-u-fw-700 fm-u-color-grey-900">{{ node.filename }}</span>
 
     <div class="fm-c-file-card__infos">
-        {% if node.lastModified is not null %}<p class="fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ node.lastModified|date("m/d/Y") }}</p>{% endif %}
-        {% if node.size is not null %}<p class="fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ _self.human_filesize(node.size) }}</p>{% endif %}
+        {% if node.lastModified is not null %}<span class="fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ node.lastModified|date("m/d/Y") }}</span>{% endif %}
+        {% if node.size is not null %}<span class="fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ _self.human_filesize(node.size) }}</span>{% endif %}
     </div>
 
     <div class="fm-c-card-actions" data-mezcalito--ux-filemanager--filemanager-target="dropdown">

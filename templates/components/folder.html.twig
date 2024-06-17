@@ -17,7 +17,7 @@
         </svg>
     </div>
 
-    <p class="fm-c-folder-card__name fm-c-text-s fm-u-fw-700 fm-u-color-grey-900">
+    <span class="fm-c-folder-card__name fm-c-text-s fm-u-fw-700 fm-u-color-grey-900">
         {{ node.filename }}
 
         {% set childrenNumber = filesystem.listDirectory(node.path)|filter(child => child.isDir())|length %}
@@ -26,10 +26,10 @@
                 ({{ childrenNumber }})
             </span>
         {% endif %}
-    </p>
+    </span>
 
     <div class="fm-c-file-card__infos">
-        <p class="fm-c-folder-card__number fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ node.lastModified|date("m/d/Y") }}</p>
+        <span class="fm-c-folder-card__number fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ node.lastModified|date("m/d/Y") }}</span>
     </div>
 
     <div class="fm-c-card-actions" data-mezcalito--ux-filemanager--filemanager-target="dropdown">

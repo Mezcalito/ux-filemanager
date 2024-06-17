@@ -10,9 +10,9 @@
                 </svg>
             </button>
         {% endif %}
-        <p class="fm-c-text-s fm-u-fw-500 fm-u-color-neutral-black">
+        <span class="fm-c-text-s fm-u-fw-500 fm-u-color-neutral-black">
             {% if '/' == currentPath %}My files{% else %}{{ currentPath }}{% endif %}
-        </p>
+        </span>
     </div>
 
     <div class="fm-c-content__actions">
@@ -60,7 +60,7 @@
             <div class="fm-c-custom-select" data-mezcalito--ux-filemanager--filemanager-target="select">
                 <div class="fm-c-custom-select__input-wrapper">
                     <div class="fm-c-custom-select__current-wrapper">
-                        <p class="fm-c-custom-select__current fm-c-text-xs fm-u-fw-500 fm-u-color-actions-success-800">Sort by</p>
+                        <span class="fm-c-custom-select__current fm-c-text-xs fm-u-fw-500 fm-u-color-actions-success-800">Sort by</span>
                         <span class="fm-c-custom-select__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M12 10L8 6L4 10" stroke="#00591D" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
