@@ -30,6 +30,6 @@ class LocalFilesystemProviderFactoryTest extends TestCase
         $providerDefinition = $factory->createDefinition($resolver->resolve(['path' => '/tmp']));
 
         $this->assertEquals(LocalFilesystemProvider::class, $providerDefinition->getClass());
-        $this->assertEquals(['/tmp'], $providerDefinition->getArguments());
+        $this->assertEquals(['/tmp', null], $providerDefinition->getArguments());
     }
 }

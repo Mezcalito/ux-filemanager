@@ -50,15 +50,22 @@ class MezcalitoFileManagerExtension extends Extension
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
 
+        $defaultMediaUrl = rtrim($config['default_media_url'] ?? '', '/');
+
         foreach ($config['storages'] as $storageName => $storageConfig) {
+            $mediaUrl = $storageConfig['media_url'] ?? $defaultMediaUrl;
+            $mediaUrl .= rtrim($storageConfig['uri_prefix'] ?? '', '/');
+
             $providerDefinition = null;
             foreach ($this->providerFactories as $factory) {
-                if ($factory->support($storageConfig['provider'])) {
-                    $resolver = new OptionsResolver();
-                    $factory->configureResolver($resolver);
-
-                    $providerDefinition = $factory->createDefinition($resolver->resolve($storageConfig['options']));
+                if (!$factory->support($storageConfig['provider'])) {
+                    continue;
                 }
+
+                $resolver = new OptionsResolver();
+                $factory->configureResolver($resolver);
+
+                $providerDefinition = $factory->createDefinition($resolver->resolve([...$storageConfig['options'], ...['media_url' => $mediaUrl]]));
             }
 
             if (null === $providerDefinition) {

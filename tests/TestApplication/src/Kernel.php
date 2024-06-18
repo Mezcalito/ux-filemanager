@@ -123,9 +123,10 @@ final class Kernel extends BaseKernel
         $container->extension('mezcalito_file_manager', [
             'storages' => [
                 'local' => [
+                    'uri_prefix' => '/media',
                     'provider' => 'local',
                     'options' => [
-                        'path' => '%kernel.project_dir%/../fixtures/storages/local',
+                        'path' => '%kernel.project_dir%/public/uploads/storages/local',
                     ],
                 ],
             ],

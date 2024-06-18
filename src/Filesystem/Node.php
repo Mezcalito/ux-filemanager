@@ -23,6 +23,7 @@ readonly class Node implements NodeInterface
         private string $id,
         private string $path,
         private string $pathname,
+        private ?string $url = null,
         private ?int $size = null,
         private ?\DateTime $lastModified = null,
         private string $type = self::TYPE_FILE,
@@ -56,6 +57,11 @@ readonly class Node implements NodeInterface
     public function getPathname(): string
     {
         return $this->pathname;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
     }
 
     public function getSize(): ?int

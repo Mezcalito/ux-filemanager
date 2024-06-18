@@ -28,12 +28,16 @@ class LocalFilesystemProviderFactory implements ProviderFactoryInterface
     {
         $resolver->setRequired('path');
         $resolver->setAllowedTypes('path', 'string');
+
+        $resolver->setDefault('media_url', '');
+        $resolver->setAllowedTypes('media_url', 'string');
     }
 
     public function createDefinition(array $options): ?Definition
     {
         $definition = new Definition(LocalFilesystemProvider::class);
         $definition->setArgument(0, $options['path']);
+        $definition->setArgument(1, $options['media_url']);
 
         return $definition;
     }
