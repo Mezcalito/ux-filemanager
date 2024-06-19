@@ -19,10 +19,10 @@
   width: 100%;
   outline: none;
   border: 0;
-  background-color: var(--search-field-bg);
-  border-radius: var(--radius-md);
+  background-color: var(--fm-search-field-bg);
+  border-radius: var(--fm-radius-md);
 
   &::placeholder {
-    color: var(--search-field-placeholder);
+    color: var(--fm-search-field-placeholder);
   }
 }

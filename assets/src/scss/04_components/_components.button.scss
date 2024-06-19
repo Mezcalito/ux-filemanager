@@ -1,21 +1,21 @@
 .fm-c-button {
   padding: $space-8 $space-14;
-  background-color: var(--button-bg);
-  color: var(--button-label);
-  border-radius: var(--radius-md);
-  transition: background-color var(--transition-in-out);
+  background-color: var(--fm-button-bg);
+  color: var(--fm-button-label);
+  border-radius: var(--fm-radius-md);
+  transition: background-color var(--fm-transition-in-out);
   display: flex;
   align-items: center;
   gap: $space-10;
 
   &:hover {
-    background-color: var(--button-bg-hover);
+    background-color: var(--fm-button-bg-hover);
   }
 
   &:disabled {
     background-color: transparent;
-    box-shadow: 0 0 0 1px var(--border-grey-100);
-    color: var(--button-disabled-label);
+    box-shadow: 0 0 0 1px var(--fm-border-grey-100);
+    color: var(--fm-button-disabled-label);
     pointer-events: none;
   }
 }

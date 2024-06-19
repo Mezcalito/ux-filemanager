@@ -26,70 +26,70 @@ $theme-color: (
 :root {
   // Primitives
   @each $name, $color in $theme-color {
-    --color-#{$name}: #{$color};
+    --fm-color-#{$name}: #{$color};
   }
 
-  --color-brand-gradient: linear-gradient(180deg, rgba(193, 0, 34, 0.4) 0%, rgba(255, 255, 255, 0.4) 100%);
-  --color-brand-eko-gradient: linear-gradient(180deg, rgba(240, 125, 0, 0.4) 0%, rgba(240, 125, 0, 0) 100%);
+  --fm-color-brand-gradient: linear-gradient(180deg, rgba(193, 0, 34, 0.4) 0%, rgba(255, 255, 255, 0.4) 100%);
+  --fm-color-brand-eko-gradient: linear-gradient(180deg, rgba(240, 125, 0, 0.4) 0%, rgba(240, 125, 0, 0) 100%);
 
-  --color-shadow-mid: 0px 3.5px 5.5px rgba(0, 0, 0, 0.04);
-  --color-shadow-deep: 0px 4px 13px rgba(0, 0, 0, 0.1);
-  --color-shadow-soft-down: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
-  --color-shadow-soft-up: 0px -4.5px 5.5px rgba(0, 0, 0, 0.02);
-  --color-shadow-soft-right: 4px 0px 5.5px rgba(0, 0, 0, 0.02);
+  --fm-color-shadow-mid: 0px 3.5px 5.5px rgba(0, 0, 0, 0.04);
+  --fm-color-shadow-deep: 0px 4px 13px rgba(0, 0, 0, 0.1);
+  --fm-color-shadow-soft-down: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
+  --fm-color-shadow-soft-up: 0px -4.5px 5.5px rgba(0, 0, 0, 0.02);
+  --fm-color-shadow-soft-right: 4px 0px 5.5px rgba(0, 0, 0, 0.02);
 
   // Assignation
-  --selection: var(--color-neutral-white);
-  --selection-bg: var(--color-grey-900);
+  --fm-selection: var(--fm-color-neutral-white);
+  --fm-selection-bg: var(--fm-color-grey-900);
 
-  --page-bg: var(--color-neutral-white);
-  --page-text: var(--color-grey-900);
+  --fm-page-bg: var(--fm-color-neutral-white);
+  --fm-page-text: var(--fm-color-grey-900);
 
-  --link: var(--color-neutral-black);
-  --link-hover: var(--color-neutral-black);
+  --fm-link: var(--fm-color-neutral-black);
+  --fm-link-hover: var(--fm-color-neutral-black);
 
-  --border-grey-50: var(--color-grey-50);
-  --border-grey-100: var(--color-grey-100);
-  --border-grey-900: var(--color-grey-900);
-  --border-success-800: var(--color-actions-success-800);
+  --fm-border-grey-50: var(--fm-color-grey-50);
+  --fm-border-grey-100: var(--fm-color-grey-100);
+  --fm-border-grey-900: var(--fm-color-grey-900);
+  --fm-border-success-800: var(--fm-color-actions-success-800);
 
-  --button-bg: var(--color-actions-success-600);
-  --button-bg-hover: var(--color-actions-success-800);
-  --button-label: var(--color-neutral-white);
-  --button-disabled-label: var(--color-grey-500);
+  --fm-button-bg: var(--fm-color-actions-success-600);
+  --fm-button-bg-hover: var(--fm-color-actions-success-800);
+  --fm-button-label: var(--fm-color-neutral-white);
+  --fm-button-disabled-label: var(--fm-color-grey-500);
 
-  --search-field-bg: var(--color-grey-50);
-  --search-field-placeholder: var(--color-grey-500);
+  --fm-search-field-bg: var(--fm-color-grey-50);
+  --fm-search-field-placeholder: var(--fm-color-grey-500);
 
-  --toggle-button-border: var(--color-actions-success-600);
-  --toggle-button-active-bg: var(--color-actions-success-50);
-  --toggle-button-mob: var(--color-neutral-white);
+  --fm-toggle-button-border: var(--fm-color-actions-success-600);
+  --fm-toggle-button-active-bg: var(--fm-color-actions-success-50);
+  --fm-toggle-button-mob: var(--fm-color-neutral-white);
 
-  --card-bg: var(--color-grey-50);
-  --card-hover-bg: var(--color-grey-200);
-  --card-active-bg: var(--color-grey-300);
-  --card-icon-bg: var(--color-grey-100);
+  --fm-card-bg: var(--fm-color-grey-50);
+  --fm-card-hover-bg: var(--fm-color-grey-200);
+  --fm-card-active-bg: var(--fm-color-grey-300);
+  --fm-card-icon-bg: var(--fm-color-grey-100);
 
-  --actions-selected-bg: var(--color-grey-200);
+  --fm-actions-selected-bg: var(--fm-color-grey-200);
 
-  --modal-overlay-bg: var(--color-neutral-black-40);
+  --fm-modal-overlay-bg: var(--fm-color-neutral-black-40);
 
-  --folder-collapse-active-bg: var(--color-actions-news-50);
-  --folder-collapse-active: var(--color-actions-news-600);
-  --folder-collapse-disabled: var(--color-grey-500);
+  --fm-folder-collapse-active-bg: var(--fm-color-actions-news-50);
+  --fm-folder-collapse-active: var(--fm-color-actions-news-600);
+  --fm-folder-collapse-disabled: var(--fm-color-grey-500);
 
-  --card-actions-content-bg: var(--color-neutral-white);
-  --card-actions-button: var(--color-grey-700);
-  --card-actions-button-bg-hover: var(--color-grey-50);
+  --fm-card-actions-content-bg: var(--fm-color-neutral-white);
+  --fm-card-actions-button: var(--fm-color-grey-700);
+  --fm-card-actions-button-bg-hover: var(--fm-color-grey-50);
 
-  --field-placeholder: var(--color-grey-500);
-  --field-error-border: var(--color-actions-danger-600);
+  --fm-field-placeholder: var(--fm-color-grey-500);
+  --fm-field-error-border: var(--fm-color-actions-danger-600);
 
-  --select-current: var(--color-actions-success-800);
-  --select-list-bg: var(--color-neutral-white);
-  --select-active-bg: #E7F3EB;
-  --select-item-hover: var(--color-grey-50);
+  --fm-select-current: var(--fm-color-actions-success-800);
+  --fm-select-list-bg: var(--fm-color-neutral-white);
+  --fm-select-active-bg: #E7F3EB;
+  --fm-select-item-hover: var(--fm-color-grey-50);
 
-  --loading-grey: var(--border-grey-100);
-  --loading-grey-light: var(--border-grey-50);
+  --fm-loading-grey: var(--fm-border-grey-100);
+  --fm-loading-grey-light: var(--fm-border-grey-50);
 }

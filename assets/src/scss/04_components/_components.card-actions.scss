@@ -7,7 +7,7 @@
   height: fit-content;
   grid-area: action;
   z-index: 1;
-  transition: opacity var(--transition-in-out);
+  transition: opacity var(--fm-transition-in-out);
 }
 
 .fm-c-card-actions__action {
@@ -16,28 +16,28 @@
 
 .fm-c-card-actions__content {
   position: absolute;
-  background-color: var(--card-actions-content-bg);
+  background-color: var(--fm-card-actions-content-bg);
   top: 0;
   right: 100%;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--transition-in-out);
-  border-radius: var(--radius-md);
+  transition: opacity var(--fm-transition-in-out);
+  border-radius: var(--fm-radius-md);
   padding: $space-8 $space-20 $space-8 $space-8;
-  box-shadow: var(--color-shadow-deep);
+  box-shadow: var(--fm-color-shadow-deep);
 
   & > button {
     padding: 0.9rem $space-12;
-    color: var(--card-actions-button);
-    border-radius: var(--radius-sm);
+    color: var(--fm-card-actions-button);
+    border-radius: var(--fm-radius-sm);
     display: flex;
     align-items: center;
     gap: $space-16;
-    transition: background-color var(--transition-in-out);
+    transition: background-color var(--fm-transition-in-out);
     width: 100%;
 
     &:hover {
-      background-color: var(--card-actions-button-bg-hover);
+      background-color: var(--fm-card-actions-button-bg-hover);
     }
   }
 

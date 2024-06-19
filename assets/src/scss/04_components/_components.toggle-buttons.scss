@@ -1,14 +1,14 @@
 .fm-c-toggle-buttons {
-  border-radius: var(--radius-md);
+  border-radius: var(--fm-radius-md);
   overflow: hidden;
-  border: 1px solid var(--toggle-button-border);
+  border: 1px solid var(--fm-toggle-button-border);
 
   @include max-width(md) {
     border: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--button-bg);
+    background-color: var(--fm-button-bg);
   }
 
   button {
@@ -18,18 +18,18 @@
       padding: 0;
 
       svg path {
-        stroke: var(--toggle-button-mob);
+        stroke: var(--fm-toggle-button-mob);
       }
     }
   }
 }
 
 .fm-c-toggle-buttons__action {
-  transition: background-color var(--transition-in-out);
+  transition: background-color var(--fm-transition-in-out);
 }
 
-.fm-c-toggle-buttons__action--active {
-  background-color: var(--toggle-button-active-bg);
+.fm-c-toggle-buttons__action--fm-active {
+  background-color: var(--fm-toggle-button-active-bg);
 
   @include max-width(md) {
     display: none;

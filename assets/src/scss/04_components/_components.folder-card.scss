@@ -1,9 +1,9 @@
 .fm-c-folder-card {
   padding: $space-8 $space-16 $space-8 $space-8;
-  background-color: var(--card-bg);
-  border-radius: var(--radius-sm);
+  background-color: var(--fm-card-bg);
+  border-radius: var(--fm-radius-sm);
   position: relative;
-  transition: background-color var(--transition-in-out);
+  transition: background-color var(--fm-transition-in-out);
   display: grid;
   grid-template-areas:
     "img name action"
@@ -12,11 +12,11 @@
   grid-template-columns: 5.6rem 1fr 2.4rem;
 
   &:hover {
-    background-color: var(--card-hover-bg);
+    background-color: var(--fm-card-hover-bg);
   }
 
   &:has(.fm-c-folder-card__input:checked) {
-    background-color: var(--card-active-bg);
+    background-color: var(--fm-card-active-bg);
   }
 
   &:has(.fm-c-folder-card__input:checked) {
@@ -65,8 +65,8 @@
 
 .fm-c-folder-card__icon {
   padding: $space-12;
-  background-color: var(--card-icon-bg);
-  border-radius: var(--radius-lg);
+  background-color: var(--fm-card-icon-bg);
+  border-radius: var(--fm-radius-lg);
   grid-area: img;
 }
 
@@ -88,5 +88,5 @@
   align-items: center;
   justify-content: end;
   grid-area: action;
-  transition: opacity var(--transition-in-out);
+  transition: opacity var(--fm-transition-in-out);
 }

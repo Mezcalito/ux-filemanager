@@ -9,23 +9,23 @@
 .fm-c-field__input {
   width: 100%;
   outline: none;
-  border: 1px solid var(--border-grey-100);
+  border: 1px solid var(--fm-border-grey-100);
   padding: 0.9rem 4rem 0.9rem $space-16;
-  border-radius: var(--radius-md);
+  border-radius: var(--fm-radius-md);
 
-  &:not(.fm-c-field__input--error) {
+  &:not(.fm-c-field__input--fm-error) {
     &:focus {
-      border-color: var(--border-grey-900);
+      border-color: var(--fm-border-grey-900);
     }
   }
 
   &::placeholder {
-    color: var(--field-placeholder);
+    color: var(--fm-field-placeholder);
   }
 }
 
-.fm-c-field__input--error {
-  border-color: var(--field-error-border);
+.fm-c-field__input--fm-error {
+  border-color: var(--fm-field-error-border);
 }
 
 .fm-c-field__icon {

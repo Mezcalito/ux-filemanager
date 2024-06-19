@@ -5,12 +5,12 @@
 .fm-c-custom-select__input-wrapper {
   cursor: pointer;
   padding: $space-8 $space-14 $space-8 $space-16;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-success-800);
-  transition: background-color var(--transition-in-out);
+  border-radius: var(--fm-radius-md);
+  border: 1px solid var(--fm-border-success-800);
+  transition: background-color var(--fm-transition-in-out);
 
   &:hover {
-    background-color: var(--select-active-bg);
+    background-color: var(--fm-select-active-bg);
   }
 }
 
@@ -47,16 +47,16 @@
 
 .fm-c-custom-select__list-wrapper {
   display: none;
-  background-color: var(--select-list-bg);
-  border: 1px solid var(--border-grey-100);
+  background-color: var(--fm-select-list-bg);
+  border: 1px solid var(--fm-border-grey-100);
   flex-direction: column;
-  border-radius: var(--radius-md);
+  border-radius: var(--fm-radius-md);
   padding: $space-8;
   max-height: 22rem;
   position: absolute;
   top: calc(100% + $space-8);
   z-index: 5;
-  box-shadow: var(--color-shadow-deep);
+  box-shadow: var(--fm-color-shadow-deep);
   gap: 0.4rem;
   width: max-content;
   right: 0;
@@ -75,11 +75,11 @@
 
 .fm-c-custom-select__item {
   padding: 0.9rem 4.5rem 0.9rem 1.2rem;
-  transition: background-color var(--transition-in-out);
-  border-radius: var(--radius-sm);
+  transition: background-color var(--fm-transition-in-out);
+  border-radius: var(--fm-radius-sm);
 
   &:hover {
-    background-color: var(--select-item-hover);
+    background-color: var(--fm-select-item-hover);
   }
 }
 

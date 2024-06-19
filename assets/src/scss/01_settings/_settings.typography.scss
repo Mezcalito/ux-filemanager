@@ -1,4 +1,4 @@
-@mixin heading($level: 'm', $color: var(--page-text), $font-weight: 600, $font-family: var(--font-primary)) {
+@mixin heading($level: 'm', $color: var(--fm-page-text), $font-weight: 600, $font-family: var(--fm-font-primary)) {
   font-family: $font-family;
   font-style: normal;
   font-weight: $font-weight;
@@ -27,7 +27,7 @@
   }
 }
 
-@mixin text($level: 'm', $color: var(--page-text), $font-weight: 400, $font-family: var(--font-primary)) {
+@mixin text($level: 'm', $color: var(--fm-page-text), $font-weight: 400, $font-family: var(--fm-font-primary)) {
   font-family: $font-family;
   font-style: normal;
   font-weight: $font-weight;
@@ -56,7 +56,7 @@
   }
 }
 
-@mixin caps($level: 'xs', $color: var(--page-text), $font-weight: 500, $font-family: var(--font-primary)) {
+@mixin caps($level: 'xs', $color: var(--fm-page-text), $font-weight: 500, $font-family: var(--fm-font-primary)) {
   font-family: $font-family;
   font-style: normal;
   font-weight: $font-weight;

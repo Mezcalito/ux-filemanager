@@ -4,8 +4,8 @@ html {
 }
 
 body {
-  @include text('m', var(--page-text));
-  background-color: var(--page-bg);
+  @include text('m', var(--fm-page-text));
+  background-color: var(--fm-page-bg);
   height: 100vh;
   height: 100svh;
   overflow-x: hidden;

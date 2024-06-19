@@ -1,6 +1,6 @@
 .fm-c-sidebar {
   padding: $space-16;
-  border-right: 1px solid var(--border-grey-50);
+  border-right: 1px solid var(--fm-border-grey-50);
   overflow: auto;
   display: flex;
 
@@ -40,9 +40,9 @@
 .fm-c-sidebar__bar-loader {
   margin-left: $space-16;
   height: 2.8rem;
-  background: var(--loading-grey);
+  background: var(--fm-loading-grey);
   overflow: hidden;
-  border-radius: var(--radius-sm);
+  border-radius: var(--fm-radius-sm);
 }
 
 .fm-c-sidebar__bar-loader::before{
@@ -51,7 +51,7 @@
   height: 100%;
   width: 100%;
   animation: loading 1s infinite;
-  background: linear-gradient(to right, transparent,var(--loading-grey-light),transparent);
+  background: linear-gradient(to right, transparent,var(--fm-loading-grey-light),transparent);
 }
 
 @keyframes loading {
