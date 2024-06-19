@@ -43,7 +43,7 @@
   flex-direction: column;
   gap: $space-8;
 
-  &--fm-grid {
+  &--grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: $space-16;

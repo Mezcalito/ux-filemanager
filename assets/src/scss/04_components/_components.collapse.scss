@@ -32,16 +32,16 @@
     transition: stroke var(--fm-transition-in-out);
   }
 
-  &:not(.fm-c-collapse__head--fm-first) {
+  &:not(.fm-c-collapse__head--first) {
     margin-bottom: $space-8;
   }
 }
 
-.fm-c-collapse__head--fm-first {
+.fm-c-collapse__head--first {
   margin-bottom: 1rem;
 }
 
-.fm-c-collapse__head--fm-active {
+.fm-c-collapse__head--active {
   background-color: var(--fm-folder-collapse-active-bg);
 
   & button {
@@ -53,7 +53,7 @@
   }
 }
 
-.fm-c-collapse__head--fm-disabled {
+.fm-c-collapse__head--disabled {
   .fm-c-collapse__action {
     color: var(--fm-folder-collapse-disabled);
   }

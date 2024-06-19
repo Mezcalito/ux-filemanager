@@ -28,7 +28,7 @@
   transition: background-color var(--fm-transition-in-out);
 }
 
-.fm-c-toggle-buttons__action--fm-active {
+.fm-c-toggle-buttons__action--active {
   background-color: var(--fm-toggle-button-active-bg);
 
   @include max-width(md) {
