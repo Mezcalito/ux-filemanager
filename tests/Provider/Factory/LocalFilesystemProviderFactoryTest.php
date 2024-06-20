@@ -20,16 +20,15 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LocalFilesystemProviderFactoryTest extends TestCase
 {
-    public function testCreateDefinition(): void
+    public function testCreate(): void
     {
         $factory = new LocalFilesystemProviderFactory();
 
         $resolver = new OptionsResolver();
         $factory->configureResolver($resolver);
 
-        $providerDefinition = $factory->createDefinition($resolver->resolve(['path' => '/tmp']));
+        $provider = $factory->create($resolver->resolve(['path' => '/tmp']));
 
-        $this->assertEquals(LocalFilesystemProvider::class, $providerDefinition->getClass());
-        $this->assertEquals(['/tmp', null], $providerDefinition->getArguments());
+        $this->assertEquals(LocalFilesystemProvider::class, $provider::class);
     }
 }

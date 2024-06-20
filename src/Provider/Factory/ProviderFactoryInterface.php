@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\Provider\Factory;
 
-use Symfony\Component\DependencyInjection\Definition;
+use Mezcalito\FileManagerBundle\Provider\ProviderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 interface ProviderFactoryInterface
@@ -22,5 +22,5 @@ interface ProviderFactoryInterface
 
     public function configureResolver(OptionsResolver $resolver): void;
 
-    public function createDefinition(array $options): ?Definition;
+    public function create(array $options): ?ProviderInterface;
 }

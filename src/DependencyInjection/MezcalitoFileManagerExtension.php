@@ -13,9 +13,6 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\DependencyInjection;
 
-use Mezcalito\FileManagerBundle\Collection\FilesystemCollection;
-use Mezcalito\FileManagerBundle\Filesystem\Filesystem;
-use Mezcalito\FileManagerBundle\Provider\Factory\LocalFilesystemProviderFactory;
 use Mezcalito\FileManagerBundle\Twig\Components\Content;
 use Mezcalito\FileManagerBundle\Twig\Components\File;
 use Mezcalito\FileManagerBundle\Twig\Components\FileManager;
@@ -26,21 +23,9 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MezcalitoFileManagerExtension extends Extension
 {
-    /** @var LocalFilesystemProviderFactory[] */
-    private readonly array $providerFactories;
-
-    public function __construct()
-    {
-        $this->providerFactories = [
-            new LocalFilesystemProviderFactory(),
-        ];
-    }
-
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../../config'));
@@ -54,38 +39,16 @@ class MezcalitoFileManagerExtension extends Extension
         foreach ($config['storages'] as $storageName => $storageConfig) {
             $mediaUrl = $storageConfig['media_url'] ?? $defaultMediaUrl;
             $mediaUrl .= rtrim($storageConfig['uri_prefix'] ?? '', '/');
-
-            $providerDefinition = null;
-            foreach ($this->providerFactories as $factory) {
-                if (!$factory->support($storageConfig['provider'])) {
-                    continue;
-                }
-
-                $resolver = new OptionsResolver();
-                $factory->configureResolver($resolver);
-
-                $providerDefinition = $factory->createDefinition($resolver->resolve([...$storageConfig['options'], ...['media_url' => $mediaUrl]]));
+            if ('' !== $mediaUrl) {
+                $storageConfig['options']['media_url'] = $mediaUrl;
             }
 
-            if (null === $providerDefinition) {
-                throw new \LogicException('Provider "'.$storageConfig['provider'].'" does not exist.');
-            }
-
-            $container->setDefinition('mezcalito_file_manager.provider.'.$storageName, $providerDefinition);
-
-            $container->register('mezcalito_file_manager.filesystem.'.$storageName, Filesystem::class)
-                ->addTag('mezcalito_file_manager.filesystem', ['name' => $storageName])
-                ->setArguments([
-                    new Reference('mezcalito_file_manager.provider.'.$storageName),
-                ]);
+            $container->setParameter('mezcalito_file_manager.storage_configs.'.$storageName, $storageConfig);
         }
 
         $container->register(FileManager::class)
             ->setAutowired(true)
-            ->setAutoconfigured(true)
-            ->setArguments([
-                new Reference(FilesystemCollection::class),
-            ]);
+            ->setAutoconfigured(true);
 
         $container->register(Sidebar::class)
             ->setAutowired(true)

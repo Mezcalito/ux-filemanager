@@ -16,53 +16,37 @@ namespace Mezcalito\FileManagerBundle\Tests\DependencyInjection;
 use Mezcalito\FileManagerBundle\DependencyInjection\MezcalitoFileManagerExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\TaggedContainerInterface;
 
 class MezcalitoFileManagerExtensionTest extends TestCase
 {
-    private TaggedContainerInterface $container;
-
     public function testLoad(): void
     {
         $extension = new MezcalitoFileManagerExtension();
-        $this->container = new ContainerBuilder();
+        $container = new ContainerBuilder();
 
         $extension->load([
             'mezcalito_file_manager' => [
+                'default_media_url' => 'https://media.my-website.com/',
                 'storages' => [
                     'local' => [
                         'provider' => 'local',
+                        'uri_prefix' => '/images',
                         'options' => [
                             'path' => '%kernel.project_dir%/tests/fixtures/storages/local',
                         ],
                     ],
                 ],
             ],
-        ], $this->container);
+        ], $container);
 
-        $this->assertTrue($this->container->has('mezcalito_file_manager.provider.local'));
-        $this->assertTrue($this->container->has('mezcalito_file_manager.filesystem.local'));
-    }
-
-    public function testUnknownProvider(): void
-    {
-        $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('Provider "unknown" does not exist.');
-
-        $extension = new MezcalitoFileManagerExtension();
-        $this->container = new ContainerBuilder();
-
-        $extension->load([
-            'mezcalito_file_manager' => [
-                'storages' => [
-                    'local' => [
-                        'provider' => 'unknown',
-                        'options' => [
-                            'path' => '%kernel.project_dir%/tests/fixtures/storages/local',
-                        ],
-                    ],
-                ],
+        $this->assertTrue($container->hasParameter('mezcalito_file_manager.storage_configs.local'));
+        $this->assertEquals([
+            'provider' => 'local',
+            'uri_prefix' => '/images',
+            'options' => [
+                'path' => '%kernel.project_dir%/tests/fixtures/storages/local',
+                'media_url' => 'https://media.my-website.com/images',
             ],
-        ], $this->container);
+        ], $container->getParameter('mezcalito_file_manager.storage_configs.local'));
     }
 }

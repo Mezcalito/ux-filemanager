@@ -2,13 +2,13 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Mezcalito\FileManagerBundle\Collection\FilesystemCollection;
+use Mezcalito\FileManagerBundle\Factory\FilesystemFactory;
 
 return static function (ContainerConfigurator $container) {
     $container->services()
-        ->set(FilesystemCollection::class)
+        ->set(FilesystemFactory::class)
             ->args([
-                tagged_iterator('mezcalito_file_manager.filesystem', indexAttribute: 'name')
+                service('parameter_bag'),
             ])
     ;
 };

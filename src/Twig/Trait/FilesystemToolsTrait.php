@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\Twig\Trait;
 
-use Mezcalito\FileManagerBundle\Collection\FilesystemCollection;
+use Mezcalito\FileManagerBundle\Factory\FilesystemFactory;
 use Mezcalito\FileManagerBundle\Filesystem\Filesystem;
 use Symfony\Contracts\Service\Attribute\Required;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
@@ -26,21 +26,21 @@ trait FilesystemToolsTrait
 
     public ?Filesystem $filesystem = null;
 
-    private ?FilesystemCollection $collection = null;
+    private ?FilesystemFactory $factory = null;
 
     #[ExposeInTemplate]
     public function getFilesystem(): Filesystem
     {
         if (null === $this->filesystem) {
-            $this->filesystem = $this->collection->get($this->storage);
+            $this->filesystem = $this->factory->get($this->storage);
         }
 
         return $this->filesystem;
     }
 
     #[Required]
-    public function setFilesystemCollection(FilesystemCollection $filesystemCollection): void
+    public function setFilesystemFactory(FilesystemFactory $factory): void
     {
-        $this->collection = $filesystemCollection;
+        $this->factory = $factory;
     }
 }

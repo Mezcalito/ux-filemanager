@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\Tests\TestApplication;
 
+use Mezcalito\FileManagerBundle\Factory\FilesystemFactory;
 use Mezcalito\FileManagerBundle\MezcalitoFileManagerBundle;
 use Psr\Log\NullLogger;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -137,7 +138,8 @@ final class Kernel extends BaseKernel
             ->autowire()
             ->autoconfigure()
             // disable logging errors to the console
-            ->set('logger', NullLogger::class);
+            ->set('logger', NullLogger::class)
+            ->set(FilesystemFactory::class)->public();
     }
 
     public function getProjectDir(): string

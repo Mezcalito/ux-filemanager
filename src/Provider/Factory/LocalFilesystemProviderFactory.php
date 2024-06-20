@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Mezcalito\FileManagerBundle\Provider\Factory;
 
 use Mezcalito\FileManagerBundle\Provider\LocalFilesystemProvider;
-use Symfony\Component\DependencyInjection\Definition;
+use Mezcalito\FileManagerBundle\Provider\ProviderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LocalFilesystemProviderFactory implements ProviderFactoryInterface
@@ -33,12 +33,8 @@ class LocalFilesystemProviderFactory implements ProviderFactoryInterface
         $resolver->setAllowedTypes('media_url', 'string');
     }
 
-    public function createDefinition(array $options): ?Definition
+    public function create(array $options): ?ProviderInterface
     {
-        $definition = new Definition(LocalFilesystemProvider::class);
-        $definition->setArgument(0, $options['path']);
-        $definition->setArgument(1, $options['media_url']);
-
-        return $definition;
+        return new LocalFilesystemProvider($options['path'], $options['media_url']);
     }
 }
