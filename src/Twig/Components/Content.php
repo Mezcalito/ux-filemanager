@@ -28,8 +28,8 @@ use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 #[AsLiveComponent('Mezcalito:Content', template: '@MezcalitoFileManager/components/content.html.twig')]
 class Content
 {
-    use DefaultActionTrait;
     use ComponentToolsTrait;
+    use DefaultActionTrait;
     use FilesystemContextTrait;
     use FilesystemToolsTrait;
 

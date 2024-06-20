@@ -15,7 +15,6 @@ namespace Mezcalito\FileManagerBundle\Tests\Collection;
 
 use Mezcalito\FileManagerBundle\Collection\FilesystemCollection;
 use Mezcalito\FileManagerBundle\Filesystem\Filesystem;
-use Mezcalito\FileManagerBundle\Filesystem\Storage;
 use Mezcalito\FileManagerBundle\Provider\LocalFilesystemProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +22,7 @@ class FilesystemCollectionTest extends TestCase
 {
     public function testGet(): void
     {
-        $filesystem = new Filesystem(new Storage(new LocalFilesystemProvider('/tmp')));
+        $filesystem = new Filesystem(new LocalFilesystemProvider('/tmp'));
         $collection = new FilesystemCollection(['local' => $filesystem]);
 
         $this->assertEquals($collection->get('local'), $filesystem);
@@ -34,7 +33,7 @@ class FilesystemCollectionTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Filesystem "unknown" not found.');
 
-        $filesystem = new Filesystem(new Storage(new LocalFilesystemProvider('/tmp')));
+        $filesystem = new Filesystem(new LocalFilesystemProvider('/tmp'));
         $collection = new FilesystemCollection(['local' => $filesystem]);
 
         $this->assertEquals($collection->get('unknown'), $filesystem);

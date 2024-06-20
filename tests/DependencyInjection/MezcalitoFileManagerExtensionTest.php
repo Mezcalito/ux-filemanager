@@ -41,7 +41,6 @@ class MezcalitoFileManagerExtensionTest extends TestCase
         ], $this->container);
 
         $this->assertTrue($this->container->has('mezcalito_file_manager.provider.local'));
-        $this->assertTrue($this->container->has('mezcalito_file_manager.storage.local'));
         $this->assertTrue($this->container->has('mezcalito_file_manager.filesystem.local'));
     }
 

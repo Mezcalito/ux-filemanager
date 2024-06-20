@@ -13,55 +13,57 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\Filesystem;
 
+use Mezcalito\FileManagerBundle\Provider\ProviderInterface;
+
 readonly class Filesystem implements FilesystemInterface
 {
     public function __construct(
-        private StorageInterface $storage,
+        private ProviderInterface $provider,
     ) {
     }
 
     public function info(string $id): Node
     {
-        return $this->storage->getProvider()->info($id);
+        return $this->provider->info($id);
     }
 
     public function read(string $id): string
     {
-        return $this->storage->getProvider()->read($id);
+        return $this->provider->read($id);
     }
 
     public function write(string $id, string $contents): void
     {
-        $this->storage->getProvider()->write($id, $contents);
+        $this->provider->write($id, $contents);
     }
 
     public function delete(string $id): void
     {
-        $this->storage->getProvider()->delete($id);
+        $this->provider->delete($id);
     }
 
     public function move(string $id, string $destination): void
     {
-        $this->storage->getProvider()->move($id, $destination);
+        $this->provider->move($id, $destination);
     }
 
     public function copy(string $id, string $destination): void
     {
-        $this->storage->getProvider()->copy($id, $destination);
+        $this->provider->copy($id, $destination);
     }
 
     public function listDirectory(string $id, bool $recursive = false): \Generator
     {
-        return $this->storage->getProvider()->listDirectory($id);
+        return $this->provider->listDirectory($id);
     }
 
     public function createDirectory(string $id, int $permissions = 0o777): void
     {
-        $this->storage->getProvider()->createDirectory($id, $permissions);
+        $this->provider->createDirectory($id, $permissions);
     }
 
     public function deleteDirectory(string $id): void
     {
-        $this->storage->getProvider()->deleteDirectory($id);
+        $this->provider->deleteDirectory($id);
     }
 }

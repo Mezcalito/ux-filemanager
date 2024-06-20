@@ -15,7 +15,6 @@ namespace Mezcalito\FileManagerBundle\DependencyInjection;
 
 use Mezcalito\FileManagerBundle\Collection\FilesystemCollection;
 use Mezcalito\FileManagerBundle\Filesystem\Filesystem;
-use Mezcalito\FileManagerBundle\Filesystem\Storage;
 use Mezcalito\FileManagerBundle\Provider\Factory\LocalFilesystemProviderFactory;
 use Mezcalito\FileManagerBundle\Twig\Components\Content;
 use Mezcalito\FileManagerBundle\Twig\Components\File;
@@ -74,15 +73,10 @@ class MezcalitoFileManagerExtension extends Extension
 
             $container->setDefinition('mezcalito_file_manager.provider.'.$storageName, $providerDefinition);
 
-            $container->register('mezcalito_file_manager.storage.'.$storageName, Storage::class)
-                ->setArguments([
-                    new Reference('mezcalito_file_manager.provider.'.$storageName),
-                ]);
-
             $container->register('mezcalito_file_manager.filesystem.'.$storageName, Filesystem::class)
                 ->addTag('mezcalito_file_manager.filesystem', ['name' => $storageName])
                 ->setArguments([
-                    new Reference('mezcalito_file_manager.storage.'.$storageName),
+                    new Reference('mezcalito_file_manager.provider.'.$storageName),
                 ]);
         }
 

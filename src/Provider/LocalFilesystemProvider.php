@@ -19,14 +19,12 @@ use Mezcalito\FileManagerBundle\Filesystem\Node;
 readonly class LocalFilesystemProvider implements ProviderInterface
 {
     private string $rootLocation;
-    private string $mediaUrl;
 
     public function __construct(
         string $location,
-        string $mediaUrl = '',
+        private string $mediaUrl = '',
     ) {
         $this->rootLocation = rtrim($location, '\\/').\DIRECTORY_SEPARATOR;
-        $this->mediaUrl = $mediaUrl;
     }
 
     public function info(string $id): Node
