@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Mezcalito\FileManagerBundle\DependencyInjection;
 
+use Mezcalito\FileManagerBundle\Configurator\ConfiguratorInterface;
 use Mezcalito\FileManagerBundle\Twig\Components\Content;
 use Mezcalito\FileManagerBundle\Twig\Components\File;
 use Mezcalito\FileManagerBundle\Twig\Components\FileManager;
@@ -45,6 +46,9 @@ class MezcalitoFileManagerExtension extends Extension
 
             $container->setParameter('mezcalito_file_manager.storage_configs.'.$storageName, $storageConfig);
         }
+
+        $container->registerForAutoconfiguration(ConfiguratorInterface::class)
+            ->addTag('mezcalito_file_manager.configurator');
 
         $container->register(FileManager::class)
             ->setAutowired(true)

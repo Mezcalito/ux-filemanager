@@ -15,6 +15,7 @@ namespace Mezcalito\FileManagerBundle\Tests\TestApplication;
 
 use Mezcalito\FileManagerBundle\Factory\FilesystemFactory;
 use Mezcalito\FileManagerBundle\MezcalitoFileManagerBundle;
+use Mezcalito\FileManagerBundle\Tests\TestApplication\FileManager\CustomConfigurator;
 use Psr\Log\NullLogger;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -139,6 +140,7 @@ final class Kernel extends BaseKernel
             ->autoconfigure()
             // disable logging errors to the console
             ->set('logger', NullLogger::class)
+            ->set(CustomConfigurator::class)->autoconfigure()->autowire()
             ->set(FilesystemFactory::class)->public();
     }
 

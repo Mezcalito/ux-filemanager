@@ -27,6 +27,7 @@ readonly class FilesystemFactory
 
     public function __construct(
         private ContainerBagInterface $params,
+        private iterable $configurators = [],
     ) {
         $this->providerFactories = [new LocalFilesystemProviderFactory()];
     }
@@ -48,7 +49,14 @@ readonly class FilesystemFactory
             $resolver = new OptionsResolver();
             $factory->configureResolver($resolver);
 
-            $provider = $factory->create($resolver->resolve($config['options']));
+            $options = $config['options'];
+            foreach ($this->configurators as $configurator) {
+                if ($configurator->support($config['provider'])) {
+                    $options = $configurator->overrideConfiguration($options);
+                }
+            }
+
+            $provider = $factory->create($resolver->resolve($options));
             break;
         }
 
