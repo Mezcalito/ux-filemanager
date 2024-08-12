@@ -122,6 +122,13 @@ final class Kernel extends BaseKernel
             'default_path' => '%kernel.project_dir%/templates',
         ]);
 
+        $container->extension('twig_component', [
+            'anonymous_template_directory' => 'components/',
+            'defaults' => [
+                'App\\Twig\\Components\\' => 'components/',
+            ],
+        ]);
+
         $container->extension('mezcalito_file_manager', [
             'storages' => [
                 'local' => [
