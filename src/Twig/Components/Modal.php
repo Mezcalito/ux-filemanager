@@ -79,7 +79,7 @@ class Modal
             default => '',
         };
 
-        return sprintf($title, $this->oldValue);
+        return \sprintf($title, $this->oldValue);
     }
 
     #[ExposeInTemplate]
@@ -91,7 +91,7 @@ class Modal
             default => '',
         };
 
-        return sprintf($subtitle, $this->oldValue);
+        return \sprintf($subtitle, $this->oldValue);
     }
 
     #[ExposeInTemplate]
@@ -146,7 +146,7 @@ class Modal
             return $this->currentPath.$value;
         }
 
-        return sprintf('/%s/%s', $this->currentPath, $value);
+        return \sprintf('/%s/%s', $this->currentPath, $value);
     }
 
     private function trans(string $message): string

@@ -50,7 +50,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $contents = @file_get_contents($location);
 
         if (false === $contents) {
-            throw new IOException(sprintf("Unable to read file '%s'", $location), 0, null, $location);
+            throw new IOException(\sprintf("Unable to read file '%s'", $location), 0, null, $location);
         }
 
         return $contents;
@@ -62,7 +62,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $this->checkDirectoryExists(\dirname($location));
 
         if (false === @file_put_contents($location, $contents, $flags)) {
-            throw new IOException(sprintf("Unable to write file '%s': ", $location).error_get_last()['message'], 0, null, $location);
+            throw new IOException(\sprintf("Unable to write file '%s': ", $location).error_get_last()['message'], 0, null, $location);
         }
     }
 
@@ -75,7 +75,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         }
 
         if (!@unlink($location)) {
-            throw new IOException(sprintf("Unable to delete file '%s'", $location), 0, null, $location);
+            throw new IOException(\sprintf("Unable to delete file '%s'", $location), 0, null, $location);
         }
     }
 
@@ -87,7 +87,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $this->checkDirectoryExists(\dirname($destinationPath));
 
         if (!@rename($sourcePath, $destinationPath)) {
-            throw new IOException(sprintf("Unable to move file from '%s' to '%s'", $sourcePath, $destinationPath), 0, null, $sourcePath);
+            throw new IOException(\sprintf("Unable to move file from '%s' to '%s'", $sourcePath, $destinationPath), 0, null, $sourcePath);
         }
     }
 
@@ -99,7 +99,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         $this->checkDirectoryExists(\dirname($destinationPath));
 
         if (!@copy($sourcePath, $destinationPath)) {
-            throw new IOException(sprintf("Unable to copy file '%s' to '%s'", $sourcePath, $destinationPath), 0, null, $sourcePath);
+            throw new IOException(\sprintf("Unable to copy file '%s' to '%s'", $sourcePath, $destinationPath), 0, null, $sourcePath);
         }
     }
 
@@ -148,7 +148,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         }
 
         if (!@mkdir($location, $permissions, true)) {
-            throw new IOException(sprintf("Unable to create directory '%s'", $location), 0, null, $location);
+            throw new IOException(\sprintf("Unable to create directory '%s'", $location), 0, null, $location);
         }
     }
 
@@ -170,7 +170,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         unset($contents);
 
         if (!@rmdir($location)) {
-            throw new IOException(sprintf("Unable to delete directory '%s'", $location), 0, null, $location);
+            throw new IOException(\sprintf("Unable to delete directory '%s'", $location), 0, null, $location);
         }
     }
 
