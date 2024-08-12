@@ -108,7 +108,7 @@ class Modal
     #[ExposeInTemplate]
     public function getActionLabel(): ?string
     {
-        return str_replace('-', ' ', $this->action ?? '');
+        return $this->trans(ucfirst(str_replace('-', ' ', $this->action ?? '')));
     }
 
     #[LiveAction]

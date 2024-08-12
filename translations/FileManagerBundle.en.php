@@ -30,4 +30,9 @@ return [
     'Delete' => 'Delete',
     'Rename' => 'Rename',
     'Move' => 'Move',
+    'Cancel' => 'Cancel',
+    'Create' => 'Create',
+    'Delete folder' => 'Delete folder',
+    'Delete file' => 'Delete file',
+    'Upload' => 'Upload',
 ];

@@ -29,4 +29,9 @@ return [
     'Delete' => 'Supprimer',
     'Rename' => 'Renommer',
     'Move' => 'Déplacer',
+    'Cancel' => 'Annuler',
+    'Create' => 'Créer',
+    'Delete folder' => 'Supprimer le dossier',
+    'Delete file' => 'Supprimer le fichier',
+    'Upload' => 'Télécharger',
 ];

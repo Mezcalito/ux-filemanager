@@ -32,7 +32,7 @@
         <input type="hidden" data-model="action" data-mezcalito--ux-filemanager--filemanager-target="modalAction"/>
 
         <div class="fm-c-modal__actions">
-            <button type="button" class="fm-c-text-s fm-u-fw-700 fm-u-color-neutral-black" data-action="mezcalito--ux-filemanager--filemanager#closeModal">Cancel</button>
+            <button type="button" class="fm-c-text-s fm-u-fw-700 fm-u-color-neutral-black" data-action="mezcalito--ux-filemanager--filemanager#closeModal">{{ 'Cancel'|trans(domain="FileManagerBundle") }}</button>
             <button type="button" class="fm-c-button" data-action="live#action" data-live-action-param="files|save">{{ actionLabel|capitalize }}</button>
         </div>
     </dialog>
