@@ -22,8 +22,10 @@ use Mezcalito\FileManagerBundle\Twig\Components\Modal;
 use Mezcalito\FileManagerBundle\Twig\Components\Sidebar;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
 
 class MezcalitoFileManagerExtension extends Extension
 {
@@ -72,6 +74,9 @@ class MezcalitoFileManagerExtension extends Extension
 
         $container->register(Modal::class)
             ->setAutowired(true)
-            ->setAutoconfigured(true);
+            ->setAutoconfigured(true)
+            ->setArguments([
+                new Reference('translator', ContainerInterface::IGNORE_ON_INVALID_REFERENCE),
+            ]);
     }
 }

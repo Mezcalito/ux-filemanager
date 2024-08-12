@@ -11,20 +11,11 @@
             </button>
         {% endif %}
         <span class="fm-c-text-s fm-u-fw-500 fm-u-color-neutral-black">
-            {% if '/' == currentPath %}My files{% else %}{{ currentPath }}{% endif %}
+            {% if '/' == currentPath %}{{ 'My files'|trans(domain="FileManagerBundle") }}{% else %}{{ currentPath }}{% endif %}
         </span>
     </div>
 
     <div class="fm-c-content__actions">
-        <div class="fm-c-search-field">
-            <label for="search" class="fm-u-sr-only">Search</label>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33329 3.6C4.82959 3.6 2.79995 5.62965 2.79995 8.13334C2.79995 10.637 4.82959 12.6667 7.33329 12.6667C9.83698 12.6667 11.8666 10.637 11.8666 8.13334C11.8666 5.62965 9.83698 3.6 7.33329 3.6ZM1.19995 8.13334C1.19995 4.74599 3.94594 2 7.33329 2C10.7206 2 13.4666 4.74599 13.4666 8.13334C13.4666 11.5207 10.7206 14.2667 7.33329 14.2667C3.94594 14.2667 1.19995 11.5207 1.19995 8.13334Z" fill="black"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5344 11.3343C10.8468 11.0219 11.3533 11.0219 11.6657 11.3343L14.5657 14.2343C14.8782 14.5467 14.8782 15.0533 14.5657 15.3657C14.2533 15.6781 13.7468 15.6781 13.4344 15.3657L10.5344 12.4657C10.2219 12.1533 10.2219 11.6467 10.5344 11.3343Z" fill="black"/>
-            </svg>
-            <input placeholder="Search" id="search" name="search" class="fm-c-search-field__input fm-c-text-m fm-u-text-white" />
-        </div>
-
         <div class="fm-c-content__buttons fm-u-hidden@until-md">
             <button class="fm-c-button fm-c-text-xs fm-u-fw-500 fm-u-color-neutral-white" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="create">
                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +35,7 @@
                         </clipPath>
                     </defs>
                 </svg>
-                Create folder
+                {{ 'Create folder'|trans(domain="FileManagerBundle") }}
             </button>
 
             <button class="fm-c-button fm-c-text-xs fm-u-fw-500 fm-u-color-neutral-white" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="upload">
@@ -54,13 +45,13 @@
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M8.00004 7.46667C8.36823 7.46667 8.66671 7.76515 8.66671 8.13334V12.1333C8.66671 12.5015 8.36823 12.8 8.00004 12.8C7.63185 12.8 7.33337 12.5015 7.33337 12.1333V8.13334C7.33337 7.76515 7.63185 7.46667 8.00004 7.46667Z" fill="white"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M7.52864 7.66193C7.78899 7.40158 8.2111 7.40158 8.47144 7.66193L10.4714 9.66193C10.7318 9.92228 10.7318 10.3444 10.4714 10.6047C10.2111 10.8651 9.78899 10.8651 9.52864 10.6047L8.00004 9.07615L6.47145 10.6047C6.2111 10.8651 5.78899 10.8651 5.52864 10.6047C5.26829 10.3444 5.26829 9.92228 5.52864 9.66193L7.52864 7.66193Z" fill="white"/>
                 </svg>
-                Upload file
+                {{ 'Upload files'|trans(domain="FileManagerBundle") }}
             </button>
 
             <div class="fm-c-custom-select" data-mezcalito--ux-filemanager--filemanager-target="select">
                 <div class="fm-c-custom-select__input-wrapper">
                     <div class="fm-c-custom-select__current-wrapper">
-                        <span class="fm-c-custom-select__current fm-c-text-xs fm-u-fw-500 fm-u-color-actions-success-800">Sort by</span>
+                        <span class="fm-c-custom-select__current fm-c-text-xs fm-u-fw-500 fm-u-color-actions-success-800">{{ 'Sort by'|trans(domain="FileManagerBundle") }}</span>
                         <span class="fm-c-custom-select__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M12 10L8 6L4 10" stroke="#00591D" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
@@ -77,7 +68,7 @@
                                     data-model="sort"
                                     data-value="{% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::NAME_ASC') %}name-desc{% else %}name-asc{% endif %}"
                             >
-                                By name
+                                {{ 'By name'|trans(domain="FileManagerBundle") }}
                                 {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::NAME_ASC') %}
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
@@ -96,7 +87,7 @@
                                     data-model="sort"
                                     data-value="{% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::DATE_ASC') %}date-desc{% else %}date-asc{% endif %}"
                             >
-                                By date
+                                {{ 'By date'|trans(domain="FileManagerBundle") }}
                                 {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::DATE_ASC') %}
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
@@ -152,7 +143,7 @@
                 <path d="M10 4.16663V15.8333" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M4.16675 10H15.8334" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            New
+            {{ 'New'|trans(domain="FileManagerBundle") }}
         </button>
 
         <div class="fm-c-submenu">
@@ -165,7 +156,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5083 15.8333C12.5083 15.3777 12.8777 15.0083 13.3333 15.0083H18.3333C18.7889 15.0083 19.1583 15.3777 19.1583 15.8333C19.1583 16.289 18.7889 16.6583 18.3333 16.6583H13.3333C12.8777 16.6583 12.5083 16.289 12.5083 15.8333Z" fill="#566071"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8333 12.5083C16.2889 12.5083 16.6583 12.8777 16.6583 13.3333V18.3333C16.6583 18.789 16.2889 19.1583 15.8333 19.1583C15.3777 19.1583 15.0083 18.789 15.0083 18.3333V13.3333C15.0083 12.8777 15.3777 12.5083 15.8333 12.5083Z" fill="#566071"/>
                             </svg>
-                            Create folder
+                            {{ 'Create folder'|trans(domain="FileManagerBundle") }}
                         </button>
                     </li>
                     <li>
@@ -176,7 +167,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0001 8.33334C10.4603 8.33334 10.8334 8.70644 10.8334 9.16668V14.1667C10.8334 14.6269 10.4603 15 10.0001 15C9.53984 15 9.16675 14.6269 9.16675 14.1667V9.16668C9.16675 8.70644 9.53984 8.33334 10.0001 8.33334Z" fill="#566071"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41083 8.57742C9.73626 8.25198 10.2639 8.25198 10.5893 8.57742L13.0893 11.0774C13.4148 11.4029 13.4148 11.9305 13.0893 12.2559C12.7639 12.5814 12.2363 12.5814 11.9108 12.2559L10.0001 10.3452L8.08934 12.2559C7.7639 12.5814 7.23626 12.5814 6.91083 12.2559C6.58539 11.9305 6.58539 11.4029 6.91083 11.0774L9.41083 8.57742Z" fill="#566071"/>
                             </svg>
-                            Upload file
+                            {{ 'Upload files'|trans(domain="FileManagerBundle") }}
                         </button>
                     </li>
                 </ul>
@@ -188,7 +179,6 @@
 {% macro placeholder(props) %}
     <div class='fm-c-content__loading'>
         <div class='fm-c-content__loading-actions'>
-            <span class='fm-c-content__search-loader fm-c-content__loader'></span>
             <div>
                 <span class='fm-c-content__box-loader fm-c-content__loader'></span>
                 <span class='fm-c-content__box-loader fm-c-content__loader'></span>

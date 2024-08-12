@@ -18,6 +18,7 @@ use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemContextTrait;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
@@ -43,6 +44,11 @@ class Modal
     #[LiveProp(writable: true)]
     public ?string $value = null;
 
+    public function __construct(
+        private readonly ?TranslatorInterface $translator = null,
+    ) {
+    }
+
     #[PreReRender]
     public function preRender(): void
     {
@@ -64,12 +70,12 @@ class Modal
     public function getTitle(): ?string
     {
         $title = match (ModalAction::tryFrom($this->action ?? '')) {
-            ModalAction::CREATE => 'New folder',
-            ModalAction::DELETE_FOLDER => 'Delete folder "%s"',
-            ModalAction::DELETE_FILE => 'Delete file "%s"',
-            ModalAction::UPLOAD => 'Upload files',
-            ModalAction::RENAME => 'Rename item "%s"',
-            ModalAction::MOVE => 'Move item "%s"',
+            ModalAction::CREATE => $this->trans('New folder'),
+            ModalAction::DELETE_FOLDER => $this->trans('Delete folder "%s"'),
+            ModalAction::DELETE_FILE => $this->trans('Delete file "%s"'),
+            ModalAction::UPLOAD => $this->trans('Upload files'),
+            ModalAction::RENAME => $this->trans('Rename item "%s"'),
+            ModalAction::MOVE => $this->trans('Move item "%s"'),
             default => '',
         };
 
@@ -80,8 +86,8 @@ class Modal
     public function getSubtitle(): ?string
     {
         $subtitle = match (ModalAction::tryFrom($this->action ?? '')) {
-            ModalAction::DELETE_FOLDER, ModalAction::DELETE_FILE => '"%s" will be permanently deleted.',
-            ModalAction::MOVE => 'Select a folder below to move your item to.',
+            ModalAction::DELETE_FOLDER, ModalAction::DELETE_FILE => $this->trans('"%s" will be permanently deleted.'),
+            ModalAction::MOVE => $this->trans('Select a folder below to move your item to.'),
             default => '',
         };
 
@@ -141,5 +147,10 @@ class Modal
         }
 
         return sprintf('/%s/%s', $this->currentPath, $value);
+    }
+
+    private function trans(string $message): string
+    {
+        return null !== $this->translator ? $this->translator->trans($message, [], 'FileManagerBundle') : $message;
     }
 }
