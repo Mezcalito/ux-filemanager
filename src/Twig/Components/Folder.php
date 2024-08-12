@@ -18,7 +18,7 @@ use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
-#[AsTwigComponent('Mezcalito:Folder', template: '@MezcalitoFileManager/components/folder.html.twig')]
+#[AsTwigComponent]
 class Folder
 {
     use FilesystemToolsTrait;

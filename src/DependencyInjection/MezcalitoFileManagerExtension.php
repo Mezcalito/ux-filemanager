@@ -16,18 +16,20 @@ namespace Mezcalito\FileManagerBundle\DependencyInjection;
 use Mezcalito\FileManagerBundle\Configurator\ConfiguratorInterface;
 use Mezcalito\FileManagerBundle\Twig\Components\Content;
 use Mezcalito\FileManagerBundle\Twig\Components\File;
-use Mezcalito\FileManagerBundle\Twig\Components\FileManager;
+use Mezcalito\FileManagerBundle\Twig\Components\FileSystem;
 use Mezcalito\FileManagerBundle\Twig\Components\Folder;
 use Mezcalito\FileManagerBundle\Twig\Components\Modal;
 use Mezcalito\FileManagerBundle\Twig\Components\Sidebar;
+use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 
-class MezcalitoFileManagerExtension extends Extension
+class MezcalitoFileManagerExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -52,7 +54,7 @@ class MezcalitoFileManagerExtension extends Extension
         $container->registerForAutoconfiguration(ConfiguratorInterface::class)
             ->addTag('mezcalito_file_manager.configurator');
 
-        $container->register(FileManager::class)
+        $container->register(FileSystem::class)
             ->setAutowired(true)
             ->setAutoconfigured(true);
 
@@ -78,5 +80,44 @@ class MezcalitoFileManagerExtension extends Extension
             ->setArguments([
                 new Reference('translator', ContainerInterface::IGNORE_ON_INVALID_REFERENCE),
             ]);
+    }
+
+    public function prepend(ContainerBuilder $container)
+    {
+        $container->prependExtensionConfig('twig_component', [
+            'defaults' => [
+                'Mezcalito\\FileManagerBundle\\Twig\\Components\\' => [
+                    'template_directory' => '@MezcalitoFileManager/components/',
+                    'name_prefix' => 'Mezcalito:FileManager',
+                ],
+            ],
+        ]);
+
+        if (!$this->isAssetMapperAvailable($container)) {
+            return;
+        }
+
+        $container->prependExtensionConfig('framework', [
+            'asset_mapper' => [
+                'paths' => [
+                    __DIR__.'/../../assets/dist' => '@mezcalito/ux-filemanager',
+                ],
+            ],
+        ]);
+    }
+
+    private function isAssetMapperAvailable(ContainerBuilder $container): bool
+    {
+        if (!interface_exists(AssetMapperInterface::class)) {
+            return false;
+        }
+
+        // check that FrameworkBundle 6.3 or higher is installed
+        $bundlesMetadata = $container->getParameter('kernel.bundles_metadata');
+        if (!isset($bundlesMetadata['FrameworkBundle'])) {
+            return false;
+        }
+
+        return is_file($bundlesMetadata['FrameworkBundle']['path'].'/Resources/config/asset_mapper.php');
     }
 }

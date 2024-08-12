@@ -25,7 +25,7 @@ use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
-#[AsLiveComponent('Mezcalito:Content', template: '@MezcalitoFileManager/components/content.html.twig')]
+#[AsLiveComponent]
 class Content
 {
     use ComponentToolsTrait;

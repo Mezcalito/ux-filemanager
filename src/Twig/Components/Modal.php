@@ -27,7 +27,7 @@ use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
-#[AsLiveComponent('Mezcalito:Modal', template: '@MezcalitoFileManager/components/modal.html.twig')]
+#[AsLiveComponent]
 class Modal
 {
     use ComponentToolsTrait;
