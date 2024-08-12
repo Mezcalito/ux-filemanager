@@ -31,10 +31,13 @@ class LocalFilesystemProviderFactory implements ProviderFactoryInterface
 
         $resolver->setDefault('media_url', '');
         $resolver->setAllowedTypes('media_url', 'string');
+
+        $resolver->setDefault('ignore_dot_files', true);
+        $resolver->setAllowedTypes('ignore_dot_files', 'bool');
     }
 
     public function create(array $options): ?ProviderInterface
     {
-        return new LocalFilesystemProvider($options['path'], $options['media_url']);
+        return new LocalFilesystemProvider($options['path'], $options['media_url'], $options['ignore_dot_files']);
     }
 }

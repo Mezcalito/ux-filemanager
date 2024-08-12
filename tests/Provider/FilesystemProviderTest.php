@@ -89,10 +89,23 @@ class FilesystemProviderTest extends TestCase
         $provider = new LocalFilesystemProvider(self::ROOT);
         $provider->write('directory/filename.txt', 'content');
         $provider->write('filename.txt', 'content');
+        $provider->write('.hidden', 'content');
 
         $contentIterator = $provider->listDirectory('/');
         $contents = iterator_to_array($contentIterator);
         $this->assertCount(2, $contents);
+    }
+
+    public function testListDirectoryWithDotFiles(): void
+    {
+        $provider = new LocalFilesystemProvider(self::ROOT, ignoreDotFiles: false);
+        $provider->write('directory/filename.txt', 'content');
+        $provider->write('filename.txt', 'content');
+        $provider->write('.hidden', 'content');
+
+        $contentIterator = $provider->listDirectory('/');
+        $contents = iterator_to_array($contentIterator);
+        $this->assertCount(3, $contents);
     }
 
     public function testNodeInfo(): void

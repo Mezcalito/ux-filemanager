@@ -23,6 +23,7 @@ readonly class LocalFilesystemProvider implements ProviderInterface
     public function __construct(
         string $location,
         private string $mediaUrl = '',
+        private bool $ignoreDotFiles = true,
     ) {
         $this->rootLocation = rtrim($location, '\\/').\DIRECTORY_SEPARATOR;
     }
@@ -110,6 +111,10 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         /** @var \SplFileInfo|\DirectoryIterator $fileInfo */
         foreach ($iterator as $fileInfo) {
             if ($fileInfo instanceof \DirectoryIterator && $fileInfo->isDot()) {
+                continue;
+            }
+
+            if ($this->ignoreDotFiles && str_starts_with($fileInfo->getBasename(), '.')) {
                 continue;
             }
 
