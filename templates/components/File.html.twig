@@ -1,6 +1,6 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<div class="fm-c-file-card" data-mezcalito--ux-filemanager--filemanager-target="card">
+<div class="fm-c-file-card" data-mezcalito--ux-filemanager--filemanager-target="card" {{ attributes }}>
     <input class="fm-c-file-card__input" type="checkbox" name="test" id="test" />
 
     <button class="fm-c-folder-card__link" data-action="live#action" data-live-action-param="selectMedia" data-live-url-param="{{ node.url }}"></button>
@@ -86,4 +86,10 @@
             {{ (bytes / terabyte)|number_format(0) ~ ' TB' }}
         {% endif %}
     {% endapply %}
+{% endmacro %}
+
+{% macro placeholder(props) %}
+    <div class='fm-c-file-card__loading'>
+        <span class='fm-c-file-card__bar-loader'></span>
+    </div>
 {% endmacro %}

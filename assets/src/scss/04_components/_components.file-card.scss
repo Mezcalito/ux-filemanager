@@ -111,3 +111,39 @@
   grid-area: action;
   transition: opacity var(--fm-transition-in-out);
 }
+
+.fm-c-file-card__loading {
+  display: flex;
+  flex-direction: column;
+  gap: $space-16;
+
+  @include max-width(md) {
+    padding-top: 0;
+    gap: $space-12;
+  }
+}
+
+.fm-c-file-card__bar-loader {
+  height: 7.2rem;
+  background: var(--fm-loading-grey);
+  overflow: hidden;
+  border-radius: var(--fm-radius-sm);
+}
+
+.fm-c-file-card__bar-loader::before{
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  animation: loading 1s infinite;
+  background: linear-gradient(to right, transparent,var(--fm-loading-grey-light),transparent);
+}
+
+@keyframes loading {
+  0%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}

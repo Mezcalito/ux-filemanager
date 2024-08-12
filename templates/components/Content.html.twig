@@ -130,9 +130,9 @@
     <div class="fm-c-content__cards" data-mezcalito--ux-filemanager--filemanager-target="list">
         {% for node in content %}
             {% if node.isDir() %}
-                <twig:Mezcalito:FileManager:Folder :storage="storage" :id="node.id"/>
+                <twig:Mezcalito:FileManager:Folder :storage="storage" :path="node.id" loading="lazy"/>
             {% else %}
-                <twig:Mezcalito:FileManager:File :storage="storage" :id="node.id"/>
+                <twig:Mezcalito:FileManager:File :storage="storage" :path="node.id" loading="lazy"/>
             {% endif %}
         {% endfor %}
     </div>
@@ -175,23 +175,3 @@
         </div>
     </div>
 </div>
-
-{% macro placeholder(props) %}
-    <div class='fm-c-content__loading'>
-        <div class='fm-c-content__loading-actions'>
-            <div>
-                <span class='fm-c-content__box-loader fm-c-content__loader'></span>
-                <span class='fm-c-content__box-loader fm-c-content__loader'></span>
-                <span class='fm-c-content__box-loader fm-c-content__loader'></span>
-            </div>
-            <span class='fm-c-content__format-loader fm-c-content__loader'></span>
-            <span class='fm-c-content__format-loader-mob fm-c-content__loader'></span>
-        </div>
-        <div class='fm-c-content__bars-container'>
-            <span class='fm-c-content__bar-loader fm-c-content__loader'></span>
-            <span class='fm-c-content__bar-loader fm-c-content__loader'></span>
-            <span class='fm-c-content__bar-loader fm-c-content__loader'></span>
-            <span class='fm-c-content__bar-loader fm-c-content__loader'></span>
-        </div>
-    </div>
-{% endmacro %}

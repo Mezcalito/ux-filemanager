@@ -1,6 +1,6 @@
 {# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
 
-<div class="fm-c-folder-card" data-mezcalito--ux-filemanager--filemanager-target="card">
+<div class="fm-c-folder-card" data-mezcalito--ux-filemanager--filemanager-target="card" {{ attributes }}>
     <input class="fm-c-folder-card__input" type="checkbox" name="test" id="test" />
 
     <button class="fm-c-folder-card__link" data-action="dblclick->live#emit" data-live-event-param="updateCurrentPath" data-live-path-param="{{ node.path }}"></button>
@@ -66,3 +66,9 @@
         </div>
     </div>
 </div>
+
+{% macro placeholder(props) %}
+    <div class='fm-c-folder-card__loading'>
+        <span class='fm-c-folder-card__bar-loader'></span>
+    </div>
+{% endmacro %}

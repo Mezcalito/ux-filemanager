@@ -15,20 +15,24 @@ namespace Mezcalito\FileManagerBundle\Twig\Components;
 
 use Mezcalito\FileManagerBundle\Filesystem\Node;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
-use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
+use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
+use Symfony\UX\LiveComponent\Attribute\LiveProp;
+use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
-#[AsTwigComponent]
+#[AsLiveComponent]
 class File
 {
+    use DefaultActionTrait;
     use FilesystemToolsTrait;
 
-    public string $id;
+    #[LiveProp]
+    public string $path;
 
     #[ExposeInTemplate]
     public function getNode(): ?Node
     {
-        return $this->getFilesystem()->info($this->id);
+        return $this->getFilesystem()->info($this->path);
     }
 
     #[ExposeInTemplate]
@@ -39,6 +43,6 @@ class File
             return null;
         }
 
-        return base64_encode($this->getFilesystem()->read($this->id));
+        return base64_encode($this->getFilesystem()->read($this->path));
     }
 }
