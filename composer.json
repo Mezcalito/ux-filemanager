@@ -1,11 +1,20 @@
 {
   "name": "mezcalito/ux-filemanager",
   "type": "symfony-bundle",
-  "description": "File manager for Symfony application",
+  "description": "Effortless file management with Symfony UX and Mezcalito UX FileManager",
+  "homepage": "https://github.com/Mezcalito/imgproxy-bundle",
   "keywords": [
-    "symfony-ux"
+    "symfony-ux",
+    "filemanager"
   ],
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Mezcalito",
+      "email": "dev@mezcalito.fr",
+      "homepage": "https://www.mezcalito.fr/"
+    }
+  ],
   "require": {
     "php": ">=8.3",
     "symfony/dependency-injection": "^6.4|^7.0",
