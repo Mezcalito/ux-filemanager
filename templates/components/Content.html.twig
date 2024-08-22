@@ -130,9 +130,9 @@
     <div class="fm-c-content__cards" data-mezcalito--ux-filemanager--filemanager-target="list">
         {% for node in content %}
             {% if node.isDir() %}
-                <twig:Mezcalito:FileManager:Folder :storage="storage" :path="node.id" loading="lazy"/>
+                <twig:Mezcalito:FileManager:Folder :id="[currentPath, node.id, random()]|join('_')" :storage="storage" :path="node.id" loading="lazy"/>
             {% else %}
-                <twig:Mezcalito:FileManager:File :storage="storage" :path="node.id" loading="lazy"/>
+                <twig:Mezcalito:FileManager:File :id="[currentPath, node.id, random()]|join('_')" :storage="storage" :path="node.id" loading="lazy"/>
             {% endif %}
         {% endfor %}
     </div>
