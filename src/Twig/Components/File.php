@@ -16,13 +16,17 @@ namespace Mezcalito\FileManagerBundle\Twig\Components;
 use Mezcalito\FileManagerBundle\Filesystem\Node;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
+use Symfony\UX\LiveComponent\Attribute\LiveAction;
+use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
+use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
 #[AsLiveComponent]
 class File
 {
+    use ComponentToolsTrait;
     use DefaultActionTrait;
     use FilesystemToolsTrait;
 
@@ -44,5 +48,13 @@ class File
         }
 
         return base64_encode($this->getFilesystem()->read($this->path));
+    }
+
+    #[LiveAction]
+    public function selectMedia(#[LiveArg] string $url): void
+    {
+        $this->dispatchBrowserEvent('filemanager:selectMedia', [
+            'url' => $url,
+        ]);
     }
 }

@@ -18,17 +18,13 @@ use Mezcalito\FileManagerBundle\Filesystem\Node;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemContextTrait;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
-use Symfony\UX\LiveComponent\Attribute\LiveAction;
-use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
-use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
 #[AsLiveComponent]
 class Content
 {
-    use ComponentToolsTrait;
     use DefaultActionTrait;
     use FilesystemContextTrait;
     use FilesystemToolsTrait;
@@ -58,13 +54,5 @@ class Content
         });
 
         return $nodes;
-    }
-
-    #[LiveAction]
-    public function selectMedia(#[LiveArg] string $url): void
-    {
-        $this->dispatchBrowserEvent('filemanager:selectMedia', [
-            'url' => $url,
-        ]);
     }
 }
