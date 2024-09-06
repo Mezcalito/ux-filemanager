@@ -13,7 +13,7 @@
         "fetch": "eager",
         "enabled": true,
         "autoimport": {
-          "@mezcalito/ux-filemanager/dist/style.min.css": true
+          "@mezcalito/ux-filemanager/dist/styles.min.css": true
         }
       }
     },
