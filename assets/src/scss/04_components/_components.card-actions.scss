@@ -36,6 +36,11 @@
     transition: background-color var(--fm-transition-in-out);
     width: 100%;
 
+    svg {
+      min-width: $space-16;
+      height: $space-16;
+    }
+
     &:hover {
       background-color: var(--fm-card-actions-button-bg-hover);
     }

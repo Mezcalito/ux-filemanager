@@ -7,6 +7,7 @@
   transition: opacity var(--fm-transition-in-out);
   opacity: 0;
   pointer-events: none;
+  z-index: 1;
 
   &.is-active {
     opacity: 1;

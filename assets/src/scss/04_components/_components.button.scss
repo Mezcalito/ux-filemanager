@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   gap: $space-10;
+  z-index: 1;
 
   &:hover {
     background-color: var(--fm-button-bg-hover);

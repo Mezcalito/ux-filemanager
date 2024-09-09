@@ -9,14 +9,14 @@
     align-items: center;
     justify-content: center;
     background-color: var(--fm-button-bg);
+    width: fit-content;
   }
 
   button {
     padding: $space-10;
 
     @include max-width(md) {
-      padding: 0;
-
+      //padding: 0;
       svg path {
         stroke: var(--fm-toggle-button-mob);
       }
