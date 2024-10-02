@@ -18,7 +18,7 @@ jobs:
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: 8.3
+                  php-version: 8.4
                   coverage: none
 
             - name: Install dependencies
@@ -38,7 +38,7 @@ jobs:
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: 8.3
+                  php-version: 8.4
                   coverage: none
 
             - name: Install dependencies
@@ -58,7 +58,7 @@ jobs:
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: 8.3
+                  php-version: 8.4
                   coverage: none
 
             - name: Install dependencies
@@ -76,12 +76,12 @@ jobs:
                 include:
                     # Latest Symfony version support
                     -   os: ubuntu-latest
-                        php_version: "8.3"
+                        php_version: "8.4"
                         symfony_version: "7.0"
                         stability: "stable"
                     # LTS Symfony version support
                     -   os: ubuntu-latest
-                        php_version: "8.3"
+                        php_version: "8.4"
                         symfony_version: "6.4"
                         stability: "stable"
                     # Lowest deps support
@@ -92,8 +92,8 @@ jobs:
                         stability: "stable"
                     # Upcoming Symfony versions
                     -   os: ubuntu-latest
-                        php_version: "8.3"
-                        symfony_version: "7.1.x-dev"
+                        php_version: "8.4"
+                        symfony_version: "7.2.x-dev"
                         stability: "dev"
 
         runs-on: ${{ matrix.os }}
