@@ -15,6 +15,7 @@
         <env name="APP_ENV" value="test" />
         <env name="KERNEL_CLASS" value="Mezcalito\FileManagerBundle\Tests\TestApplication\Kernel" />
         <server name="SHELL_VERBOSITY" value="-1" />
+        <server name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
     </php>
 
     <testsuites>
