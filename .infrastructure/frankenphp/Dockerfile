@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:latest-php8.4-alpine
+FROM dunglas/frankenphp:php8.3-alpine
 
 # persistent / runtime deps
 RUN apk add --no-cache \
