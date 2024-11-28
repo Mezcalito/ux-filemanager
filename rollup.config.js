@@ -1,7 +1,7 @@
 const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const typescript = require('@rollup/plugin-typescript');
-const scss = require('rollup-plugin-scss');
+const sass = require('rollup-plugin-sass');
 
 module.exports = {
     input: 'assets/src/controller.ts',
@@ -16,13 +16,11 @@ module.exports = {
         resolve(),
         typescript(),
         commonjs(),
-        scss({
-            fileName: 'styles.min.css',
-            watch: ['assets/src/scss', 'assets/src/scss/styles.scss'],
-            outputStyle: 'compressed',
+        sass({
+            output: 'assets/dist/styles.min.css',
+            options: {
+                outputStyle: 'compressed',
+            },
         }),
     ],
-    watch: {
-        include: 'assets/**',
-    },
 };

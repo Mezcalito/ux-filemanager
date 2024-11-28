@@ -1,12 +1,14 @@
+@use "../01_settings" as settings;
+
 .fm-c-sidebar {
-  padding: $space-16;
+  padding: settings.$space-16;
   border-right: 1px solid var(--fm-border-grey-50);
   overflow: auto;
   display: flex;
 
   ul {
     list-style: none;
-    padding-inline-start: $space-40;
+    padding-inline-start: settings.$space-40;
   }
 
   & > ul {
@@ -16,21 +18,21 @@
 
 
 .fm-c-sidebar__loading {
-  padding: $space-16;
+  padding: settings.$space-16;
   display: flex;
   flex-direction: column;
-  gap: $space-10;
+  gap: settings.$space-10;
 
   .fm-c-sidebar__bar-loader:first-child {
     width: 50%;
     margin-left: 0;
 
-    @include max-width(md) {
+    @include settings.max-width(md) {
       width: 30%;
     }
   }
 
-  @include max-width(md) {
+  @include settings.max-width(md) {
     .fm-c-sidebar__bar-loader:not(:first-child) {
       display: none;
     }
@@ -38,7 +40,7 @@
 }
 
 .fm-c-sidebar__bar-loader {
-  margin-left: $space-16;
+  margin-left: settings.$space-16;
   height: 2.8rem;
   background: var(--fm-loading-grey);
   overflow: hidden;

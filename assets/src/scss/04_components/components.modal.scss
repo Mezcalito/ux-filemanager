@@ -1,7 +1,9 @@
+@use "../01_settings" as settings;
+
 .fm-c-modal {
   transform: scale(0.95);
   border: 0;
-  padding: $space-20;
+  padding: settings.$space-20;
   border-radius: var(--fm-radius-md);
   display: flex;
   flex-direction: column;
@@ -11,7 +13,7 @@
 
   & > p {
     text-align: center;
-    margin-bottom: $space-16;
+    margin-bottom: settings.$space-16;
   }
 }
 
@@ -24,7 +26,7 @@
 .fm-c-modal--md {
   width: 33rem;
 
-  @include max-width(md) {
+  @include settings.max-width(md) {
     width: calc(100% - 3.2rem);
   }
 }
@@ -32,15 +34,15 @@
 .fm-c-modal--lg {
   width: 68.6rem;
 
-  @include max-width(md) {
+  @include settings.max-width(md) {
     width: calc(100% - 3.2rem);
   }
 }
 
 .fm-c-modal__close {
   position: absolute;
-  top: $space-16;
-  right: $space-16;
+  top: settings.$space-16;
+  right: settings.$space-16;
 }
 
 .fm-c-modal__content {
@@ -64,13 +66,13 @@
 .fm-c-modal__content--with-border {
   border-radius: var(--fm-radius-md);
   border: 1px solid var(--fm-border-grey-100);
-  padding: $space-16;
+  padding: settings.$space-16;
 }
 
 .fm-c-modal__actions {
   display: flex;
   align-items: center;
-  margin-top: $space-32;
-  gap: $space-24;
+  margin-top: settings.$space-32;
+  gap: settings.$space-24;
   justify-content: end;
 }

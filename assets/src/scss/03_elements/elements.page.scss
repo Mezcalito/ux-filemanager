@@ -1,10 +1,12 @@
+@use "../01_settings" as settings;
+
 html {
   scroll-behavior: smooth;
   font-size: 62.5%;
 }
 
 body {
-  @include text('m', var(--fm-page-text));
+  @include settings.text('m', var(--fm-page-text));
   background-color: var(--fm-page-bg);
   height: 100vh;
   height: 100svh;

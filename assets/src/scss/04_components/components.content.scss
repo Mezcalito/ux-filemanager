@@ -1,29 +1,31 @@
+@use "../01_settings" as settings;
+
 .fm-c-content {
   overflow: auto;
-  padding: $space-16;
+  padding: settings.$space-16;
   display: flex;
   flex-direction: column;
-  gap: $space-16;
+  gap: settings.$space-16;
 
-  @include max-width(md) {
+  @include settings.max-width(md) {
     padding-top: 0;
-    gap: $space-12;
+    gap: settings.$space-12;
   }
 }
 
 .fm-c-content__actions {
-  @include min-width(md) {
+  @include settings.min-width(md) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: $space-12;
+    gap: settings.$space-12;
   }
 
-  @include max-width(md) {
+  @include settings.max-width(md) {
     display: grid;
     grid-template-columns: 1fr 4rem;
-    grid-gap: $space-16;
+    grid-gap: settings.$space-16;
   }
 }
 
@@ -35,30 +37,30 @@
 
 .fm-c-content__buttons {
   display: flex;
-  gap: $space-8;
+  gap: settings.$space-8;
 }
 
 .fm-c-content__cards {
   display: flex;
   flex-direction: column;
-  gap: $space-8;
+  gap: settings.$space-8;
 
   &--grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: $space-16;
+    grid-gap: settings.$space-16;
 
     .fm-c-file-card {
-      padding: $space-8;
+      padding: settings.$space-8;
       grid-template-columns: 1fr 2.4rem;
       grid-template-rows: 3.2rem 13.5rem auto;
       grid-template-areas:
           "name action"
           "img img"
           "info info";
-      grid-gap: $space-8;
+      grid-gap: settings.$space-8;
 
-      @include max-width(md) {
+      @include settings.max-width(md) {
         grid-template-rows: 3.2rem 8rem auto;
       }
 
@@ -79,7 +81,7 @@
         width: 5.2rem;
         height: 5.2rem;
 
-        @include max-width(md) {
+        @include settings.max-width(md) {
           width: 3.2rem;
           height: 3.2rem;
         }
@@ -91,16 +93,16 @@
     }
 
     .fm-c-folder-card {
-      padding: $space-8;
+      padding: settings.$space-8;
       grid-template-columns: 1fr 2.4rem;
       grid-template-rows: 3.2rem 13.5rem auto;
       grid-template-areas:
           "name action"
           "img img"
           "info info";
-      grid-gap: $space-8;
+      grid-gap: settings.$space-8;
 
-      @include max-width(md) {
+      @include settings.max-width(md) {
         grid-template-rows: 3.2rem 8rem auto;
       }
 
@@ -123,7 +125,7 @@
         width: 5.2rem;
         height: 5.2rem;
 
-        @include max-width(md) {
+        @include settings.max-width(md) {
           width: 3.2rem;
           height: 3.2rem;
         }
@@ -139,7 +141,7 @@
       gap: 0;
     }
 
-    @include max-width(lg) {
+    @include settings.max-width(lg) {
       grid-template-columns: repeat(2, 1fr);
     }
 
@@ -155,6 +157,6 @@
 
 .fm-c-content__sticky-button {
   position: fixed;
-  bottom: $space-16;
-  right: $space-16;
+  bottom: settings.$space-16;
+  right: settings.$space-16;
 }

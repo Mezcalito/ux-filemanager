@@ -1,3 +1,5 @@
+@use "../01_settings" as settings;
+
 .fm-c-collapse {
   &[data-visible='true'] {
     & > .fm-c-collapse__head .fm-c-collapse__arrow {
@@ -19,7 +21,7 @@
   display: flex;
   align-items: center;
   gap: 0.9rem;
-  padding: 0.4rem $space-8;
+  padding: 0.4rem settings.$space-8;
   border-radius: var(--fm-radius-sm);
   transition: background-color var(--fm-transition-in-out);
   width: fit-content;
@@ -33,7 +35,7 @@
   }
 
   &:not(.fm-c-collapse__head--first) {
-    margin-bottom: $space-8;
+    margin-bottom: settings.$space-8;
   }
 }
 
