@@ -1,4 +1,4 @@
-@use "../01_settings/settings.colors";
+@use "../01_settings" as settings;
 
 @each $name, $color in settings.$theme-color {
   .fm-u-color-#{$name} {

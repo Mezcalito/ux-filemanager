@@ -1,5 +1,4 @@
-@use "../01_settings/settings.media-queries" as settings2;
-@use "../01_settings/settings.spacing";
+@use "../01_settings" as settings;
 
 .fm-c-content {
   overflow: auto;
@@ -8,14 +7,14 @@
   flex-direction: column;
   gap: settings.$space-16;
 
-  @include settings2.max-width(md) {
+  @include settings.max-width(md) {
     padding-top: 0;
     gap: settings.$space-12;
   }
 }
 
 .fm-c-content__actions {
-  @include settings2.min-width(md) {
+  @include settings.min-width(md) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -23,7 +22,7 @@
     gap: settings.$space-12;
   }
 
-  @include settings2.max-width(md) {
+  @include settings.max-width(md) {
     display: grid;
     grid-template-columns: 1fr 4rem;
     grid-gap: settings.$space-16;
@@ -61,7 +60,7 @@
           "info info";
       grid-gap: settings.$space-8;
 
-      @include settings2.max-width(md) {
+      @include settings.max-width(md) {
         grid-template-rows: 3.2rem 8rem auto;
       }
 
@@ -82,7 +81,7 @@
         width: 5.2rem;
         height: 5.2rem;
 
-        @include settings2.max-width(md) {
+        @include settings.max-width(md) {
           width: 3.2rem;
           height: 3.2rem;
         }
@@ -103,7 +102,7 @@
           "info info";
       grid-gap: settings.$space-8;
 
-      @include settings2.max-width(md) {
+      @include settings.max-width(md) {
         grid-template-rows: 3.2rem 8rem auto;
       }
 
@@ -126,7 +125,7 @@
         width: 5.2rem;
         height: 5.2rem;
 
-        @include settings2.max-width(md) {
+        @include settings.max-width(md) {
           width: 3.2rem;
           height: 3.2rem;
         }
@@ -142,7 +141,7 @@
       gap: 0;
     }
 
-    @include settings2.max-width(lg) {
+    @include settings.max-width(lg) {
       grid-template-columns: repeat(2, 1fr);
     }
 

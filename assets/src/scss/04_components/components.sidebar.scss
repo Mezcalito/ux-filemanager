@@ -1,5 +1,4 @@
-@use "../01_settings/settings.media-queries" as settings2;
-@use "../01_settings/settings.spacing";
+@use "../01_settings" as settings;
 
 .fm-c-sidebar {
   padding: settings.$space-16;
@@ -28,12 +27,12 @@
     width: 50%;
     margin-left: 0;
 
-    @include settings2.max-width(md) {
+    @include settings.max-width(md) {
       width: 30%;
     }
   }
 
-  @include settings2.max-width(md) {
+  @include settings.max-width(md) {
     .fm-c-sidebar__bar-loader:not(:first-child) {
       display: none;
     }

@@ -1,5 +1,4 @@
-@use "../01_settings/settings.media-queries" as settings2;
-@use "../01_settings/settings.spacing";
+@use "../01_settings" as settings;
 
 .fm-c-modal {
   transform: scale(0.95);
@@ -27,7 +26,7 @@
 .fm-c-modal--md {
   width: 33rem;
 
-  @include settings2.max-width(md) {
+  @include settings.max-width(md) {
     width: calc(100% - 3.2rem);
   }
 }
@@ -35,7 +34,7 @@
 .fm-c-modal--lg {
   width: 68.6rem;
 
-  @include settings2.max-width(md) {
+  @include settings.max-width(md) {
     width: calc(100% - 3.2rem);
   }
 }

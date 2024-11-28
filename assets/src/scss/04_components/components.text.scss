@@ -1,4 +1,4 @@
-@use "../01_settings/settings.typography";
+@use "../01_settings" as settings;
 
 .fm-c-text-xl {
   @include settings.text('xl');

@@ -1,17 +1,16 @@
-@use "../01_settings/settings.breakpoints";
-@use "../01_settings/settings.media-queries" as settings2;
+@use "../01_settings" as settings;
 
 .fm-u-hidden {
   display: none!important;
 }
 
 @each $name, $value in settings.$breakpoints {
-  @include settings2.min-width(#{$name}) {
+  @include settings.min-width(#{$name}) {
     .fm-u-hidden\@from-#{$name} {
       display: none!important;
     }
   }
-  @include settings2.max-width(#{$name}) {
+  @include settings.max-width(#{$name}) {
     .fm-u-hidden\@until-#{$name} {
       display: none!important;
     }

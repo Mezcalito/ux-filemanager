@@ -1,5 +1,4 @@
-@use "../01_settings/settings.media-queries" as settings2;
-@use "../01_settings/settings.spacing";
+@use "../01_settings" as settings;
 
 .fm-c-custom-select {
   position: relative;
@@ -37,12 +36,12 @@
   justify-content: center;
   transform: rotate(180deg);
 
-  @include settings2.min-width(md) {
+  @include settings.min-width(md) {
     width: 2.4rem;
     height: 2.4rem;
   }
 
-  @include settings2.max-width(md) {
+  @include settings.max-width(md) {
     width: 1.6rem;
     height: 1.6rem;
   }
@@ -57,7 +56,7 @@
   padding: settings.$space-8;
   max-height: 22rem;
   position: absolute;
-  top: calc(100% + settings.$space-8);
+  top: calc(100% + #{settings.$space-8});
   z-index: 5;
   box-shadow: var(--fm-color-shadow-deep);
   gap: 0.4rem;
@@ -93,12 +92,12 @@
   width: 100%;
 
   svg {
-    @include settings2.min-width(md) {
+    @include settings.min-width(md) {
       width: 1.8rem;
       height: 1.8rem;
     }
 
-    @include settings2.max-width(md) {
+    @include settings.max-width(md) {
       width: 1rem;
       height: 1rem;
     }

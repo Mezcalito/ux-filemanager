@@ -1,4 +1,4 @@
-@use "../01_settings/settings.spacing";
+@use "../01_settings" as settings;
 
 .fm-c-button {
   padding: settings.$space-8 settings.$space-14;
