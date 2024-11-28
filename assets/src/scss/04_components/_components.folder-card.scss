@@ -1,5 +1,8 @@
+@use "../01_settings/settings.media-queries" as settings2;
+@use "../01_settings/settings.spacing";
+
 .fm-c-folder-card {
-  padding: $space-8 $space-16 $space-8 $space-8;
+  padding: settings.$space-8 settings.$space-16 settings.$space-8 settings.$space-8;
   background-color: var(--fm-card-bg);
   border-radius: var(--fm-radius-sm);
   position: relative;
@@ -8,7 +11,7 @@
   grid-template-areas:
     "img name action"
     "img info action";
-  grid-gap: 0 $space-16;
+  grid-gap: 0 settings.$space-16;
   grid-template-columns: 5.6rem 1fr 2.4rem;
 
   &:hover {
@@ -52,7 +55,7 @@
 
 .fm-c-folder-card__active-icon {
   display: none;
-  padding-left: $space-8;
+  padding-left: settings.$space-8;
   grid-area: activeIcon;
   align-items: center;
 }
@@ -60,11 +63,11 @@
 .fm-c-folder-card__infos {
   display: flex;
   align-items: center;
-  gap: $space-16;
+  gap: settings.$space-16;
 }
 
 .fm-c-folder-card__icon {
-  padding: $space-12;
+  padding: settings.$space-12;
   background-color: var(--fm-card-icon-bg);
   border-radius: var(--fm-radius-lg);
   grid-area: img;
@@ -94,11 +97,11 @@
 .fm-c-folder-card__loading {
   display: flex;
   flex-direction: column;
-  gap: $space-16;
+  gap: settings.$space-16;
 
-  @include max-width(md) {
+  @include settings2.max-width(md) {
     padding-top: 0;
-    gap: $space-12;
+    gap: settings.$space-12;
   }
 }
 

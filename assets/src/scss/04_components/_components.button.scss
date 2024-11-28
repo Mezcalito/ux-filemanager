@@ -1,12 +1,14 @@
+@use "../01_settings/settings.spacing";
+
 .fm-c-button {
-  padding: $space-8 $space-14;
+  padding: settings.$space-8 settings.$space-14;
   background-color: var(--fm-button-bg);
   color: var(--fm-button-label);
   border-radius: var(--fm-radius-md);
   transition: background-color var(--fm-transition-in-out);
   display: flex;
   align-items: center;
-  gap: $space-10;
+  gap: settings.$space-10;
   z-index: 1;
 
   &:hover {

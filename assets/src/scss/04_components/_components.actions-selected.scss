@@ -1,11 +1,14 @@
+@use "../01_settings/settings.media-queries" as settings2;
+@use "../01_settings/settings.spacing";
+
 .fm-c-actions-selected {
-  padding: $space-8 $space-16;
+  padding: settings.$space-8 settings.$space-16;
   background-color: var(--fm-actions-selected-bg);
   border-radius: var(--fm-radius-full);
   display: flex;
   align-items: center;
 
-  @include max-width(md) {
+  @include settings2.max-width(md) {
     justify-content: space-between;
   }
 }
@@ -17,7 +20,7 @@
 }
 
 .fm-c-actions-selected__info {
-  margin: 0 $space-24 0 $space-10;
+  margin: 0 settings.$space-24 0 settings.$space-10;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -26,9 +29,9 @@
 .fm-c-actions-selected__actions {
   display: flex;
   align-items: center;
-  gap: $space-16;
+  gap: settings.$space-16;
 
-  @include max-width(md) {
-    gap: $space-24;
+  @include settings2.max-width(md) {
+    gap: settings.$space-24;
   }
 }

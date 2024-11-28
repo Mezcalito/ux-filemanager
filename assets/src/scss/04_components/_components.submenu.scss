@@ -1,3 +1,5 @@
+@use "../01_settings/settings.spacing";
+
 .fm-c-submenu {
   background-color: var(--fm-modal-overlay-bg);
   position: fixed;
@@ -21,7 +23,7 @@
 
 .fm-c-submenu__content {
   position: relative;
-  padding: $space-24 $space-16;
+  padding: settings.$space-24 settings.$space-16;
   border-radius: var(--fm-radius-lg) var(--fm-radius-lg) 0 0;
   background-color: var(--fm-color-neutral-white);
   width: 100%;
@@ -37,14 +39,14 @@
 .fm-c-submenu__item {
   display: flex;
   align-items: center;
-  gap: $space-16;
-  padding: $space-8 $space-12;
+  gap: settings.$space-16;
+  padding: settings.$space-8 settings.$space-12;
 }
 
 .fm-c-submenu__button svg {
   border: 1px solid var(--fm-border-grey-100);
   border-radius: 50%;
-  padding: $space-10;
+  padding: settings.$space-10;
   width: 4rem;
   height: 4rem;
 }

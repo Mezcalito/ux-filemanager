@@ -1,10 +1,13 @@
+@use "../01_settings/settings.media-queries" as settings2;
+@use "../01_settings/settings.spacing";
+
 .fm-c-custom-select {
   position: relative;
 }
 
 .fm-c-custom-select__input-wrapper {
   cursor: pointer;
-  padding: $space-8 $space-14 $space-8 $space-16;
+  padding: settings.$space-8 settings.$space-14 settings.$space-8 settings.$space-16;
   border-radius: var(--fm-radius-md);
   border: 1px solid var(--fm-border-success-800);
   transition: background-color var(--fm-transition-in-out);
@@ -25,7 +28,7 @@
 .fm-c-custom-select__current-wrapper {
   display: flex;
   align-items: center;
-  gap: $space-10;
+  gap: settings.$space-10;
 }
 
 .fm-c-custom-select__icon {
@@ -34,12 +37,12 @@
   justify-content: center;
   transform: rotate(180deg);
 
-  @include min-width(md) {
+  @include settings2.min-width(md) {
     width: 2.4rem;
     height: 2.4rem;
   }
 
-  @include max-width(md) {
+  @include settings2.max-width(md) {
     width: 1.6rem;
     height: 1.6rem;
   }
@@ -51,10 +54,10 @@
   border: 1px solid var(--fm-border-grey-100);
   flex-direction: column;
   border-radius: var(--fm-radius-md);
-  padding: $space-8;
+  padding: settings.$space-8;
   max-height: 22rem;
   position: absolute;
-  top: calc(100% + $space-8);
+  top: calc(100% + settings.$space-8);
   z-index: 5;
   box-shadow: var(--fm-color-shadow-deep);
   gap: 0.4rem;
@@ -86,16 +89,16 @@
 .fm-c-custom-select__item > button {
   display: flex;
   align-items: center;
-  gap: $space-10;
+  gap: settings.$space-10;
   width: 100%;
 
   svg {
-    @include min-width(md) {
+    @include settings2.min-width(md) {
       width: 1.8rem;
       height: 1.8rem;
     }
 
-    @include max-width(md) {
+    @include settings2.max-width(md) {
       width: 1rem;
       height: 1rem;
     }

@@ -1,3 +1,5 @@
+@use "../01_settings/settings.spacing";
+
 .fm-c-card-actions {
   position: relative;
   display: flex;
@@ -23,22 +25,22 @@
   pointer-events: none;
   transition: opacity var(--fm-transition-in-out);
   border-radius: var(--fm-radius-md);
-  padding: $space-8 $space-20 $space-8 $space-8;
+  padding: settings.$space-8 settings.$space-20 settings.$space-8 settings.$space-8;
   box-shadow: var(--fm-color-shadow-deep);
 
   & > button {
-    padding: 0.9rem $space-12;
+    padding: 0.9rem settings.$space-12;
     color: var(--fm-card-actions-button);
     border-radius: var(--fm-radius-sm);
     display: flex;
     align-items: center;
-    gap: $space-16;
+    gap: settings.$space-16;
     transition: background-color var(--fm-transition-in-out);
     width: 100%;
 
     svg {
-      min-width: $space-16;
-      height: $space-16;
+      min-width: settings.$space-16;
+      height: settings.$space-16;
     }
 
     &:hover {

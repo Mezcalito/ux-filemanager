@@ -1,8 +1,11 @@
+@use "../01_settings/settings.media-queries";
+@use "../01_settings/settings.spacing" as settings2;
+
 .fm-c-search-field {
   width: 27rem;
   position: relative;
 
-  @include max-width(md) {
+  @include settings.max-width(md) {
     width: 100%;
   }
 
@@ -10,12 +13,12 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: $space-16;
+    left: settings2.$space-16;
   }
 }
 
 .fm-c-search-field__input {
-  padding: $space-8 $space-16 $space-8 4.4rem;
+  padding: settings2.$space-8 settings2.$space-16 settings2.$space-8 4.4rem;
   width: 100%;
   outline: none;
   border: 0;
