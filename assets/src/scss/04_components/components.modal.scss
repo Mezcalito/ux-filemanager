@@ -24,18 +24,18 @@
 }
 
 .fm-c-modal--md {
-  width: 33rem;
+  width: 330px;
 
   @include settings.max-width(md) {
-    width: calc(100% - 3.2rem);
+    width: calc(100% - 32px);
   }
 }
 
 .fm-c-modal--lg {
-  width: 68.6rem;
+  width: 686px;
 
   @include settings.max-width(md) {
-    width: calc(100% - 3.2rem);
+    width: calc(100% - 32px);
   }
 }
 
@@ -46,7 +46,7 @@
 }
 
 .fm-c-modal__content {
-  max-height: 29rem;
+  max-height: 290px;
   overflow: auto;
 
   ul {

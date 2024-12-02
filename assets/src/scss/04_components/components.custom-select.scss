@@ -37,13 +37,13 @@
   transform: rotate(180deg);
 
   @include settings.min-width(md) {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 24px;
+    height: 24px;
   }
 
   @include settings.max-width(md) {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -54,12 +54,12 @@
   flex-direction: column;
   border-radius: var(--fm-radius-md);
   padding: settings.$space-8;
-  max-height: 22rem;
+  max-height: 220px;
   position: absolute;
   top: calc(100% + #{settings.$space-8});
   z-index: 5;
   box-shadow: var(--fm-color-shadow-deep);
-  gap: 0.4rem;
+  gap: 4px;
   width: max-content;
   right: 0;
 
@@ -76,7 +76,7 @@
 }
 
 .fm-c-custom-select__item {
-  padding: 0.9rem 4.5rem 0.9rem 1.2rem;
+  padding: 9px 45px 9px 12px;
   transition: background-color var(--fm-transition-in-out);
   border-radius: var(--fm-radius-sm);
 
@@ -93,13 +93,13 @@
 
   svg {
     @include settings.min-width(md) {
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 18px;
+      height: 18px;
     }
 
     @include settings.max-width(md) {
-      width: 1rem;
-      height: 1rem;
+      width: 10px;
+      height: 10px;
     }
   }
 }

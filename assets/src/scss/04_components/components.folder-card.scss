@@ -11,7 +11,7 @@
     "img name action"
     "img info action";
   grid-gap: 0 settings.$space-16;
-  grid-template-columns: 5.6rem 1fr 2.4rem;
+  grid-template-columns: 56px 1fr 24px;
 
   &:hover {
     background-color: var(--fm-card-hover-bg);
@@ -22,7 +22,7 @@
   }
 
   &:has(.fm-c-folder-card__input:checked) {
-    grid-template-columns: 2.8rem 5.6rem 1fr 2.4rem;
+    grid-template-columns: 28px 56px 1fr 24px;
     grid-template-areas:
     "activeIcon img name action"
     "activeIcon img info action";
@@ -105,7 +105,7 @@
 }
 
 .fm-c-folder-card__bar-loader {
-  height: 7.2rem;
+  height: 72px;
   background: var(--fm-loading-grey);
   overflow: hidden;
   border-radius: var(--fm-radius-sm);

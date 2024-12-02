@@ -5,23 +5,23 @@
   color: $color;
 
   @if $level == 'xxxl' {
-    font-size: 2.6rem;
-    line-height: 3.1rem;
+    font-size: 26px;
+    line-height: 31px;
   } @else if $level == 'xxl' {
-    font-size: 2.2rem;
-    line-height: 2.7rem;
+    font-size: 22px;
+    line-height: 27px;
   } @else if $level == 'xl' {
-    font-size: 2.0rem;
-    line-height: 2.4rem;
+    font-size: 20px;
+    line-height: 24px;
   } @else if $level == 'l' {
-    font-size: 1.8rem;
-    line-height: 2.2rem;
+    font-size: 18px;
+    line-height: 22px;
   } @else if $level == 'm' {
-    font-size: 1.6rem;
-    line-height: 1.9rem;
+    font-size: 16px;
+    line-height: 19px;
   } @else if $level == 's' {
-    font-size: 1.4rem;
-    line-height: 1.7rem;
+    font-size: 14px;
+    line-height: 17px;
   } @else {
     @error "Unknown level #{$level}.";
   }
@@ -34,23 +34,23 @@
   color: $color;
 
   @if $level == 'xl' {
-    font-size: 2.0rem;
-    line-height: 2.8rem;
+    font-size: 20px;
+    line-height: 28px;
   } @else if $level == 'l' {
-    font-size: 1.8rem;
-    line-height: 2.6rem;
+    font-size: 18px;
+    line-height: 26px;
   } @else if $level == 'm' {
-    font-size: 1.6rem;
-    line-height: 2.4rem;
+    font-size: 16px;
+    line-height: 24px;
   } @else if $level == 's' {
-    font-size: 1.4rem;
-    line-height: 2.2rem;
+    font-size: 14px;
+    line-height: 22px;
   } @else if $level == 'xs' {
-    font-size: 1.2rem;
-    line-height: 2rem;
+    font-size: 12px;
+    line-height: 20px;
   } @else if $level == 'xxs' {
-    font-size: 1rem;
-    line-height: 1.2rem;
+    font-size: 10px;
+    line-height: 12px;
   } @else {
     @error "Unknown level #{$level}.";
   }
@@ -64,11 +64,11 @@
   text-transform: uppercase;
 
   @if $level == 'xs' {
-    font-size: 1.2rem;
-    line-height: 1.5rem;
+    font-size: 12px;
+    line-height: 15px;
   } @else if $level == 'xxs' {
-    font-size: 1rem;
-    line-height: 1.2rem;
+    font-size: 10px;
+    line-height: 12px;
   } @else {
     @error "Unknown level #{$level}.";
   }

@@ -2,7 +2,7 @@
 
 .fm-c-layout {
   display: grid;
-  grid-template-columns: 24rem 1fr;
+  grid-template-columns: 240px 1fr;
   height: 100%;
 
   @include settings.max-width(md) {

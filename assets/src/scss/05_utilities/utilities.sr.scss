@@ -1,11 +1,11 @@
 .fm-u-sr-only {
   border: 0;
-  clip: rect(.1rem, .1rem, .1rem, .1rem);
+  clip: rect(10px, 10px, 10px, 10px);
   clip-path: inset(50%);
-  height: .1rem;
+  height: 10px;
   overflow: hidden;
   padding: 0;
   position: absolute;
-  width: .1rem;
+  width: 10px;
   white-space: nowrap;
 }

@@ -24,7 +24,7 @@
 
   @include settings.max-width(md) {
     display: grid;
-    grid-template-columns: 1fr 4rem;
+    grid-template-columns: 1fr 40px;
     grid-gap: settings.$space-16;
   }
 }
@@ -52,8 +52,8 @@
 
     .fm-c-file-card {
       padding: settings.$space-8;
-      grid-template-columns: 1fr 2.4rem;
-      grid-template-rows: 3.2rem 13.5rem auto;
+      grid-template-columns: 1fr 24px;
+      grid-template-rows: 32px 135px auto;
       grid-template-areas:
           "name action"
           "img img"
@@ -61,11 +61,11 @@
       grid-gap: settings.$space-8;
 
       @include settings.max-width(md) {
-        grid-template-rows: 3.2rem 8rem auto;
+        grid-template-rows: 32px 80px auto;
       }
 
       &:has(.fm-c-file-card__input:checked) {
-        grid-template-columns: 2.8rem 1fr 2.4rem;
+        grid-template-columns: 28px 1fr 24px;
         grid-template-areas:
             "activeIcon name action"
             "img img img"
@@ -78,12 +78,12 @@
       height: 100%;
 
       svg {
-        width: 5.2rem;
-        height: 5.2rem;
+        width: 52px;
+        height: 52px;
 
         @include settings.max-width(md) {
-          width: 3.2rem;
-          height: 3.2rem;
+          width: 32px;
+          height: 32px;
         }
       }
     }
@@ -94,8 +94,8 @@
 
     .fm-c-folder-card {
       padding: settings.$space-8;
-      grid-template-columns: 1fr 2.4rem;
-      grid-template-rows: 3.2rem 13.5rem auto;
+      grid-template-columns: 1fr 24px;
+      grid-template-rows: 32px 135px auto;
       grid-template-areas:
           "name action"
           "img img"
@@ -103,11 +103,11 @@
       grid-gap: settings.$space-8;
 
       @include settings.max-width(md) {
-        grid-template-rows: 3.2rem 8rem auto;
+        grid-template-rows: 32px 80px auto;
       }
 
       &:has(.fm-c-folder-card__input:checked) {
-        grid-template-columns: 2.8rem 1fr 2.4rem;
+        grid-template-columns: 28px 1fr 24px;
         grid-template-areas:
             "activeIcon name action"
             "img img img"
@@ -122,12 +122,12 @@
       height: 100%;
 
       svg {
-        width: 5.2rem;
-        height: 5.2rem;
+        width: 52px;
+        height: 52px;
 
         @include settings.max-width(md) {
-          width: 3.2rem;
-          height: 3.2rem;
+          width: 32px;
+          height: 32px;
         }
       }
     }

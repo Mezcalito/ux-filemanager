@@ -1,7 +1,7 @@
 @use "../01_settings" as settings;
 
 .fm-c-search-field {
-  width: 27rem;
+  width: 270px;
   position: relative;
 
   @include settings.max-width(md) {
@@ -17,7 +17,7 @@
 }
 
 .fm-c-search-field__input {
-  padding: settings.$space-8 settings.$space-16 settings.$space-8 4.4rem;
+  padding: settings.$space-8 settings.$space-16 settings.$space-8 44px;
   width: 100%;
   outline: none;
   border: 0;
