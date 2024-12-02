@@ -1,5 +1,7 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+.fm-c-layout {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 }

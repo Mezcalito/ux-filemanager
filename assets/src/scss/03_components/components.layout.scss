@@ -4,6 +4,8 @@
   display: grid;
   grid-template-columns: 240px 1fr;
   height: 100%;
+  @include settings.text('m', var(--fm-page-text));
+  background-color: var(--fm-page-bg);
 
   @include settings.max-width(md) {
     grid-template-columns: 1fr;
