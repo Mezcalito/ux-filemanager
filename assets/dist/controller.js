@@ -66,17 +66,18 @@ class default_1 extends Controller {
         window.addEventListener('modal:close', () => this.closeModal());
     }
     changeDisplayMode(event) {
-        document.querySelectorAll('.fm-c-toggle-buttons__action').forEach((button) => {
+        document.querySelectorAll('.fm-c-toggle-buttons__action').forEach(button => {
             button.classList.remove('fm-c-toggle-buttons__action--active');
         });
         event.currentTarget.classList.add('fm-c-toggle-buttons__action--active');
         const mode = event.params.mode;
-        this.cardTargets.forEach((card) => {
+        this.cardTargets.forEach(card => {
             card.classList.toggle('display-grid', mode === 'grid');
         });
         this.listTarget.classList.toggle('fm-c-content__cards--grid', mode === 'grid');
     }
-    openModal({ params }) {
+    openModal(event) {
+        const { params } = event;
         if (params.value) {
             this.modalOldValueTarget.value = params.value;
             this.modalOldValueTarget.dispatchEvent(new Event('change', { bubbles: true }));
@@ -137,6 +138,16 @@ class default_1 extends Controller {
         this.collapseMap.delete(element);
     }
 }
-default_1.targets = ['list', 'card', 'dialog', 'modalAction', 'modalOldValue', 'select', 'dropdown', 'submenu', 'collapse'];
+default_1.targets = [
+    'list',
+    'card',
+    'dialog',
+    'modalAction',
+    'modalOldValue',
+    'select',
+    'dropdown',
+    'submenu',
+    'collapse',
+];
 
 export { default_1 as default };
