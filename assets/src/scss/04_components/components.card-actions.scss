@@ -26,7 +26,7 @@
     pointer-events: none;
     transition: opacity var(--fm-transition-in-out);
     border-radius: var(--fm-radius-md);
-    padding: settings.$space-8 settings.$space-20 settings.$space-8 settings.$space-8;
+    padding: settings.$space-8;
     box-shadow: var(--fm-color-shadow-deep);
 
     & > button {
