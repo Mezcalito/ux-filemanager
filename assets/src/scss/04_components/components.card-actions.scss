@@ -1,55 +1,57 @@
 @use "../01_settings" as settings;
 
-.fm-c-card-actions {
-  position: relative;
-  display: flex;
-  align-items: center;
-  align-self: center;
-  justify-content: end;
-  height: fit-content;
-  grid-area: action;
-  z-index: 1;
-  transition: opacity var(--fm-transition-in-out);
-}
-
-.fm-c-card-actions__action {
-
-}
-
-.fm-c-card-actions__content {
-  position: absolute;
-  background-color: var(--fm-card-actions-content-bg);
-  top: 0;
-  right: 100%;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--fm-transition-in-out);
-  border-radius: var(--fm-radius-md);
-  padding: settings.$space-8 settings.$space-20 settings.$space-8 settings.$space-8;
-  box-shadow: var(--fm-color-shadow-deep);
-
-  & > button {
-    padding: 0.9rem settings.$space-12;
-    color: var(--fm-card-actions-button);
-    border-radius: var(--fm-radius-sm);
+.fm-o-layout {
+  .fm-c-card-actions {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: settings.$space-16;
-    transition: background-color var(--fm-transition-in-out);
-    width: 100%;
-
-    svg {
-      min-width: settings.$space-16;
-      height: settings.$space-16;
-    }
-
-    &:hover {
-      background-color: var(--fm-card-actions-button-bg-hover);
-    }
+    align-self: center;
+    justify-content: end;
+    height: fit-content;
+    grid-area: action;
+    z-index: 1;
+    transition: opacity var(--fm-transition-in-out);
   }
 
-  &.is-active {
-    pointer-events: all;
-    opacity: 1;
+  .fm-c-card-actions__action {
+
+  }
+
+  .fm-c-card-actions__content {
+    position: absolute;
+    background-color: var(--fm-card-actions-content-bg);
+    top: 0;
+    right: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--fm-transition-in-out);
+    border-radius: var(--fm-radius-md);
+    padding: settings.$space-8;
+    box-shadow: var(--fm-color-shadow-deep);
+
+    & > button {
+      padding: 9px settings.$space-12;
+      color: var(--fm-card-actions-button);
+      border-radius: var(--fm-radius-sm);
+      display: flex;
+      align-items: center;
+      gap: settings.$space-16;
+      transition: background-color var(--fm-transition-in-out);
+      width: 100%;
+
+      svg {
+        min-width: settings.$space-16;
+        height: settings.$space-16;
+      }
+
+      &:hover {
+        background-color: var(--fm-card-actions-button-bg-hover);
+      }
+    }
+
+    &.is-active {
+      pointer-events: all;
+      opacity: 1;
+    }
   }
 }

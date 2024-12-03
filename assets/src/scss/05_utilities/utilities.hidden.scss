@@ -1,18 +1,20 @@
 @use "../01_settings" as settings;
 
-.fm-u-hidden {
-  display: none!important;
-}
-
-@each $name, $value in settings.$breakpoints {
-  @include settings.min-width(#{$name}) {
-    .fm-u-hidden\@from-#{$name} {
-      display: none!important;
-    }
+.fm-o-layout {
+  .fm-u-hidden {
+    display: none !important;
   }
-  @include settings.max-width(#{$name}) {
-    .fm-u-hidden\@until-#{$name} {
-      display: none!important;
+
+  @each $name, $value in settings.$breakpoints {
+    @include settings.min-width(#{$name}) {
+      .fm-u-hidden\@from-#{$name} {
+        display: none !important;
+      }
+    }
+    @include settings.max-width(#{$name}) {
+      .fm-u-hidden\@until-#{$name} {
+        display: none !important;
+      }
     }
   }
 }

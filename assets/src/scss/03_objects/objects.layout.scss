@@ -1,9 +1,11 @@
 @use "../01_settings" as settings;
 
-.fm-c-layout {
+.fm-o-layout {
   display: grid;
-  grid-template-columns: 24rem 1fr;
+  grid-template-columns: 240px 1fr;
   height: 100%;
+  @include settings.text('m', var(--fm-page-text));
+  background-color: var(--fm-page-bg);
 
   @include settings.max-width(md) {
     grid-template-columns: 1fr;

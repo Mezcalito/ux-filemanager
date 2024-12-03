@@ -1,7 +1,9 @@
 @use "../01_settings" as settings;
 
-@each $name, $color in settings.$theme-color {
-  .fm-u-color-#{$name} {
-    color: #{$color};
+.fm-o-layout {
+  @each $name, $color in settings.$theme-color {
+    .fm-u-color-#{$name} {
+      color: #{$color};
+    }
   }
 }

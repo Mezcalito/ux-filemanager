@@ -1,36 +1,38 @@
 @use "../01_settings" as settings;
 
-.fm-c-actions-selected {
-  padding: settings.$space-8 settings.$space-16;
-  background-color: var(--fm-actions-selected-bg);
-  border-radius: var(--fm-radius-full);
-  display: flex;
-  align-items: center;
+.fm-o-layout {
+  .fm-c-actions-selected {
+    padding: settings.$space-8 settings.$space-16;
+    background-color: var(--fm-actions-selected-bg);
+    border-radius: var(--fm-radius-full);
+    display: flex;
+    align-items: center;
 
-  @include settings.max-width(md) {
-    justify-content: space-between;
+    @include settings.max-width(md) {
+      justify-content: space-between;
+    }
   }
-}
 
-.fm-c-actions-selected__head {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
+  .fm-c-actions-selected__head {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
 
-.fm-c-actions-selected__info {
-  margin: 0 settings.$space-24 0 settings.$space-10;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
+  .fm-c-actions-selected__info {
+    margin: 0 settings.$space-24 0 settings.$space-10;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 
-.fm-c-actions-selected__actions {
-  display: flex;
-  align-items: center;
-  gap: settings.$space-16;
+  .fm-c-actions-selected__actions {
+    display: flex;
+    align-items: center;
+    gap: settings.$space-16;
 
-  @include settings.max-width(md) {
-    gap: settings.$space-24;
+    @include settings.max-width(md) {
+      gap: settings.$space-24;
+    }
   }
 }

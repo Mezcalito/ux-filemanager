@@ -1,41 +1,42 @@
 @use "../01_settings" as settings;
-
-.fm-c-back {
-  display: flex;
-  align-items: center;
-  gap: settings.$space-8;
-  border-bottom: 1px solid var(--fm-border-grey-50);
-  margin-right: calc(#{settings.$space-16} * -1);
-  margin-left: calc(#{settings.$space-16} * -1);
-  padding: 1.6rem;
-  position: relative;
-}
-
-.fm-c-back__action {
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: 0;
+.fm-o-layout {
+  .fm-c-back {
+    display: flex;
+    align-items: center;
+    gap: settings.$space-8;
+    border-bottom: 1px solid var(--fm-border-grey-50);
+    margin-right: calc(#{settings.$space-16} * -1);
+    margin-left: calc(#{settings.$space-16} * -1);
+    padding: 16px;
+    position: relative;
   }
-}
 
-.fm-c-back {
-  display: flex;
-  align-items: center;
-  gap: settings.$space-8;
-  border-bottom: 1px solid var(--fm-border-grey-50);
-  margin-right: calc(#{settings.$space-16} * -1);
-  margin-left: calc(#{settings.$space-16} * -1);
-  padding: 1.6rem;
-  position: relative;
-}
+  .fm-c-back__action {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+  }
 
-.fm-c-back__action {
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: 0;
+  .fm-c-back {
+    display: flex;
+    align-items: center;
+    gap: settings.$space-8;
+    border-bottom: 1px solid var(--fm-border-grey-50);
+    margin-right: calc(#{settings.$space-16} * -1);
+    margin-left: calc(#{settings.$space-16} * -1);
+    padding: 16px;
+    position: relative;
+  }
+
+  .fm-c-back__action {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
   }
 }
