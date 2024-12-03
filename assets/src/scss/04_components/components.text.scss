@@ -1,0 +1,27 @@
+@use "../01_settings" as settings;
+
+.fm-o-layout {
+  .fm-c-text-xl {
+    @include settings.text('xl');
+  }
+
+  .fm-c-text-l {
+    @include settings.text('l');
+  }
+
+  .fm-c-text-m {
+    @include settings.text('m');
+  }
+
+  .fm-c-text-s {
+    @include settings.text('s');
+  }
+
+  .fm-c-text-xs {
+    @include settings.text('xs');
+  }
+
+  .fm-c-text-xxs {
+    @include settings.text('xxs');
+  }
+}

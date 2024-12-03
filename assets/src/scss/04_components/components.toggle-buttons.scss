@@ -1,0 +1,41 @@
+@use "../01_settings" as settings;
+
+.fm-o-layout {
+  .fm-c-toggle-buttons {
+    border-radius: var(--fm-radius-md);
+    overflow: hidden;
+    border: 1px solid var(--fm-toggle-button-border);
+
+    @include settings.max-width(md) {
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--fm-button-bg);
+      width: fit-content;
+    }
+
+    button {
+      padding: settings.$space-10;
+
+      @include settings.max-width(md) {
+        //padding: 0;
+        svg path {
+          stroke: var(--fm-toggle-button-mob);
+        }
+      }
+    }
+  }
+
+  .fm-c-toggle-buttons__action {
+    transition: background-color var(--fm-transition-in-out);
+  }
+
+  .fm-c-toggle-buttons__action--active {
+    background-color: var(--fm-toggle-button-active-bg);
+
+    @include settings.max-width(md) {
+      display: none;
+    }
+  }
+}

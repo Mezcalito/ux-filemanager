@@ -1,0 +1,164 @@
+@use "../01_settings" as settings;
+
+.fm-o-layout {
+  .fm-c-content {
+    overflow: auto;
+    padding: settings.$space-16;
+    display: flex;
+    flex-direction: column;
+    gap: settings.$space-16;
+
+    @include settings.max-width(md) {
+      padding-top: 0;
+      gap: settings.$space-12;
+    }
+  }
+
+  .fm-c-content__actions {
+    @include settings.min-width(md) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: settings.$space-12;
+    }
+
+    @include settings.max-width(md) {
+      display: grid;
+      grid-template-columns: 1fr 40px;
+      grid-gap: settings.$space-16;
+    }
+  }
+
+  //.fm-c-content__toggle {
+  //  padding: $space-10;
+  //  background-color: var(--fm-button-bg);
+  //  border-radius: var(--fm-radius-md);
+  //}
+
+  .fm-c-content__buttons {
+    display: flex;
+    gap: settings.$space-8;
+  }
+
+  .fm-c-content__cards {
+    display: flex;
+    flex-direction: column;
+    gap: settings.$space-8;
+
+    &--grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: settings.$space-16;
+
+      .fm-c-file-card {
+        padding: settings.$space-8;
+        grid-template-columns: 1fr 24px;
+        grid-template-rows: 32px 135px auto;
+        grid-template-areas:
+          "name action"
+          "img img"
+          "info info";
+        grid-gap: settings.$space-8;
+
+        @include settings.max-width(md) {
+          grid-template-rows: 32px 80px auto;
+        }
+
+        &:has(.fm-c-file-card__input:checked) {
+          grid-template-columns: 28px 1fr 24px;
+          grid-template-areas:
+            "activeIcon name action"
+            "img img img"
+            "info info info";
+        }
+      }
+
+      .fm-c-file-card__picture {
+        width: 100%;
+        height: 100%;
+
+        svg {
+          width: 52px;
+          height: 52px;
+
+          @include settings.max-width(md) {
+            width: 32px;
+            height: 32px;
+          }
+        }
+      }
+
+      .fm-c-file-card__name {
+        align-self: center;
+      }
+
+      .fm-c-folder-card {
+        padding: settings.$space-8;
+        grid-template-columns: 1fr 24px;
+        grid-template-rows: 32px 135px auto;
+        grid-template-areas:
+          "name action"
+          "img img"
+          "info info";
+        grid-gap: settings.$space-8;
+
+        @include settings.max-width(md) {
+          grid-template-rows: 32px 80px auto;
+        }
+
+        &:has(.fm-c-folder-card__input:checked) {
+          grid-template-columns: 28px 1fr 24px;
+          grid-template-areas:
+            "activeIcon name action"
+            "img img img"
+            "info info info";
+        }
+      }
+
+      .fm-c-folder-card__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        svg {
+          width: 52px;
+          height: 52px;
+
+          @include settings.max-width(md) {
+            width: 32px;
+            height: 32px;
+          }
+        }
+      }
+
+      .fm-c-folder-card__name {
+        align-self: center;
+      }
+
+      .fm-c-file-card__infos {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      @include settings.max-width(lg) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .fm-c-file-card__loading {
+        height: 100%;
+      }
+
+      .fm-c-file-card__bar-loader {
+        height: 100%;
+      }
+    }
+  }
+
+  .fm-c-content__sticky-button {
+    position: fixed;
+    bottom: settings.$space-16;
+    right: settings.$space-16;
+  }
+}

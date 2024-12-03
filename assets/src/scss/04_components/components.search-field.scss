@@ -1,0 +1,32 @@
+@use "../01_settings" as settings;
+
+.fm-o-layout {
+  .fm-c-search-field {
+    width: 270px;
+    position: relative;
+
+    @include settings.max-width(md) {
+      width: 100%;
+    }
+
+    & > svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: settings.$space-16;
+    }
+  }
+
+  .fm-c-search-field__input {
+    padding: settings.$space-8 settings.$space-16 settings.$space-8 44px;
+    width: 100%;
+    outline: none;
+    border: 0;
+    background-color: var(--fm-search-field-bg);
+    border-radius: var(--fm-radius-md);
+
+    &::placeholder {
+      color: var(--fm-search-field-placeholder);
+    }
+  }
+}

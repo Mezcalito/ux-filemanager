@@ -1,0 +1,107 @@
+@use "../01_settings" as settings;
+
+.fm-o-layout {
+  .fm-c-custom-select {
+    position: relative;
+  }
+
+  .fm-c-custom-select__input-wrapper {
+    cursor: pointer;
+    padding: settings.$space-8 settings.$space-14 settings.$space-8 settings.$space-16;
+    border-radius: var(--fm-radius-md);
+    border: 1px solid var(--fm-border-success-800);
+    transition: background-color var(--fm-transition-in-out);
+
+    &:hover {
+      background-color: var(--fm-select-active-bg);
+    }
+  }
+
+  .fm-c-custom-select__input {
+    position: absolute;
+    height: 0;
+    width: 0;
+    border: 0;
+    padding: 0;
+  }
+
+  .fm-c-custom-select__current-wrapper {
+    display: flex;
+    align-items: center;
+    gap: settings.$space-10;
+  }
+
+  .fm-c-custom-select__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(180deg);
+
+    @include settings.min-width(md) {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include settings.max-width(md) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .fm-c-custom-select__list-wrapper {
+    display: none;
+    background-color: var(--fm-select-list-bg);
+    border: 1px solid var(--fm-border-grey-100);
+    flex-direction: column;
+    border-radius: var(--fm-radius-md);
+    padding: settings.$space-8;
+    max-height: 220px;
+    position: absolute;
+    top: calc(100% + #{settings.$space-8});
+    z-index: 5;
+    box-shadow: var(--fm-color-shadow-deep);
+    gap: 4px;
+    width: max-content;
+    right: 0;
+
+    &.is-active {
+      display: flex;
+    }
+  }
+
+  .fm-c-custom-select__list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .fm-c-custom-select__item {
+    padding: 9px 45px 9px 12px;
+    transition: background-color var(--fm-transition-in-out);
+    border-radius: var(--fm-radius-sm);
+
+    &:hover {
+      background-color: var(--fm-select-item-hover);
+    }
+  }
+
+  .fm-c-custom-select__item > button {
+    display: flex;
+    align-items: center;
+    gap: settings.$space-10;
+    width: 100%;
+
+    svg {
+      @include settings.min-width(md) {
+        width: 18px;
+        height: 18px;
+      }
+
+      @include settings.max-width(md) {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+}

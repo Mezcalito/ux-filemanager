@@ -1,0 +1,68 @@
+@use "../01_settings" as settings;
+
+.fm-o-layout {
+  .fm-c-sidebar {
+    padding: settings.$space-16;
+    border-right: 1px solid var(--fm-border-grey-50);
+    overflow: auto;
+    display: flex;
+
+    ul {
+      list-style: none;
+      padding-inline-start: settings.$space-40;
+    }
+
+    & > ul {
+      padding: 0;
+    }
+  }
+
+
+  .fm-c-sidebar__loading {
+    padding: settings.$space-16;
+    display: flex;
+    flex-direction: column;
+    gap: settings.$space-10;
+
+    .fm-c-sidebar__bar-loader:first-child {
+      width: 50%;
+      margin-left: 0;
+
+      @include settings.max-width(md) {
+        width: 30%;
+      }
+    }
+
+    @include settings.max-width(md) {
+      .fm-c-sidebar__bar-loader:not(:first-child) {
+        display: none;
+      }
+    }
+  }
+
+  .fm-c-sidebar__bar-loader {
+    margin-left: settings.$space-16;
+    height: 28px;
+    background: var(--fm-loading-grey);
+    overflow: hidden;
+    border-radius: var(--fm-radius-sm);
+  }
+
+  .fm-c-sidebar__bar-loader::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    animation: loading 1s infinite;
+    background: linear-gradient(to right, transparent, var(--fm-loading-grey-light), transparent);
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
