@@ -87,7 +87,7 @@ class MezcalitoFileManagerExtension extends Extension implements PrependExtensio
         $container->prependExtensionConfig('twig_component', [
             'defaults' => [
                 'Mezcalito\\FileManagerBundle\\Twig\\Components\\' => [
-                    'template_directory' => '@MezcalitoFileManager/components/',
+                    'template_directory' => '@MezcalitoFileManager/',
                     'name_prefix' => 'Mezcalito:FileManager',
                 ],
             ],
