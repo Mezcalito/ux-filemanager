@@ -2,7 +2,7 @@
   "name": "mezcalito/ux-filemanager",
   "type": "symfony-bundle",
   "description": "Effortless file management with Symfony UX and Mezcalito UX FileManager",
-  "homepage": "https://github.com/Mezcalito/imgproxy-bundle",
+  "homepage": "https://github.com/Mezcalito/ux-filemanager",
   "keywords": [
     "symfony-ux",
     "filemanager"
