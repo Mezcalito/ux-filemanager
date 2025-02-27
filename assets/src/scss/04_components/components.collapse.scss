@@ -85,6 +85,18 @@
   .fm-c-collapse__action {
     display: flex;
     align-items: center;
+    text-align: left;
     gap: 4px;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    span {
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 }
