@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace Mezcalito\FileManagerBundle\DependencyInjection;
 
 use Mezcalito\FileManagerBundle\Configurator\ConfiguratorInterface;
+use Mezcalito\FileManagerBundle\Controller\DownloadController;
+use Mezcalito\FileManagerBundle\Service\EncryptionService;
 use Mezcalito\FileManagerBundle\Twig\Components\Content;
 use Mezcalito\FileManagerBundle\Twig\Components\File;
 use Mezcalito\FileManagerBundle\Twig\Components\FileSystem;
@@ -27,6 +29,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Symfony\Component\DependencyInjection\Parameter;
 use Symfony\Component\DependencyInjection\Reference;
 
 class MezcalitoFileManagerExtension extends Extension implements PrependExtensionInterface
@@ -79,6 +82,18 @@ class MezcalitoFileManagerExtension extends Extension implements PrependExtensio
             ->setAutoconfigured(true)
             ->setArguments([
                 new Reference('translator', ContainerInterface::IGNORE_ON_INVALID_REFERENCE),
+            ]);
+
+        $container->register(EncryptionService::class)
+            ->setArguments([
+                new Parameter('kernel.secret'),
+            ])
+        ;
+
+        $container->register(DownloadController::class)
+            ->addTag('controller.service_arguments')
+            ->setArguments([
+                new Reference(EncryptionService::class),
             ]);
     }
 

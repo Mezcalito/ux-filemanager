@@ -34,4 +34,5 @@ return [
     'Delete folder' => 'Supprimer le dossier',
     'Delete file' => 'Supprimer le fichier',
     'Upload' => 'Télécharger',
+    'Download' => 'Télécharger',
 ];

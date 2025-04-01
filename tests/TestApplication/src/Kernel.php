@@ -60,6 +60,8 @@ final class Kernel extends BaseKernel
         $routes->add('homepage', '/')
             ->controller('kernel::index');
 
+        $routes->import('@MezcalitoFileManagerBundle/config/routes.php')->prefix('/filemanager');
+
         if ('dev' === $routes->env()) {
             $routes->import('@WebProfilerBundle/Resources/config/routing/wdt.xml')->prefix('/_wdt');
             $routes->import('@WebProfilerBundle/Resources/config/routing/profiler.xml')->prefix('/_profiler');

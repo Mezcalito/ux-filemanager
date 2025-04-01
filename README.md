@@ -31,10 +31,20 @@ return [
 ];
 ```
 
+### Add routes
+Create a new routing file to add UX FileManager's routes:
+
+```yaml
+# config/routes/mezcalito_file_manager.yaml
+mezcalito_file_manager:
+    resource: '@MezcalitoFileManagerBundle/config/routes.php'
+    prefix: '/filemanager'
+```
+
 ## Configuration
 
-To configure the bundle, add the following configuration to your `config/packages/mezcalito_file_manager.yaml` file. 
-This example demonstrates how to set up a local storage: 
+To configure the bundle, add the following configuration to your `config/packages/mezcalito_file_manager.yaml` file.
+This example demonstrates how to set up a local storage:
 
 ```yaml
 mezcalito_file_manager:

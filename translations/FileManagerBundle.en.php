@@ -35,4 +35,5 @@ return [
     'Delete folder' => 'Delete folder',
     'Delete file' => 'Delete file',
     'Upload' => 'Upload',
+    'Download' => 'Download',
 ];
