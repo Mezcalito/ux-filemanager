@@ -14,7 +14,10 @@ declare(strict_types=1);
 namespace Mezcalito\FileManagerBundle\Twig\Components;
 
 use Mezcalito\FileManagerBundle\Filesystem\Node;
+use Mezcalito\FileManagerBundle\Service\EncryptionService;
 use Mezcalito\FileManagerBundle\Twig\Trait\FilesystemToolsTrait;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
@@ -32,6 +35,12 @@ class File
 
     #[LiveProp]
     public string $path;
+
+    public function __construct(
+        private readonly EncryptionService $encryptionService,
+        private readonly RouterInterface $router,
+    ) {
+    }
 
     #[ExposeInTemplate]
     public function getNode(): ?Node
@@ -56,5 +65,18 @@ class File
         $this->dispatchBrowserEvent('filemanager:selectMedia', [
             'url' => $url,
         ]);
+    }
+
+    #[LiveAction]
+    public function downloadFile(#[LiveArg] string $id): RedirectResponse
+    {
+        $infos = $this->getFilesystem()->info($id);
+
+        $redirectUrl = $this->router->generate('mezcalito_filemanager_download', [
+            'path' => $this->encryptionService->encrypt($infos->getPathname()),
+            'name' => $infos->getFilename(),
+        ]);
+
+        return new RedirectResponse($redirectUrl);
     }
 }

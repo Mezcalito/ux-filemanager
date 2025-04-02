@@ -17,13 +17,15 @@
   ],
   "require": {
     "php": ">=8.3",
+    "ext-openssl": "*",
     "symfony/dependency-injection": "^6.4|^7.0",
     "symfony/http-foundation": "^6.4|^7.0",
     "symfony/http-kernel": "^6.4|^7.0",
+    "symfony/mime": "^7.2",
     "symfony/options-resolver": "^6.4|^7.0",
     "symfony/routing": "^6.4|^7.0",
-    "symfony/ux-twig-component": "^2.17",
     "symfony/ux-live-component": "^2.17",
+    "symfony/ux-twig-component": "^2.17",
     "twig/twig": "^3.0.4"
   },
   "require-dev": {
