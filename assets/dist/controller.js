@@ -137,6 +137,44 @@ class default_1 extends Controller {
         collapse.disconnect();
         this.collapseMap.delete(element);
     }
+    onSearchKeyDown(e) {
+        e.preventDefault();
+        const currentIndex = this.searchResultTargets.findIndex(searchResult => searchResult.hasAttribute('aria-current'));
+        const nextIndex = currentIndex >= this.searchResultTargets.length - 1 ? 0 : currentIndex + 1;
+        this.searchResultTargets.forEach((searchResult, index) => {
+            index === nextIndex
+                ? searchResult.setAttribute('aria-current', 'true')
+                : searchResult.removeAttribute('aria-current');
+        });
+    }
+    onSearchKeyUp(e) {
+        e.preventDefault();
+        const currentIndex = this.searchResultTargets.findIndex(searchResult => searchResult.hasAttribute('aria-current'));
+        const prevIndex = currentIndex === 0 ? this.searchResultTargets.length - 1 : currentIndex - 1;
+        this.searchResultTargets.forEach((searchResult, index) => {
+            index === prevIndex
+                ? searchResult.setAttribute('aria-current', 'true')
+                : searchResult.removeAttribute('aria-current');
+        });
+    }
+    onSearchEnter(e) {
+        e.preventDefault();
+        const selectedResult = this.searchResultTargets.find(searchResult => searchResult.hasAttribute('aria-current'));
+        if (!selectedResult)
+            return;
+        const button = selectedResult.querySelector('[data-fm-enter-action]');
+        if (!button)
+            return;
+        button.dispatchEvent(new MouseEvent('click'));
+        e.target.blur();
+    }
+    onSearchFocus() {
+        this.element.setAttribute('data-fm-search-active', '');
+    }
+    onSearchBlur(e) {
+        e.relatedTarget;
+        this.element.removeAttribute('data-fm-search-active');
+    }
 }
 default_1.targets = [
     'list',
@@ -148,6 +186,7 @@ default_1.targets = [
     'dropdown',
     'submenu',
     'collapse',
+    'searchResult',
 ];
 
 export { default_1 as default };

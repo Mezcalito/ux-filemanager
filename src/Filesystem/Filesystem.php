@@ -54,7 +54,7 @@ readonly class Filesystem implements FilesystemInterface
 
     public function listDirectory(string $id, bool $recursive = false): \Generator
     {
-        return $this->provider->listDirectory($id);
+        return $this->provider->listDirectory($id, $recursive);
     }
 
     public function createDirectory(string $id, int $permissions = 0o777): void
@@ -65,5 +65,10 @@ readonly class Filesystem implements FilesystemInterface
     public function deleteDirectory(string $id): void
     {
         $this->provider->deleteDirectory($id);
+    }
+
+    public function search(string $query): \Generator
+    {
+        return $this->provider->search($query);
     }
 }
