@@ -174,6 +174,39 @@ readonly class LocalFilesystemProvider implements ProviderInterface
         }
     }
 
+    public function search(string $query): \Generator
+    {
+        $location = $this->prefixPath('');
+
+        $iterator = $this->listDirectoryRecursive($location);
+
+        /** @var \SplFileInfo|\DirectoryIterator $fileInfo */
+        foreach ($iterator as $fileInfo) {
+            if ($fileInfo instanceof \DirectoryIterator && $fileInfo->isDot()) {
+                continue;
+            }
+
+            if ($this->ignoreDotFiles && str_starts_with($fileInfo->getBasename(), '.')) {
+                continue;
+            }
+
+            $path = $this->stripPrefix($fileInfo->getPathname());
+
+            if (!str_contains(basename($path), $query)) {
+                continue;
+            }
+
+            yield new Node(
+                id: $path,
+                path: $path,
+                pathname: $fileInfo->getPathname(),
+                size: $fileInfo->isFile() ? $fileInfo->getSize() : null,
+                lastModified: (new \DateTime())->setTimestamp($fileInfo->getMTime()),
+                type: $fileInfo->isFile() ? Node::TYPE_FILE : Node::TYPE_DIR,
+            );
+        }
+    }
+
     private function checkDirectoryExists(string $location): void
     {
         if (is_dir($location)) {

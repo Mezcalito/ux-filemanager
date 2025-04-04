@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
 use function Mezcalito\FileManagerBundle\Tests\create_directory;
 use function Mezcalito\FileManagerBundle\Tests\delete_directory;
 
-class FilesystemProviderTest extends TestCase
+class LocalFilesystemProviderTest extends TestCase
 {
     public const string ROOT = __DIR__.'/test-filesystem-provider';
 
@@ -159,5 +159,18 @@ class FilesystemProviderTest extends TestCase
         $this->assertDirectoryExists(self::ROOT.'/directory/child');
         $provider->deleteDirectory('/directory');
         $this->assertDirectoryDoesNotExist(self::ROOT.'/directory');
+    }
+
+    public function testSearch(): void
+    {
+        $provider = new LocalFilesystemProvider(self::ROOT);
+        $provider->write('directory/filename.txt', 'content');
+        $provider->write('filename.txt', 'content');
+        $provider->write('test.txt', 'content');
+
+        $contentIterator = $provider->search('test');
+        $contents = iterator_to_array($contentIterator);
+
+        $this->assertCount(1, $contents);
     }
 }

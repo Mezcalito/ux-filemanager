@@ -34,4 +34,6 @@ interface ProviderInterface
     public function createDirectory(string $id, int $permissions = 0o777): void;
 
     public function deleteDirectory(string $id): void;
+
+    public function search(string $query): \Generator;
 }

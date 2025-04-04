@@ -21,6 +21,7 @@ return [
     '"%s" will be permanently deleted.' => '"%s" sera définitivement supprimé.',
     'Select a folder below to move your item to.' => 'Sélectionnez un dossier ci-dessous pour déplacer votre élément.',
     'My files' => 'Mes fichiers',
+    'Search' => 'Rechercher',
     'Sort by' => 'Trier',
     'By name' => 'Par nom',
     'By date' => 'Par date',

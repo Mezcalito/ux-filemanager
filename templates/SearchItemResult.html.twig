@@ -1,0 +1,64 @@
+{# @var filesystem \Mezcalito\FileManagerBundle\Filesystem\Filesystem #}
+
+<div class="fm-c-search-result" data-mezcalito--ux-filemanager--filemanager-target="searchResult" {{ attributes }}>
+    {% set directory_path = node.path %}
+    {% set parent_dir = node.path|replace({(node.filename): ''}) %}
+
+    <button class="fm-c-folder-card__link" data-action="live#emit" data-live-event-param="goToFolder" data-live-path-param="{{ node.isFile ? parent_dir : directory_path }}" data-fm-enter-action></button>
+
+    <div class="fm-c-file-card__active-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+            <path d="M16.1627 5.8756C16.0148 5.71142 15.8078 5.6127 15.5871 5.60113C15.3665 5.58957 15.1502 5.66611 14.986 5.81393L7.24021 12.7848L3.63269 9.17726C3.55581 9.09766 3.46385 9.03418 3.36221 8.9905C3.26052 8.94686 3.15117 8.92386 3.04052 8.9229C2.92987 8.92194 2.82014 8.94302 2.71773 8.9849C2.61531 9.02682 2.52227 9.0887 2.44403 9.16694C2.36578 9.24518 2.30391 9.33822 2.26201 9.44062C2.2201 9.54306 2.19902 9.65278 2.19998 9.76342C2.20094 9.8741 2.22393 9.98342 2.26761 10.0851C2.31128 10.1868 2.37476 10.2787 2.45435 10.3556L6.62101 14.5223C6.77197 14.6731 6.97505 14.7604 7.18837 14.7659C7.40173 14.7715 7.60909 14.6951 7.76769 14.5523L16.101 7.05226C16.2652 6.90438 16.3639 6.69734 16.3755 6.4767C16.387 6.25605 16.3105 6.03983 16.1627 5.8756Z" fill="black"/>
+        </svg>
+    </div>
+
+    <div class="fm-c-search-result__picture">
+        {% if node.isDir %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
+                <path d="M6.66667 6.1334H12L16 10.1334H25.3333C26.0406 10.1334 26.7189 10.4144 27.2189 10.9144C27.719 11.4145 28 12.0928 28 12.8001V23.4667C28 24.174 27.719 24.8523 27.2189 25.3523C26.7189 25.8524 26.0406 26.1334 25.3333 26.1334H6.66667C5.95942 26.1334 5.28115 25.8524 4.78105 25.3523C4.28095 24.8523 4 24.174 4 23.4667V8.80007C4 8.09282 4.28095 7.41455 4.78105 6.91445C5.28115 6.41435 5.95942 6.1334 6.66667 6.1334Z" stroke="#333945" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="53" height="54" viewBox="0 0 53 54" fill="none">
+                <path d="M33.0574 18.2567H33.0792" stroke="#A9AFBC" stroke-width="3.27875" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.5708 7.32764H39.615C41.3542 7.32764 43.0221 8.01851 44.2519 9.24828C45.4816 10.4781 46.1725 12.146 46.1725 13.8851V37.9293M44.3014 44.7032C43.6914 45.3278 42.9624 45.8238 42.1575 46.1621C41.3526 46.5003 40.4881 46.6739 39.615 46.6726H13.385C11.6459 46.6726 9.97793 45.9818 8.74816 44.752C7.51839 43.5222 6.82751 41.8543 6.82751 40.1151V13.8851C6.82751 12.0381 7.59037 10.3703 8.81662 9.17904" stroke="#A9AFBC" stroke-width="3.27875" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.82751 35.7435L17.7567 24.8143C19.7851 22.8624 22.2857 22.8624 24.3142 24.8143L35.2433 35.7435" stroke="#A9AFBC" stroke-width="3.27875" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M35.9646 27.7389C37.2193 27.6208 38.4892 28.1017 39.6149 29.1859L46.1724 35.7434" stroke="#A9AFBC" stroke-width="3.27875" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        {% endif %}
+    </div>
+
+    <span class="fm-c-file-card__name fm-c-text-s fm-u-fw-700 fm-u-color-grey-900">{{ node.filename }}</span>
+
+    <div class="fm-c-file-card__infos">
+        <span class="fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ parent_dir ? parent_dir : '/' }}</span>
+        {% if node.size is not null %}<span class="fm-c-text-xs fm-u-fw-400 fm-u-color-grey-500">{{ _self.human_filesize(node.size) }}</span>{% endif %}
+    </div>
+
+</div>
+
+{% macro human_filesize(bytes) %}
+    {% apply spaceless %}
+        {% set kilobyte = 1000 %}
+        {% set megabyte = kilobyte * 1000 %}
+        {% set gigabyte = megabyte * 1000 %}
+        {% set terabyte = gigabyte * 1000 %}
+
+        {% if bytes < kilobyte %}
+            {{ bytes ~ ' B' }}
+        {% elseif bytes < megabyte %}
+            {{ (bytes / kilobyte)|number_format(0) ~ ' KB' }}
+        {% elseif bytes < gigabyte %}
+            {{ (bytes / megabyte)|number_format(0) ~ ' MB' }}
+        {% elseif bytes < terabyte %}
+            {{ (bytes / gigabyte)|number_format(0) ~ ' GB' }}
+        {% else %}
+            {{ (bytes / terabyte)|number_format(0) ~ ' TB' }}
+        {% endif %}
+    {% endapply %}
+{% endmacro %}
+
+{#{% macro placeholder(props) %}#}
+{#    <div class='fm-c-file-card__loading'>#}
+{#        <span class='fm-c-file-card__bar-loader'></span>#}
+{#    </div>#}
+{#{% endmacro %}#}

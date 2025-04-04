@@ -4,7 +4,7 @@ import { type ActionEvent, Controller } from '@hotwired/stimulus';
 import { Toggle } from './scripts/toggle';
 import { Collapse } from './scripts/collapse';
 
-export default class extends Controller {
+export default class extends Controller<HTMLElement> {
   static targets = [
     'list',
     'card',
@@ -15,6 +15,7 @@ export default class extends Controller {
     'dropdown',
     'submenu',
     'collapse',
+    'searchResult',
   ];
 
   declare listTarget: HTMLElement;
@@ -22,6 +23,7 @@ export default class extends Controller {
   declare dialogTarget: HTMLDialogElement;
   declare modalActionTarget: HTMLInputElement;
   declare modalOldValueTarget: HTMLInputElement;
+  declare searchResultTargets: HTMLInputElement[];
 
   private toggleMap: Map<HTMLElement, Toggle> = new Map();
   private collapseMap: Map<HTMLElement, Collapse> = new Map();
@@ -125,5 +127,57 @@ export default class extends Controller {
     collapse.disconnect();
 
     this.collapseMap.delete(element);
+  }
+
+  onSearchKeyDown(e: KeyboardEvent) {
+    e.preventDefault();
+
+    const currentIndex = this.searchResultTargets.findIndex(searchResult => searchResult.hasAttribute('aria-current'));
+    const nextIndex = currentIndex >= this.searchResultTargets.length - 1 ? 0 : currentIndex + 1;
+
+    this.searchResultTargets.forEach((searchResult, index) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      index === nextIndex
+        ? searchResult.setAttribute('aria-current', 'true')
+        : searchResult.removeAttribute('aria-current');
+    });
+  }
+
+  onSearchKeyUp(e: KeyboardEvent) {
+    e.preventDefault();
+
+    const currentIndex = this.searchResultTargets.findIndex(searchResult => searchResult.hasAttribute('aria-current'));
+    const prevIndex = currentIndex === 0 ? this.searchResultTargets.length - 1 : currentIndex - 1;
+
+    this.searchResultTargets.forEach((searchResult, index) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      index === prevIndex
+        ? searchResult.setAttribute('aria-current', 'true')
+        : searchResult.removeAttribute('aria-current');
+    });
+  }
+
+  onSearchEnter(e: KeyboardEvent) {
+    e.preventDefault();
+
+    const selectedResult = this.searchResultTargets.find(searchResult => searchResult.hasAttribute('aria-current'));
+
+    if (!selectedResult) return;
+
+    const button = selectedResult.querySelector('[data-fm-enter-action]');
+
+    if (!button) return;
+
+    button.dispatchEvent(new MouseEvent('click'));
+
+    (e.target as HTMLInputElement).blur();
+  }
+
+  onSearchFocus() {
+    this.element.setAttribute('data-fm-search-active', '');
+  }
+
+  onSearchBlur() {
+    this.element.removeAttribute('data-fm-search-active');
   }
 }

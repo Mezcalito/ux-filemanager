@@ -60,6 +60,9 @@ $theme-color: (
 
   --fm-search-field-bg: var(--fm-color-grey-50);
   --fm-search-field-placeholder: var(--fm-color-grey-500);
+  --fm-search-field-outline: var(--fm-color-actions-success-600);
+  --fm-search-result-bg: var(--fm-color-neutral-white);
+  --fm-search-result-border: var(--fm-color-actions-success-600);
 
   --fm-toggle-button-border: var(--fm-color-actions-success-600);
   --fm-toggle-button-active-bg: var(--fm-color-actions-success-50);

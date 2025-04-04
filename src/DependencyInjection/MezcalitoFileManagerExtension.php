@@ -21,6 +21,8 @@ use Mezcalito\FileManagerBundle\Twig\Components\File;
 use Mezcalito\FileManagerBundle\Twig\Components\FileSystem;
 use Mezcalito\FileManagerBundle\Twig\Components\Folder;
 use Mezcalito\FileManagerBundle\Twig\Components\Modal;
+use Mezcalito\FileManagerBundle\Twig\Components\Search;
+use Mezcalito\FileManagerBundle\Twig\Components\SearchItemResult;
 use Mezcalito\FileManagerBundle\Twig\Components\Sidebar;
 use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\Config\FileLocator;
@@ -84,11 +86,18 @@ class MezcalitoFileManagerExtension extends Extension implements PrependExtensio
                 new Reference('translator', ContainerInterface::IGNORE_ON_INVALID_REFERENCE),
             ]);
 
+        $container->register(Search::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $container->register(SearchItemResult::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
         $container->register(EncryptionService::class)
             ->setArguments([
                 new Parameter('kernel.secret'),
-            ])
-        ;
+            ]);
 
         $container->register(DownloadController::class)
             ->addTag('controller.service_arguments')

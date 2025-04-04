@@ -1,0 +1,39 @@
+@use "../01_settings" as settings;
+
+.fm-o-layout {
+  .fm-c-search-result {
+    padding: settings.$space-8 settings.$space-16 settings.$space-8 settings.$space-8;
+    background-color: var(--fm-card-bg);
+    border-radius: var(--fm-radius-sm);
+    position: relative;
+    transition: background-color var(--fm-transition-in-out);
+    display: grid;
+    grid-template-areas:
+    "img name action"
+    "img info action";
+    grid-gap: 0 settings.$space-16;
+    grid-template-columns: 32px 1fr 24px;
+
+    &[aria-current] {
+      background-color: var(--fm-card-hover-bg);
+    }
+
+    .fm-c-search-result__picture {
+      width: settings.$space-32;
+      height: settings.$space-32;
+      border-radius: var(--fm-radius-sm);
+      background-color: var(--fm-card-icon-bg);
+      grid-area: img;
+      margin: auto 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
