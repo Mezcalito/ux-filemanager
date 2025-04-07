@@ -14,7 +14,11 @@
   }
 
   .fm-c-card-actions__action {
+    color: var(--fm-card-bullet);
 
+    svg {
+      width: 24px;
+    }
   }
 
   .fm-c-card-actions__content {

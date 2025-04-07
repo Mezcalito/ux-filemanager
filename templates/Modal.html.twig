@@ -3,17 +3,7 @@
 <div {{ attributes }}>
     <dialog class="fm-c-modal fm-c-modal--{{ size }}" data-action="close->mezcalito--ux-filemanager--filemanager#closeModal" data-mezcalito--ux-filemanager--filemanager-target="dialog">
         <button class="fm-c-modal__close" type="button" data-action="mezcalito--ux-filemanager--filemanager#closeModal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                <g clip-path="url(#clip0_8932_2476)">
-                    <path d="M18 6.75L6 18.75" stroke="#566071" stroke-width="1.71429" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 6.75L18 18.75" stroke="#566071" stroke-width="1.71429" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                    <clipPath id="clip0_8932_2476">
-                        <rect width="24" height="24" fill="white" transform="translate(0 0.75)"/>
-                    </clipPath>
-                </defs>
-            </svg>
+            {% include '@MezcalitoFileManager/icons/close.svg' %}
         </button>
 
         <p class="fm-c-text-l fm-u-fw-700 fm-u-color-grey-900">{{ title }}</p>

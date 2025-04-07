@@ -44,6 +44,10 @@
     position: absolute;
     top: settings.$space-16;
     right: settings.$space-16;
+
+    svg {
+      width: 24px;
+    }
   }
 
   .fm-c-modal__content {

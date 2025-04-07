@@ -18,17 +18,6 @@
       background-color: var(--fm-card-hover-bg);
     }
 
-    &:has(.fm-c-file-card__input:checked) {
-      background-color: var(--fm-card-active-bg);
-    }
-
-    &:has(.fm-c-file-card__input:checked) {
-      grid-template-columns: 28px 56px 1fr 24px;
-      grid-template-areas:
-    "activeIcon img name action"
-    "activeIcon img info action";
-    }
-
     &:has(.fm-c-file-card__input:checked) .fm-c-file-card__active-icon {
       display: flex;
     }
@@ -39,25 +28,11 @@
     }
   }
 
-  .fm-c-file-card__input {
-    display: none;
-    opacity: 0;
-    position: absolute;
-    inset: 0;
-  }
-
   .fm-c-file-card__link {
     //display: none;
     opacity: 0;
     position: absolute;
     inset: 0;
-  }
-
-  .fm-c-file-card__active-icon {
-    display: none;
-    padding-left: settings.$space-8;
-    grid-area: activeIcon;
-    align-items: center;
   }
 
   .fm-c-file-card__infos {

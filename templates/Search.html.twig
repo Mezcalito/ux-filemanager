@@ -1,10 +1,7 @@
 <div {{ attributes.defaults({class: 'fm-c-search__wrapper'}) }}>
     <div class='fm-c-search__field'>
         <label for="search" class="fm-u-sr-only">{{ 'Search'|trans(domain="FileManagerBundle") }}</label>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33329 3.6C4.82959 3.6 2.79995 5.62965 2.79995 8.13334C2.79995 10.637 4.82959 12.6667 7.33329 12.6667C9.83698 12.6667 11.8666 10.637 11.8666 8.13334C11.8666 5.62965 9.83698 3.6 7.33329 3.6ZM1.19995 8.13334C1.19995 4.74599 3.94594 2 7.33329 2C10.7206 2 13.4666 4.74599 13.4666 8.13334C13.4666 11.5207 10.7206 14.2667 7.33329 14.2667C3.94594 14.2667 1.19995 11.5207 1.19995 8.13334Z" fill="black"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5344 11.3343C10.8468 11.0219 11.3533 11.0219 11.6657 11.3343L14.5657 14.2343C14.8782 14.5467 14.8782 15.0533 14.5657 15.3657C14.2533 15.6781 13.7468 15.6781 13.4344 15.3657L10.5344 12.4657C10.2219 12.1533 10.2219 11.6467 10.5344 11.3343Z" fill="black"/>
-        </svg>
+        {% include '@MezcalitoFileManager/icons/search.svg' %}
         <input
                 type="search"
                 placeholder="{{ 'Search'|trans(domain="FileManagerBundle") }}"

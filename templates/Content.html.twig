@@ -4,10 +4,7 @@
     <div class="fm-c-back fm-u-hidden@from-md">
         {% if parentFolder is not null %}
             <button type="button" class="fm-c-back__action" data-action="live#emit" data-live-event-param="updateCurrentPath" data-live-path-param="{{ parentFolder }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.15533 2.96967C7.86244 2.67678 7.38756 2.67678 7.09467 2.96967L2.59467 7.46967C2.30178 7.76256 2.30178 8.23744 2.59467 8.53033L7.09467 13.0303C7.38756 13.3232 7.86244 13.3232 8.15533 13.0303C8.44822 12.7374 8.44822 12.2626 8.15533 11.9697L4.18566 8L8.15533 4.03033C8.44822 3.73744 8.44822 3.26256 8.15533 2.96967Z" fill="black"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.625 8.00033C13.625 7.58611 13.2892 7.25033 12.875 7.25033H3.75C3.33579 7.25033 3 7.58611 3 8.00033C3 8.41454 3.33579 8.75033 3.75 8.75033H12.875C13.2892 8.75033 13.625 8.41454 13.625 8.00033Z" fill="black"/>
-                </svg>
+                {% include '@MezcalitoFileManager/icons/back.svg' %}
             </button>
         {% endif %}
         <span class="fm-c-text-s fm-u-fw-500 fm-u-color-neutral-black">
@@ -19,44 +16,21 @@
         <twig:Mezcalito:FileManager:Search :storage="storage"/>
         <div class="fm-c-content__buttons fm-u-hidden@until-md">
             <button class="fm-c-button fm-c-text-xs fm-u-fw-500 fm-u-color-neutral-white" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="create">
-                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_8891_105)">
-                        <g clip-path="url(#clip1_8891_105)">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.33342 4.12667C3.15484 4.12667 2.98358 4.19761 2.8573 4.32389C2.73103 4.45016 2.66009 4.62143 2.66009 4.8V12.1333C2.66009 12.3119 2.73103 12.4832 2.8573 12.6095C2.98358 12.7357 3.15484 12.8067 3.33342 12.8067H8.00009C8.3646 12.8067 8.66009 13.1022 8.66009 13.4667C8.66009 13.8312 8.3646 14.1267 8.00009 14.1267H3.33342C2.80476 14.1267 2.29774 13.9167 1.92392 13.5428C1.5501 13.169 1.34009 12.662 1.34009 12.1333V4.8C1.34009 4.27134 1.5501 3.76433 1.92392 3.3905C2.29774 3.01668 2.80476 2.80667 3.33342 2.80667H6.00009C6.17513 2.80667 6.343 2.87621 6.46678 2.99998L8.27347 4.80667H12.6668C13.1954 4.80667 13.7024 5.01668 14.0763 5.3905C14.4501 5.76433 14.6601 6.27134 14.6601 6.8V9.13334C14.6601 9.49785 14.3646 9.79334 14.0001 9.79334C13.6356 9.79334 13.3401 9.49785 13.3401 9.13334V6.8C13.3401 6.62143 13.2691 6.45016 13.1429 6.32389C13.0166 6.19761 12.8453 6.12667 12.6668 6.12667H8.00009C7.82504 6.12667 7.65717 6.05714 7.5334 5.93336L5.72671 4.12667H3.33342Z" fill="white"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0066 13.4667C10.0066 13.1022 10.3021 12.8067 10.6666 12.8067H14.6666C15.0311 12.8067 15.3266 13.1022 15.3266 13.4667C15.3266 13.8312 15.0311 14.1267 14.6666 14.1267H10.6666C10.3021 14.1267 10.0066 13.8312 10.0066 13.4667Z" fill="white"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6666 10.8067C13.0311 10.8067 13.3266 11.1022 13.3266 11.4667V15.4667C13.3266 15.8312 13.0311 16.1267 12.6666 16.1267C12.3021 16.1267 12.0066 15.8312 12.0066 15.4667V11.4667C12.0066 11.1022 12.3021 10.8067 12.6666 10.8067Z" fill="white"/>
-                        </g>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_8891_105">
-                            <rect width="16" height="16" fill="white" transform="translate(0 0.800003)"/>
-                        </clipPath>
-                        <clipPath id="clip1_8891_105">
-                            <rect width="16" height="16" fill="white" transform="translate(0 0.800003)"/>
-                        </clipPath>
-                    </defs>
-                </svg>
+                {% include '@MezcalitoFileManager/icons/create.svg' %}
                 {{ 'Create folder'|trans(domain="FileManagerBundle") }}
             </button>
 
             <button class="fm-c-button fm-c-text-xs fm-u-fw-500 fm-u-color-neutral-white" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="upload">
-                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.33341 2.13334C9.7016 2.13334 10.0001 2.43182 10.0001 2.80001V5.46667H12.6667C13.0349 5.46667 13.3334 5.76515 13.3334 6.13334C13.3334 6.50153 13.0349 6.80001 12.6667 6.80001H10.0001C9.64646 6.80001 9.30732 6.65953 9.05727 6.40948C8.80722 6.15943 8.66675 5.8203 8.66675 5.46667V2.80001C8.66675 2.43182 8.96522 2.13334 9.33341 2.13334Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.66675 3.46667C4.48994 3.46667 4.32037 3.53691 4.19534 3.66193C4.07032 3.78696 4.00008 3.95653 4.00008 4.13334V13.4667C4.00008 13.6435 4.07032 13.8131 4.19534 13.9381C4.32037 14.0631 4.48994 14.1333 4.66675 14.1333H11.3334C11.5102 14.1333 11.6798 14.0631 11.8048 13.9381C11.9298 13.8131 12.0001 13.6435 12.0001 13.4667V6.40948L9.05727 3.46667H4.66675ZM3.25253 2.71913C3.62761 2.34405 4.13632 2.13334 4.66675 2.13334H9.33342C9.51023 2.13334 9.6798 2.20358 9.80482 2.3286L13.1382 5.66193C13.2632 5.78696 13.3334 5.95653 13.3334 6.13334V13.4667C13.3334 13.9971 13.1227 14.5058 12.7476 14.8809C12.3726 15.256 11.8638 15.4667 11.3334 15.4667H4.66675C4.13631 15.4667 3.62761 15.256 3.25253 14.8809C2.87746 14.5058 2.66675 13.9971 2.66675 13.4667V4.13334C2.66675 3.60291 2.87746 3.0942 3.25253 2.71913Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.00004 7.46667C8.36823 7.46667 8.66671 7.76515 8.66671 8.13334V12.1333C8.66671 12.5015 8.36823 12.8 8.00004 12.8C7.63185 12.8 7.33337 12.5015 7.33337 12.1333V8.13334C7.33337 7.76515 7.63185 7.46667 8.00004 7.46667Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.52864 7.66193C7.78899 7.40158 8.2111 7.40158 8.47144 7.66193L10.4714 9.66193C10.7318 9.92228 10.7318 10.3444 10.4714 10.6047C10.2111 10.8651 9.78899 10.8651 9.52864 10.6047L8.00004 9.07615L6.47145 10.6047C6.2111 10.8651 5.78899 10.8651 5.52864 10.6047C5.26829 10.3444 5.26829 9.92228 5.52864 9.66193L7.52864 7.66193Z" fill="white"/>
-                </svg>
+                {% include '@MezcalitoFileManager/icons/upload.svg' %}
                 {{ 'Upload files'|trans(domain="FileManagerBundle") }}
             </button>
 
             <div class="fm-c-custom-select" data-mezcalito--ux-filemanager--filemanager-target="select">
                 <div class="fm-c-custom-select__input-wrapper">
-                    <div class="fm-c-custom-select__current-wrapper">
-                        <span class="fm-c-custom-select__current fm-c-text-xs fm-u-fw-500 fm-u-color-actions-success-800">{{ 'Sort by'|trans(domain="FileManagerBundle") }}</span>
+                    <div class="fm-c-custom-select__current-wrapper fm-u-color-actions-success-800">
+                        <span class="fm-c-custom-select__current fm-c-text-xs fm-u-fw-500">{{ 'Sort by'|trans(domain="FileManagerBundle") }}</span>
                         <span class="fm-c-custom-select__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M12 10L8 6L4 10" stroke="#00591D" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            {% include '@MezcalitoFileManager/icons/chevron-up.svg' %}
                         </span>
                     </div>
                 </div>
@@ -71,14 +45,10 @@
                             >
                                 {{ 'By name'|trans(domain="FileManagerBundle") }}
                                 {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::NAME_ASC') %}
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
-                                    </svg>
+                                    {% include '@MezcalitoFileManager/icons/arrow-down.svg' %}
                                 {% endif %}
                                 {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::NAME_DESC') %}
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
-                                    </svg>
+                                    {% include '@MezcalitoFileManager/icons/arrow-up.svg' %}
                                 {% endif %}
                             </button>
                         </li>
@@ -90,14 +60,10 @@
                             >
                                 {{ 'By date'|trans(domain="FileManagerBundle") }}
                                 {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::DATE_ASC') %}
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
-                                    </svg>
+                                    {% include '@MezcalitoFileManager/icons/arrow-down.svg' %}
                                 {% endif %}
                                 {% if sort == constant('Mezcalito\\FileManagerBundle\\Enum\\Sort::DATE_DESC') %}
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
-                                    </svg>
+                                    {% include '@MezcalitoFileManager/icons/arrow-up.svg' %}
                                 {% endif %}
                             </button>
                         </li>
@@ -107,23 +73,11 @@
         </div>
 
         <div class="fm-c-toggle-buttons">
-            <button class="fm-c-toggle-buttons__action fm-c-toggle-buttons__action--active" data-action="mezcalito--ux-filemanager--filemanager#changeDisplayMode" data-mezcalito--ux-filemanager--filemanager-mode-param="list">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
-                    <path d="M6 4.79995H13.3333" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 8.79995H13.3333" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 12.8H13.3333" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M3.33325 4.79995V4.80662" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M3.33325 8.79995V8.80662" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M3.33325 12.8V12.8066" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <button class="fm-c-toggle-buttons__action fm-c-toggle-buttons__action--active fm-u-color-actions-success-800" data-action="mezcalito--ux-filemanager--filemanager#changeDisplayMode" data-mezcalito--ux-filemanager--filemanager-mode-param="list">
+                {% include '@MezcalitoFileManager/icons/list.svg' %}
             </button>
-            <button class="fm-c-toggle-buttons__action" data-action="mezcalito--ux-filemanager--filemanager#changeDisplayMode" data-mezcalito--ux-filemanager--filemanager-mode-param="grid">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
-                    <path d="M2.66675 4.13332C2.66675 3.95651 2.73699 3.78694 2.86201 3.66191C2.98703 3.53689 3.1566 3.46665 3.33341 3.46665H6.00008C6.17689 3.46665 6.34646 3.53689 6.47149 3.66191C6.59651 3.78694 6.66675 3.95651 6.66675 4.13332V6.79999C6.66675 6.9768 6.59651 7.14637 6.47149 7.27139C6.34646 7.39641 6.17689 7.46665 6.00008 7.46665H3.33341C3.1566 7.46665 2.98703 7.39641 2.86201 7.27139C2.73699 7.14637 2.66675 6.9768 2.66675 6.79999V4.13332Z" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M9.33325 4.13332C9.33325 3.95651 9.40349 3.78694 9.52851 3.66191C9.65354 3.53689 9.82311 3.46665 9.99992 3.46665H12.6666C12.8434 3.46665 13.013 3.53689 13.138 3.66191C13.263 3.78694 13.3333 3.95651 13.3333 4.13332V6.79999C13.3333 6.9768 13.263 7.14637 13.138 7.27139C13.013 7.39641 12.8434 7.46665 12.6666 7.46665H9.99992C9.82311 7.46665 9.65354 7.39641 9.52851 7.27139C9.40349 7.14637 9.33325 6.9768 9.33325 6.79999V4.13332Z" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2.66675 10.8C2.66675 10.6232 2.73699 10.4536 2.86201 10.3286C2.98703 10.2036 3.1566 10.1334 3.33341 10.1334H6.00008C6.17689 10.1334 6.34646 10.2036 6.47149 10.3286C6.59651 10.4536 6.66675 10.6232 6.66675 10.8V13.4667C6.66675 13.6435 6.59651 13.8131 6.47149 13.9381C6.34646 14.0631 6.17689 14.1334 6.00008 14.1334H3.33341C3.1566 14.1334 2.98703 14.0631 2.86201 13.9381C2.73699 13.8131 2.66675 13.6435 2.66675 13.4667V10.8Z" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M9.33325 10.8C9.33325 10.6232 9.40349 10.4536 9.52851 10.3286C9.65354 10.2036 9.82311 10.1334 9.99992 10.1334H12.6666C12.8434 10.1334 13.013 10.2036 13.138 10.3286C13.263 10.4536 13.3333 10.6232 13.3333 10.8V13.4667C13.3333 13.6435 13.263 13.8131 13.138 13.9381C13.013 14.0631 12.8434 14.1334 12.6666 14.1334H9.99992C9.82311 14.1334 9.65354 14.0631 9.52851 13.9381C9.40349 13.8131 9.33325 13.6435 9.33325 13.4667V10.8Z" stroke="#128438" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <button class="fm-c-toggle-buttons__action fm-u-color-actions-success-800" data-action="mezcalito--ux-filemanager--filemanager#changeDisplayMode" data-mezcalito--ux-filemanager--filemanager-mode-param="grid">
+                {% include '@MezcalitoFileManager/icons/grid.svg' %}
             </button>
         </div>
     </div>
@@ -140,10 +94,7 @@
 
     <div class="fm-u-hidden@from-md" data-mezcalito--ux-filemanager--filemanager-target="submenu">
         <button class="fm-c-button fm-c-content__sticky-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M10 4.16663V15.8333" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4.16675 10H15.8334" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            {% include '@MezcalitoFileManager/icons/plus.svg' %}
             {{ 'New'|trans(domain="FileManagerBundle") }}
         </button>
 
@@ -152,22 +103,13 @@
                 <ul>
                     <li>
                         <button type="button" class="fm-c-submenu__item fm-c-submenu__button fm-c-text-s fm-u-color-grey-700" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="create">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.16672 4.15833C3.94349 4.15833 3.72941 4.24701 3.57157 4.40485C3.41372 4.56269 3.32505 4.77677 3.32505 5V14.1667C3.32505 14.3899 3.41372 14.604 3.57157 14.7618C3.72941 14.9197 3.94349 15.0083 4.16672 15.0083H10C10.4557 15.0083 10.825 15.3777 10.825 15.8333C10.825 16.289 10.4557 16.6583 10 16.6583H4.16672C3.50588 16.6583 2.87212 16.3958 2.40484 15.9285C1.93756 15.4613 1.67505 14.8275 1.67505 14.1667V5C1.67505 4.33917 1.93756 3.7054 2.40484 3.23812C2.87212 2.77085 3.50588 2.50833 4.16672 2.50833H7.50005C7.71885 2.50833 7.92869 2.59525 8.08341 2.74997L10.3418 5.00833H15.8334C16.4942 5.00833 17.128 5.27085 17.5953 5.73812C18.0625 6.2054 18.325 6.83917 18.325 7.5V10.4167C18.325 10.8723 17.9557 11.2417 17.5 11.2417C17.0444 11.2417 16.675 10.8723 16.675 10.4167V7.5C16.675 7.27677 16.5864 7.06269 16.4285 6.90485C16.2707 6.74701 16.0566 6.65833 15.8334 6.65833H10C9.78124 6.65833 9.5714 6.57141 9.41669 6.41669L7.15832 4.15833H4.16672Z" fill="#566071"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5083 15.8333C12.5083 15.3777 12.8777 15.0083 13.3333 15.0083H18.3333C18.7889 15.0083 19.1583 15.3777 19.1583 15.8333C19.1583 16.289 18.7889 16.6583 18.3333 16.6583H13.3333C12.8777 16.6583 12.5083 16.289 12.5083 15.8333Z" fill="#566071"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8333 12.5083C16.2889 12.5083 16.6583 12.8777 16.6583 13.3333V18.3333C16.6583 18.789 16.2889 19.1583 15.8333 19.1583C15.3777 19.1583 15.0083 18.789 15.0083 18.3333V13.3333C15.0083 12.8777 15.3777 12.5083 15.8333 12.5083Z" fill="#566071"/>
-                            </svg>
+                            {% include '@MezcalitoFileManager/icons/create.svg' %}
                             {{ 'Create folder'|trans(domain="FileManagerBundle") }}
                         </button>
                     </li>
                     <li>
                         <button type="button" class="fm-c-submenu__item fm-c-submenu__button fm-c-text-s fm-u-color-grey-700" data-action="mezcalito--ux-filemanager--filemanager#openModal" data-mezcalito--ux-filemanager--filemanager-action-param="upload">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6667 1.66667C12.1269 1.66667 12.5 2.03977 12.5 2.50001V5.83334H15.8334C16.2936 5.83334 16.6667 6.20643 16.6667 6.66667C16.6667 7.12691 16.2936 7.50001 15.8334 7.50001H12.5C12.058 7.50001 11.6341 7.32441 11.3215 7.01185C11.009 6.69929 10.8334 6.27537 10.8334 5.83334V2.50001C10.8334 2.03977 11.2065 1.66667 11.6667 1.66667Z" fill="#566071"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.83337 3.33334C5.61236 3.33334 5.4004 3.42114 5.24412 3.57742C5.08784 3.7337 5.00004 3.94566 5.00004 4.16667V15.8333C5.00004 16.0544 5.08784 16.2663 5.24412 16.4226C5.4004 16.5789 5.61236 16.6667 5.83337 16.6667H14.1667C14.3877 16.6667 14.5997 16.5789 14.756 16.4226C14.9122 16.2663 15 16.0544 15 15.8333V7.01185L11.3215 3.33334H5.83337ZM4.06561 2.3989C4.53445 1.93006 5.17033 1.66667 5.83337 1.66667H11.6667C11.8877 1.66667 12.0997 1.75447 12.256 1.91075L16.4226 6.07742C16.5789 6.2337 16.6667 6.44566 16.6667 6.66667V15.8333C16.6667 16.4964 16.4033 17.1323 15.9345 17.6011C15.4656 18.0699 14.8297 18.3333 14.1667 18.3333H5.83337C5.17033 18.3333 4.53445 18.0699 4.06561 17.6011C3.59677 17.1323 3.33337 16.4964 3.33337 15.8333V4.16667C3.33337 3.50363 3.59677 2.86775 4.06561 2.3989Z" fill="#566071"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0001 8.33334C10.4603 8.33334 10.8334 8.70644 10.8334 9.16668V14.1667C10.8334 14.6269 10.4603 15 10.0001 15C9.53984 15 9.16675 14.6269 9.16675 14.1667V9.16668C9.16675 8.70644 9.53984 8.33334 10.0001 8.33334Z" fill="#566071"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41083 8.57742C9.73626 8.25198 10.2639 8.25198 10.5893 8.57742L13.0893 11.0774C13.4148 11.4029 13.4148 11.9305 13.0893 12.2559C12.7639 12.5814 12.2363 12.5814 11.9108 12.2559L10.0001 10.3452L8.08934 12.2559C7.7639 12.5814 7.23626 12.5814 6.91083 12.2559C6.58539 11.9305 6.58539 11.4029 6.91083 11.0774L9.41083 8.57742Z" fill="#566071"/>
-                            </svg>
+                            {% include '@MezcalitoFileManager/icons/upload.svg' %}
                             {{ 'Upload files'|trans(domain="FileManagerBundle") }}
                         </button>
                     </li>
