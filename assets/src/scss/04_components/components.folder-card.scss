@@ -17,47 +17,14 @@
     &:hover {
       background-color: var(--fm-card-hover-bg);
     }
-
-    &:has(.fm-c-folder-card__input:checked) {
-      background-color: var(--fm-card-active-bg);
-    }
-
-    &:has(.fm-c-folder-card__input:checked) {
-      grid-template-columns: 28px 56px 1fr 24px;
-      grid-template-areas:
-    "activeIcon img name action"
-    "activeIcon img info action";
-    }
-
-    &:has(.fm-c-folder-card__input:checked) .fm-c-folder-card__active-icon {
-      display: flex;
-    }
-
-    &:has(.fm-c-folder-card__input:checked) .fm-c-folder-card__action {
-      pointer-events: none;
-      opacity: 0.5;
-    }
   }
 
-  .fm-c-folder-card__input {
-    display: none;
-    opacity: 0;
-    position: absolute;
-    inset: 0;
-  }
 
   .fm-c-folder-card__link {
     //display: none;
     opacity: 0;
     position: absolute;
     inset: 0;
-  }
-
-  .fm-c-folder-card__active-icon {
-    display: none;
-    padding-left: settings.$space-8;
-    grid-area: activeIcon;
-    align-items: center;
   }
 
   .fm-c-folder-card__infos {

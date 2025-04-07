@@ -171,8 +171,7 @@ class default_1 extends Controller {
     onSearchFocus() {
         this.element.setAttribute('data-fm-search-active', '');
     }
-    onSearchBlur(e) {
-        e.relatedTarget;
+    onSearchBlur() {
         this.element.removeAttribute('data-fm-search-active');
     }
 }

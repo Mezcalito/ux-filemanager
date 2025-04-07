@@ -29,6 +29,10 @@
 
   .fm-c-toggle-buttons__action {
     transition: background-color var(--fm-transition-in-out);
+
+    svg {
+      width: 20px;
+    }
   }
 
   .fm-c-toggle-buttons__action--active {
